@@ -4,6 +4,7 @@ import {StackNavigator} from 'react-navigation';
 
 
 import LoginScreen from './Screens/LoginScreen'
+import SignupScreen from './Screens/SignupScreen'
 import HomeScreen from './Screens/HomeScreen'
 import TestSelection from './Screens/TestSelection'
 import TestSetup from './Screens/TestSetup'
@@ -42,12 +43,22 @@ import GuestInstructions4 from './Screens/GuestInstructions4'
 import GuestInstructions5 from './Screens/GuestInstructions5'
 import GuestInstructions6 from './Screens/GuestInstructions6'
 import GuestInstructions7 from './Screens/GuestInstructions7'
+import * as firebase from "firebase";
 
+const firebaseConfig = {
+    apiKey: "AIzaSyAUKMFNY68L-7Y2LRbsO0e6olex-xnzWrk",
+    authDomain: "smartest-df9af.firebaseapp.com",
+    databaseURL: "https://smartest-df9af.firebaseio.com",
+    projectId: "smartest-df9af",
+    storageBucket: "smartest-df9af.appspot.com",
+    messagingSenderId: "782261463353"
+};
 
-
+firebase.initializeApp(firebaseConfig);
 
 
 export default class App extends React.Component {
+
   render() {
     return(
            <AppNavigator />
@@ -57,6 +68,7 @@ export default class App extends React.Component {
 
   const AppNavigator = StackNavigator({
     LoginScreen : {screen : LoginScreen},
+      SignupScreen: {screen : SignupScreen},
     HomeScreen: {screen: HomeScreen },
     TestSelection : {screen: TestSelection },
     TestSetup: {screen: TestSetup },
