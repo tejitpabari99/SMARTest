@@ -74,7 +74,7 @@ import * as firebase from 'firebase';
                      primary
                      onPress={()=>this.props.navigation.navigate('SignupScreen')}
                  >
-                    <Text style={{color:'white'}}>Don't have an Account?</Text>
+                    <Text style={{color:'white'}}>Dont have an Account?</Text>
                  </Button>
             </TouchableOpacity>
              </View>
@@ -126,7 +126,7 @@ import * as firebase from 'firebase';
          color:'red'
      }
      })
-
+ export default LoginScreen;
 
 
 
@@ -159,10 +159,10 @@ import * as firebase from 'firebase';
     color: 'red',
   },
 });
-                    */
+
   export default LoginScreen;
 
-
+*/
 
 
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet ,Text, View,Button,Image} from 'react-native';
+import { StyleSheet ,Text, View,Button,Image,video} from 'react-native';
 
 
 
@@ -10,27 +10,27 @@ import { StyleSheet ,Text, View,Button,Image} from 'react-native';
     title: 'Running the Test (1)',
   };
   render() {
-
-    let pic = {
-      uri: 'http://image.made-in-china.com/2f0j00KChQFBeypjUA/Specimen-Jars-Specimen-Bottles-Specimen-Cup-Sterile-Specimen-Cup.jpg'
-    }
     return (
       <View>
-      <Image source={pic} style={{width: 200, height: 200}}/>
+        <Text>                    Pick up solution tube #2 and mix the      </Text>
+          <Text>                         contents by inverting several times.</Text>
+            <Text>                         </Text>
+              <Text>                          </Text>
+                <Image source={       require('../Images/12A.jpg')}   style={{width: 193, height: 110}} />
+
+                <Text>   Remove the cap and pour contents           </Text>
+                <Text>            into the center of the test    .   </Text>
+                  <Text>                          </Text>
+                    <Image source={       require('../Images/12B.png')}   style={{width: 193, height: 110}} />
 
 
-    <Text>PICTURE OF VILE  </Text>
 
 
 
 
-        <Text>  Tear open pouch an place membrane unit on a flat service </Text>
-          <Text>  Orient it so the lip of the device faces you. </Text>
 
-      <Button onPress= {() => this.props.navigation.navigate ('GuestInstructions10')}
-        title="Previous Step"/>
-         <Button onPress= {() => this.props.navigation.navigate ('GuestScanResults')}
-            title="Next Step"/>
+      <Button onPress= {() => this.props.navigation.navigate ('GuestInstructions12')}
+        title="Next"/>
 </View>
           );
         }
