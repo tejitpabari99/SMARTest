@@ -1,21 +1,10 @@
-
-
-
 import React, { Component } from 'react';
 import { StyleSheet ,Text, View} from 'react-native';
 import {StackNavigator} from 'react-navigation';
 
-//import GuestResources from './Screens/GuestResources'
-//import Clinics from './Screens/Clinics'
-//import TestAccuracy from './Screens/TestAccuracy'
-//import WindowPeriod from './Screens/WindowPeriod'
-//import HIVSyphillisInfo from './Screens/HIVSyphillisInfo'
-//import Syphillisinfo from './Screens/Syphillisinfo'
-//import HIVinfo from './Screens/HIVinfo'
-
-
 import LoginScreen from './Screens/LoginScreen'
-//import HomeScreen from './Screens/HomeScreen'
+import SignupScreen from './Screens/SignupScreen'
+import HomeScreen from './Screens/HomeScreen'
 import TestSelection from './Screens/TestSelection'
 import TestSetup from './Screens/TestSetup'
 import VideoInfo from './Screens/VideoInfo'
@@ -67,7 +56,6 @@ import DuoTest from './Screens/DuoTest'
 import DuoVideoPlaceHolder from './Screens/DuoVideoPlaceHolder'
 import * as firebase from "firebase";
 
-
 const firebaseConfig = {
     apiKey: "AIzaSyAUKMFNY68L-7Y2LRbsO0e6olex-xnzWrk",
     authDomain: "smartest-df9af.firebaseapp.com",
@@ -79,17 +67,18 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-
 export default class App extends React.Component {
-  render() {
-    return(
-           <AppNavigator />
-          );
-        }
-      }
+    render() {
+        return(
+            <AppNavigator />
+        );
+    }
+}
 
-  const AppNavigator = StackNavigator({
+const AppNavigator = StackNavigator({
     LoginScreen : {screen : LoginScreen},
+    SignupScreen : {screen : SignupScreen},
+    HomeScreen : {screen: HomeScreen},
     TestSelection : {screen : TestSelection},
     TestSetup : {screen : TestSetup},
     VideoInfo : {screen : VideoInfo},
@@ -117,7 +106,7 @@ export default class App extends React.Component {
     Instructions7 : {screen : Instructions7},
     Instructions8: {screen : Instructions8},
     Instructions9: {screen : Instructions9},
-   Instructions10: {screen : Instructions10},
+    Instructions10: {screen : Instructions10},
     Instructions11: {screen : Instructions11},
     Instructions12: {screen : Instructions12},
     ScanResults: {screen : ScanResults},
@@ -139,13 +128,13 @@ export default class App extends React.Component {
     HIVinfo: {screen : HIVinfo},
     DuoVideoPlaceHolder: {screen : DuoVideoPlaceHolder},
     DuoTest: {screen : DuoTest}
+})
 
-  })
 const styles = StyleSheet.create({
-  container:{
-    flex: 1,
-    backgroundColor: '#00FFFF',
-    alignItems: 'center',
-    justifyContent: 'center',
-},
+    container:{
+        flex: 1,
+        backgroundColor: '#00FFFF',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 });

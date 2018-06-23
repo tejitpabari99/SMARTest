@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet ,Text, View, TouchableOpacity} from 'react-native';
 import {Container, Content, Header, Button, Label, Form, Item, Input, Spinner} from 'native-base';
-
 import * as firebase from 'firebase';
-
-
-
 
 class SignupScreen extends Component {
 
@@ -15,12 +11,9 @@ class SignupScreen extends Component {
             email:'',
             password:'',
             error:'',
-            isLoading:false
-        })
     }
 
     signupUser = (email, password) =>{
-
         try{
             if(this.state.password.length<8){
                 this.setState({error:"Your password should contain at least 8 characters."});
@@ -30,20 +23,17 @@ class SignupScreen extends Component {
             firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
                 .then(this.onSignupSuccess.bind(this));
 
-             }
-
+        }
         catch(error){
             this.setState({error:error.toString(),email:'',password:'',isLoading:false});
             console.log(error.toString());
         }
-
     }
 
     onSignupSuccess(){
         this.setState({error:'',isLoading:false});
         this.props.navigation.navigate("HomeScreen");
     }
-
 
     onButtonPress(){
         if(this.state.isLoading){
@@ -56,13 +46,11 @@ class SignupScreen extends Component {
                     full
                     rounded
                     primary
-                    onPress={()=>this.signupUser(this.state.email,this.state.password)}
-                >
+                    onPress={()=>this.signupUser(this.state.email,this.state.password)}>
                     <Text style={{color:'white'}}>Create an account</Text>
                 </Button>
             </TouchableOpacity>
         );
-
     }
 
     static navigationOptions = {
@@ -73,23 +61,24 @@ class SignupScreen extends Component {
         return (
             <Container style={styles.container}>
                 <Form>
+
                     <Item floatingLabel>
                         <Label>Email</Label>
                         <Input
                             autoCorrect={false}
-                            //autoCapitalize={false}
                             onChangeText={(email)=>this.setState({email})}
                         />
                     </Item>
+
                     <Item floatingLabel>
                         <Label>Password</Label>
                         <Input
                             secureTextEntry={true}
                             autoCorrect={false}
-                            // autoCapitalize={false}
                             onChangeText={(password)=>this.setState({password})}
                         />
                     </Item>
+
                     <View>
                         {this.onButtonPress()}
                         <Text style={styles.errorText}>
