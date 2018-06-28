@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet ,Text, View,Button,Image} from 'react-native';
+import { StyleSheet ,Text, View,Button,Image,video} from 'react-native';
 
 
 
@@ -7,30 +7,29 @@ import { StyleSheet ,Text, View,Button,Image} from 'react-native';
 
  class Instructions7 extends Component {
    static navigationOptions = {
-    title: 'Collect Blood',
+    title: 'Extract Blood',
   };
   render() {
-
-    let pic = {
-      uri: 'http://image.made-in-china.com/2f0j00KChQFBeypjUA/Specimen-Jars-Specimen-Bottles-Specimen-Cup-Sterile-Specimen-Cup.jpg'
-    }
     return (
       <View>
-      <Image source={pic} style={{width: 200, height: 200}}/>
+        <Text>                    PLace tip of lancet on the clean finger.   </Text>
+          <Text>                        Firmly Push Down on the other end.   </Text>
+          <Text></Text>
+            <Text></Text>
+
+          <Image source={       require('../Images/8A.png')}   style={{width: 370, height: 250}} />
+        <Text>                       </Text>
+          <Text>                       </Text>
+          <Text>                          You will feel a momentary pinprick.  </Text>
+          <Text>                               After discard lancet in trash   </Text>
+            <Text>                                          completely.</Text>
+          <Image source={       require('../Images/8B.png')}   style={{width: 370, height: 250}} />
 
 
-    <Text>PICTURE OF VILE  </Text>
 
 
-
-
-        <Text>  Tear open pouch an place membrane unit on a flat service </Text>
-          <Text>  Orient it so the lip of the device faces you. </Text>
-
-      <Button onPress= {() => this.props.navigation.navigate ('Instructions6')}
-        title="Previous Step"/>
-         <Button onPress= {() => this.props.navigation.navigate ('Instructions8')}
-            title="Next Step"/>
+      <Button onPress= {() => this.props.navigation.navigate ('Instructions8')}
+        title="Next"/>
 </View>
           );
         }

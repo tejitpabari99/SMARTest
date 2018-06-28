@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet ,Text, View, ImageBackground,Button,Image} from 'react-native';
+import { StyleSheet ,Text, View,Button,Image} from 'react-native';
+
+import { Video } from 'expo';
+import VideoPlayer from '@expo/videoplayer';
 
 
 
@@ -7,28 +10,44 @@ import { StyleSheet ,Text, View, ImageBackground,Button,Image} from 'react-nativ
 
  class GuestVideo extends Component {
    static navigationOptions = {
-    title: 'Instructional Video',
+    title: 'Video PlaceHolder',
   };
-
   render() {
+    return (
 
-    return(
-          <View>
-          <Text> First you will see a short instructional video </Text>
-          <Text>     that provides an overview of the test.  </Text>
+            <View>
 
-          <Text> then you will see step-by-step instructions </Text>
-          <Text>             to run the test yourself.       </Text>
-          <Button onPress= {() => this.props.navigation.navigate ('GuestInstructions')}
-            title="NEXT"/>
-            <Button onPress= {() => this.props.navigation.navigate ('')}
-              title="SKIP TO STEP BY STEP INSTRUCTIONS"/>
 
-<Text></Text>
-<Text></Text>
-<Text></Text>
-<Text></Text>
 
+                                                  <VideoPlayer
+                                                    videoProps={{
+                                                      shouldPlay: true,
+                                                      resizeMode: Video.RESIZE_MODE_CONTAIN,
+                                                      source: {
+                                                        uri: 'file:///Users/michaelokrah/Documents/SMARTest/InstiV2.mp4',
+                                                      },
+                                                    }}
+                                                    isPortrait={true}
+                                                    playFromPositionMillis={0}
+
+                                                  />
+
+                                                  <Text></Text>
+                                                  <Text></Text>
+                                                  <Text></Text>
+                                                  <Text></Text>
+                                                  <Text></Text>
+                                                  <Text></Text>
+                                                  <Text></Text>
+                                                  <Text></Text>
+                                                      <Text></Text>
+                                                          <Text></Text>
+                                                              <Text></Text>
+                                                                  <Text></Text>
+                                                                      <Text></Text>
+
+                      <Button onPress= {() => this.props.navigation.navigate ('GuestInstructions')}
+                        title="Skip to step by step instructions"/>
 
 
 
@@ -37,7 +56,5 @@ import { StyleSheet ,Text, View, ImageBackground,Button,Image} from 'react-nativ
           );
         }
       }
-
-
 
   export default GuestVideo;

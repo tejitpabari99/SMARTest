@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet ,Text, View,Button,Image} from 'react-native';
+import { StyleSheet ,Text, View,Button,Image,video} from 'react-native';
 
 
 
@@ -7,30 +7,28 @@ import { StyleSheet ,Text, View,Button,Image} from 'react-native';
 
  class Instructions4 extends Component {
    static navigationOptions = {
-    title: 'Prepare Sampler Collector',
+    title: 'Prepare Sample Collector',
   };
   render() {
-
-    let pic = {
-      uri: 'http://image.made-in-china.com/2f0j00KChQFBeypjUA/Specimen-Jars-Specimen-Bottles-Specimen-Cup-Sterile-Specimen-Cup.jpg'
-    }
     return (
       <View>
-      <Image source={pic} style={{width: 200, height: 200}}/>
+        <Text>                   PICK UP THE SOLUTION TUBE #1 WITH  </Text>
+        <Text>                 THE RED CAP AND TWIST OPEN THE CAP. </Text>
+        <Text></Text>
+            <Text></Text>
+            <Text></Text>
+                <Text></Text>
+          <Image source={       require('../Images/redVile.jpg')}   style={{width: 370, height: 250}} />
+        <Text>            PLACE IT NEARBY FOR FUTURE STEPS</Text>
+            <Text>            BE CAREFULL NOT TO KNOCK IT OVER! </Text>
+            <Text></Text>
+                <Text></Text>
+                    <Text>               </Text>
 
 
-    <Text>PICTURE OF VILE  </Text>
 
-
-
-
-        <Text>  Tear open pouch an place membrane unit on a flat service </Text>
-          <Text>  Orient it so the lip of the device faces you. </Text>
-
-      <Button onPress= {() => this.props.navigation.navigate ('Instructions3')}
-        title="Previous Step"/>
-         <Button onPress= {() => this.props.navigation.navigate ('Instructions5')}
-            title="Next Step"/>
+      <Button onPress= {() => this.props.navigation.navigate ('Instructions5')}
+        title="Next"/>
 </View>
           );
         }
