@@ -10,10 +10,11 @@ class SignupScreen extends Component {
         this.state=({
             email:'',
             password:'',
-            error:'',
+            error:''
+        })
     }
 
-    signupUser = (email, password) =>{
+    signupUser = (email, password) => {
         try{
             if(this.state.password.length<8){
                 this.setState({error:"Your password should contain at least 8 characters."});
