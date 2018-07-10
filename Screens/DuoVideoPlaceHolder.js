@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Button, Image } from "react-native";
 
-import { Video } from "expo";
-import VideoPlayer from "@expo/videoplayer";
+import Video from "react-native-video";
 
 class DuoVideoPlaceholder extends Component {
   static navigationOptions = {
@@ -11,16 +10,8 @@ class DuoVideoPlaceholder extends Component {
   render() {
     return (
       <View>
-        <VideoPlayer
-          videoProps={{
-            shouldPlay: true,
-            resizeMode: Video.RESIZE_MODE_CONTAIN,
-            source: {
-              uri: "../Videos/InstiV2.mp4"
-            }
-          }}
-          isPortrait={true}
-          playFromPositionMillis={0}
+        <Video
+          source={require("../Videos/InstiV2.mp4")}
         />
 
         <Text />

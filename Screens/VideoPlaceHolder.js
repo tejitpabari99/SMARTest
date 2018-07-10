@@ -5,12 +5,10 @@ import {
   View,
   ImageBackground,
   Button,
-  Image,
-  video
+  Image
 } from "react-native";
 
-import { Video } from "expo";
-import VideoPlayer from "@expo/videoplayer";
+import Video from "react-native-video";
 
 class VideoPlaceHolder extends Component {
   static navigationOptions = {
@@ -19,15 +17,15 @@ class VideoPlaceHolder extends Component {
 
   render() {
     return (
-      <View>
-        <VideoPlayer
-          videoProps={{
-            shouldPlay: true,
-            resizeMode: Video.RESIZE_MODE_CONTAIN,
-            source: require("../Videos/InstiV2.mp4")
-          }}
-          isPortrait={true}
-          playFromPositionMillis={0}
+      <View style={styles.backgroundVideo}>
+        <Video
+          source={require("../Videos/InstiV2.mp4")}
+          ref={(ref) => {
+             this.player = ref
+           }}
+           onLoad={(data) => { this.player.presentFullscreenPlayer(); }}
+           onEnd={(data) => { this.player.dismissFullscreenPlayer(); }}
+           style={styles.backgroundVideo}
         />
 
         <Text />
@@ -42,6 +40,19 @@ class VideoPlaceHolder extends Component {
       </View>
     );
   }
+  /*onLoad(data) {
+    console.log("triggered!");
+    this.player.presentFullscreenPlayer();
+  }*/
 }
+
+var styles = StyleSheet.create({
+  backgroundVideo: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+  },
+});
 
 export default VideoPlaceHolder;

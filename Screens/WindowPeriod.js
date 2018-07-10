@@ -11,7 +11,7 @@ class WindowPeriod extends Component {
         <Text> You may test positive with the INSTI </Text>
         <Text> Multiplex in as little as 21-22 days after </Text>
         <Text> infection; however, it can take as long as 3 </Text>
-        <Text> months after infection toi produce a positive result. </Text>
+        <Text> months after infection to produce a positive result. </Text>
         <Text>
           {" "}
           99.6% and a specificity of 99.3% for the detection of HIV-1 and HIV-2
