@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet ,Text, View,Button,Image,video} from 'react-native';
+//import { RNCamera } from 'react-native-camera';
 
 class ScanResults extends Component {
    static navigationOptions = {

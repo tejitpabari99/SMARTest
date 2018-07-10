@@ -19,32 +19,32 @@ import VideoPlayer from '@expo/videoplayer';
 
 
 
-                                                  <VideoPlayer
-                                                    videoProps={{
-                                                      shouldPlay: true,
-                                                      resizeMode: Video.RESIZE_MODE_CONTAIN,
-                                                      source: {
-                                                        uri: 'file:///Users/michaelokrah/Documents/SMARTest/InstiV2.mp4',
-                                                      },
-                                                    }}
-                                                    isPortrait={true}
-                                                    playFromPositionMillis={0}
+				  <VideoPlayer
+					videoProps={{
+					  shouldPlay: true,
+					  resizeMode: Video.RESIZE_MODE_CONTAIN,
+					  source: {
+						uri: '../Videos/InstiV2.mp4',
+					  },
+					}}
+					isPortrait={true}
+					playFromPositionMillis={0}
 
-                                                  />
+				  />
 
-                                                  <Text></Text>
-                                                  <Text></Text>
-                                                  <Text></Text>
-                                                  <Text></Text>
-                                                  <Text></Text>
-                                                  <Text></Text>
-                                                  <Text></Text>
-                                                  <Text></Text>
-                                                      <Text></Text>
-                                                          <Text></Text>
-                                                              <Text></Text>
-                                                                  <Text></Text>
-                                                                      <Text></Text>
+				  <Text></Text>
+				  <Text></Text>
+				  <Text></Text>
+				  <Text></Text>
+				  <Text></Text>
+				  <Text></Text>
+				  <Text></Text>
+				  <Text></Text>
+					  <Text></Text>
+						  <Text></Text>
+							  <Text></Text>
+								  <Text></Text>
+									  <Text></Text>
 
                       <Button onPress= {() => this.props.navigation.navigate ('GuestInstructions')}
                         title="Skip to step by step instructions"/>

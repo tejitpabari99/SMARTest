@@ -1,22 +1,17 @@
-import React, { Component } from 'react';
-import { StyleSheet ,Text, View,Button,Image,video} from 'react-native';
+import React, { Component } from "react";
+import { StyleSheet, Text, View, Button, Image, video } from "react-native";
 
-
-
-
-
- class HIVinfo extends Component {
-   static navigationOptions = {
-    title: 'HIV and Syphillis info',
+class HIVinfo extends Component {
+  static navigationOptions = {
+    title: "HIV and Syphillis info"
   };
   render() {
     return (
       <View>
-        <Text>   Link to HIV Website </Text>
+        <Text> Link to HIV Website </Text>
+      </View>
+    );
+  }
+}
 
-</View>
-          );
-        }
-      }
-
-  export default HIVinfo;
+export default HIVinfo;
