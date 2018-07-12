@@ -76,7 +76,7 @@ export default class App extends React.Component {
 }
 
 const AppNavigator = StackNavigator({
-    /**/LoginScreen : {screen : LoginScreen},
+    /*LoginScreen : {screen : LoginScreen},
     SignupScreen : {screen : SignupScreen},
     HomeScreen : {screen: HomeScreen},
     TestSelection : {screen : TestSelection},
@@ -108,7 +108,7 @@ const AppNavigator = StackNavigator({
     Instructions9: {screen : Instructions9},
     Instructions10: {screen : Instructions10},
     Instructions11: {screen : Instructions11},
-    Instructions12: {screen : Instructions12},
+    Instructions12: {screen : Instructions12},*/
     ScanResults: {screen : ScanResults},
     PreResults: {screen : PreResults},
     ResultsPage: {screen : ResultsPage},
