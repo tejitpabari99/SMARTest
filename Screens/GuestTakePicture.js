@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { StyleSheet ,Text, View,Button,Image,video} from 'react-native';
-//import { RNCamera } from 'react-native-camera';
 
-class ScanResults extends Component {
+class GuestTakePicture extends Component {
    static navigationOptions = {
-    title: 'Scan Results',
+    title: 'Take Picture',
   };
   render() {
     return (
       <View>
+        <Text>                   Guest Take Picture      </Text>
         <Text>                    Please align the edges of the test to       </Text>
         <Text>                      the center of the square below:           </Text>
         <Text>                                                                </Text>
@@ -28,17 +28,13 @@ class ScanResults extends Component {
         <Text>                    __________________________________          </Text>
         <Text>                                                                </Text>
         <Text>                                                                </Text>
-        <Button onPress= {() => this.props.navigation.navigate ('ScanResults')}
+        <Button onPress= {() => this.props.navigation.navigate ('GuestTakePicture')}
           title="Retake"/>
+        <Button onPress= {() => this.props.navigation.navigate ('GuestResults')}
+          title="Results"/>
+      </View>
+    );
+  }
+}
 
-  <Button onPress= {() => this.props.navigation.navigate ('PreResults')}
-    title="Continue"/>
-</View>
-
-
-
-          );
-        }
-      }
-
-  export default ScanResults;
+export { GuestTakePicture };

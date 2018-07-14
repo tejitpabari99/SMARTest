@@ -26,7 +26,7 @@ class VideoInfo extends Component {
         <Text />
         <Text />
         <Button
-          onPress={() => this.props.navigation.navigate("VideoPlaceHolder")}
+          onPress={() => this.props.navigation.navigate("Video")}
           title="NEXT"
         />
 
@@ -39,4 +39,4 @@ class VideoInfo extends Component {
   }
 }
 
-export default VideoInfo;
+export { VideoInfo };

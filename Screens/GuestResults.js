@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Button, Image } from "react-native";
 
-class ResultsPage extends Component {
+class GuestResults extends Component {
   static navigationOptions = {
     title: "RESULTS"
   };
   render() {
     return (
       <View>
-        <Text> </Text>
+        <Text> Guest Results</Text>
         <Text> </Text>
 
         <Text> </Text>
@@ -18,25 +18,8 @@ class ResultsPage extends Component {
         <Text> </Text>
 
         <Button
-          onPress={() => this.props.navigation.navigate("ResultShare")}
-          title="SAVE"
-        />
-        <Text />
-        <Button
-          onPress={() => this.props.navigation.navigate("DeletePage")}
-          title="DELETE"
-        />
-        <Text />
-        <Text />
-        <Button
-          onPress={() => this.props.navigation.navigate("GuestResources")}
-          title="RESOURCES"
-        />
-        <Text />
-        <Text />
-        <Button
-          onPress={() => this.props.navigation.navigate("ResultsPage")}
-          title="DIAL HOTLINE"
+          onPress={() => this.props.navigation.navigate("Resources")}
+          title="Resources"
         />
 
         <Text />
@@ -52,4 +35,4 @@ class ResultsPage extends Component {
   }
 }
 
-export default ResultsPage;
+export {GuestResults};

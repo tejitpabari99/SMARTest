@@ -21,4 +21,4 @@ class TestSelection extends Component {
   }
 }
 
-export default TestSelection;
+export { TestSelection };

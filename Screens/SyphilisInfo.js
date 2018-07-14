@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Button, Image, video } from "react-native";
 
-class Clinics extends Component {
+class SyphilisInfo extends Component {
   static navigationOptions = {
-    title: "Lists of Clinics"
+    title: "Syphilis Info"
   };
   render() {
     return (
       <View>
-        <Text> List of clinics</Text>
+        <Text> Link to Syphillis Website </Text>
       </View>
     );
   }
 }
 
-export default Clinics;
+export { SyphilisInfo };
