@@ -21,56 +21,56 @@ class DuoTestInstructions extends Component {
         <Text />
         <Text />
         <Image
-          source={require("../app/images/membraneUnit.jpg")}
+          source={require("../images/membraneUnit.jpg")}
           style={{ width: 193, height: 110 }}
         />
         <Text>Membrane Unit</Text>
         <Text />
         <Text />
         <Image
-          source={require("../app/images/5.jpg")}
+          source={require("../images/5.jpg")}
           style={{ width: 193, height: 110 }}
         />
         <Text>Solution 1 Vial</Text>
         <Text />
         <Text />
         <Image
-          source={require("../app/images/12A.jpg")}
+          source={require("../images/12A.jpg")}
           style={{ width: 193, height: 110 }}
         />
         <Text>Solution 2 Vial</Text>
         <Text />
         <Text />
         <Image
-          source={require("../app/images/13A.jpg")}
+          source={require("../images/13A.jpg")}
           style={{ width: 193, height: 110 }}
         />
         <Text>Solution 3 Vial</Text>
         <Text />
         <Text />
         <Image
-          source={require("../app/images/lancet.jpg")}
+          source={require("../images/lancet.jpg")}
           style={{ width: 193, height: 110 }}
         />
         <Text>Single use Lancet</Text>
         <Text />
         <Text />
         <Image
-          source={require("../app/images/alcohol.jpg")}
+          source={require("../images/alcohol.jpg")}
           style={{ width: 193, height: 110 }}
         />
         <Text>Alcohol Swab</Text>
         <Text />
         <Text />
         <Image
-          source={require("../app/images/7A.jpg")}
+          source={require("../images/7A.jpg")}
           style={{ width: 193, height: 110 }}
         />
         <Text>Gauze Pad </Text>
         <Text />
         <Text />
         <Image
-          source={require("../app/images/bandage.jpg")}
+          source={require("../images/bandage.jpg")}
           style={{ width: 193, height: 110 }}
         />
         <Text>Bandage </Text>

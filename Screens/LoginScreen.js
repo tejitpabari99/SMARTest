@@ -22,7 +22,7 @@ class LoginScreen extends Component {
       error: "",
       isLoading: false
     };
-    this.props.navigation.navigate("HomeScreen");
+    // this.props.navigation.navigate("HomeScreen");
   }
 
   loginUser = (email, password) => {
