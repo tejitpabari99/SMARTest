@@ -20,17 +20,8 @@ class VideoPlaceHolder extends Component {
   render() {
     return (
       <View>
-        <VideoPlayer
-          videoProps={{
-            shouldPlay: true,
-            resizeMode: Video.RESIZE_MODE_CONTAIN,
-            source: require("../Videos/InstiV2.mp4")
-          }}
-          isPortrait={true}
-          playFromPositionMillis={0}
-        />
-
-        <Text />
+        <Text> This is a video placeholder</Text>
+        <Text> Removed the Video Place holder</Text>
         <Text />
         <Text />
         <Text />
