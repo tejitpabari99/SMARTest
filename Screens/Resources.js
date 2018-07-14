@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Button, Image } from "react-native";
 
-class GuestResources extends Component {
+class Resources extends Component {
   static navigationOptions = {
     title: "Resources"
   };
@@ -20,13 +20,13 @@ class GuestResources extends Component {
         <Text />
         <Text />
         <Button
-          onPress={() => this.props.navigation.navigate("HIVSyphillisInfo")}
-          title="HIV Syphillis Information"
+          onPress={() => this.props.navigation.navigate("DiseasesInfo")}
+          title="Diseases Info"
         />
         <Text />
         <Text />
         <Button
-          onPress={() => this.props.navigation.navigate("Clinics")}
+          onPress={() => this.props.navigation.navigate("NearbyClinics")}
           title="Nearby Clinics"
         />
       </View>
@@ -34,4 +34,4 @@ class GuestResources extends Component {
   }
 }
 
-export default GuestResources;
+export { Resources };

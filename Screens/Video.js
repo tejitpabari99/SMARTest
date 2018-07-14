@@ -9,10 +9,10 @@ import {
   video
 } from "react-native";
 
-import { Video } from "expo";
-import VideoPlayer from "@expo/videoplayer";
+// import { Video } from "expo";
+// import VideoPlayer from "@expo/videoplayer";
 
-class VideoPlaceHolder extends Component {
+class Video extends Component {
   static navigationOptions = {
     title: "Video"
   };
@@ -35,4 +35,4 @@ class VideoPlaceHolder extends Component {
   }
 }
 
-export default VideoPlaceHolder;
+export { Video };

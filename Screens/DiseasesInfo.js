@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Button, Image, video } from "react-native";
 
-class HIVSyphillisInfo extends Component {
+class DiseasesInfo extends Component {
   static navigationOptions = {
-    title: "HIV and Syphillis info"
+    title: "Diseases Info"
   };
   render() {
     return (
@@ -12,15 +12,15 @@ class HIVSyphillisInfo extends Component {
         <Text> and syphillis. </Text>
         <Text> </Text>
         <Button
-          onPress={() => this.props.navigation.navigate("HIVinfo")}
-          title="HIV information"
+          onPress={() => this.props.navigation.navigate("HIVInfo")}
+          title="HIV Information"
         />
         <Button
-          onPress={() => this.props.navigation.navigate("Syphillisinfo")}
-          title="Syphillis information"
+          onPress={() => this.props.navigation.navigate("SyphilisInfo")}
+          title="Syphilis Information"
         />
         <Button
-          onPress={() => this.props.navigation.navigate("GuestResources")}
+          onPress={() => this.props.navigation.navigate("Resources")}
           title="Back"
         />
       </View>
@@ -28,4 +28,4 @@ class HIVSyphillisInfo extends Component {
   }
 }
 
-export default HIVSyphillisInfo;
+export { DiseasesInfo };

@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Button, Image, video } from "react-native";
 
-class Syphillisinfo extends Component {
+class Share extends Component {
   static navigationOptions = {
-    title: "HIV and Syphillis info"
+    title: "Share"
   };
   render() {
     return (
       <View>
-        <Text> Link to Syphillis Website </Text>
+        <Text> Share </Text>
       </View>
     );
   }
 }
 
-export default Syphillisinfo;
+export { Share };

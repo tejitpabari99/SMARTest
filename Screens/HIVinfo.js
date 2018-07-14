@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Button, Image, video } from "react-native";
 
-class HIVinfo extends Component {
+class HIVInfo extends Component {
   static navigationOptions = {
-    title: "HIV and Syphillis info"
+    title: "HIV Info"
   };
   render() {
     return (
@@ -14,4 +14,4 @@ class HIVinfo extends Component {
   }
 }
 
-export default HIVinfo;
+export { HIVInfo };

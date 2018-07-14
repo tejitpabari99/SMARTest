@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button, Image, video } from "react-native";
+import { StyleSheet, Text, ScrollView, Button, Image, video } from "react-native";
 
 class Instructions11 extends Component {
   static navigationOptions = {
@@ -7,7 +7,7 @@ class Instructions11 extends Component {
   };
   render() {
     return (
-      <View>
+      <ScrollView>
         <Text> Pick up solution tube #2 and mix the </Text>
         <Text> contents by inverting several times.</Text>
         <Text> </Text>
@@ -29,9 +29,9 @@ class Instructions11 extends Component {
           onPress={() => this.props.navigation.navigate("Instructions12")}
           title="Next"
         />
-      </View>
+      </ScrollView>
     );
   }
 }
 
-export default Instructions11;
+export { Instructions11 };

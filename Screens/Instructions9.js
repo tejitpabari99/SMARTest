@@ -28,4 +28,4 @@ class Instructions9 extends Component {
   }
 }
 
-export default Instructions9;
+export { Instructions9 };

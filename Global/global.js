@@ -1,0 +1,1 @@
+global.userSelection = -1;

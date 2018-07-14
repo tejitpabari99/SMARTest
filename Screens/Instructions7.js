@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button, Image, video } from "react-native";
+import { StyleSheet, Text, ScrollView, Button, Image, video } from "react-native";
 
 class Instructions7 extends Component {
   static navigationOptions = {
@@ -7,7 +7,7 @@ class Instructions7 extends Component {
   };
   render() {
     return (
-      <View>
+      <ScrollView>
         <Text> PLace tip of lancet on the clean finger. </Text>
         <Text> Firmly Push Down on the other end. </Text>
         <Text />
@@ -31,9 +31,9 @@ class Instructions7 extends Component {
           onPress={() => this.props.navigation.navigate("Instructions8")}
           title="Next"
         />
-      </View>
+      </ScrollView>
     );
   }
 }
 
-export default Instructions7;
+export { Instructions7 };

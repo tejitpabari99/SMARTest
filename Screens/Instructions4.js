@@ -33,4 +33,4 @@ class Instructions4 extends Component {
   }
 }
 
-export default Instructions4;
+export { Instructions4 };

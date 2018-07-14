@@ -5,49 +5,38 @@ class TestSetup extends Component {
   static navigationOptions = {
     title: "Test Options"
   };
+  me = () => {
+    global.userSelection = 0;
+    this.props.navigation.navigate("VideoInfo");
+  };
+  partner = () => {
+    global.userSelection = 1;
+    this.props.navigation.navigate("VideoInfo");
+  };
+  duo = () => {
+    global.userSelection = 2;
+    this.props.navigation.navigate("VideoInfo");
+  };
+
   render() {
     return (
       <View>
         <Text> SELECT TESTING MODE BELOW : </Text>
 
         <Button
-          onPress={() => this.props.navigation.navigate("VideoInfo")}
+          onPress={() => this.me()}
           title="JUST ME "
         />
 
         <Button
-          onPress={() => this.props.navigation.navigate("GuestTestSelection")}
+          onPress={() => this.partner()}
           title="JUST MY PARTNER "
         />
 
         <Button
-          onPress={() => this.props.navigation.navigate("DuoTest")}
+          onPress={() => this.duo()}
           title="DUO TEST "
         />
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
         <Text> NOTE: </Text>
         <Text>Just My partner will lead to the guest account mode </Text>
         <Text> where results cannot be saved. </Text>
@@ -60,4 +49,4 @@ class TestSetup extends Component {
   }
 }
 
-export default TestSetup;
+export { TestSetup };
