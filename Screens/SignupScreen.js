@@ -23,6 +23,15 @@ class SignupScreen extends Component {
     };
   }
 
+  writeUserData() {
+    var userId = firebase.auth().currentUser.uid
+    var today = new Date();
+    var date = (today.getMonth()+1)+'.'+today.getDate()+'.'+today.getFullYear();
+    firebase.database().ref('users/' + userId).set({
+      accountCreated: date
+    });
+  }
+
   signupUser = (email, password) => {
     try {
       if (this.state.password.length < 8) {
@@ -49,6 +58,7 @@ class SignupScreen extends Component {
 
   onSignupSuccess() {
     this.setState({ error: "", isLoading: false });
+    {this.writeUserData()}
     this.props.navigation.navigate("HomeScreen");
   }
 
