@@ -5,7 +5,7 @@ import * as firebase from "firebase";
 
 import './Global/global.js'
 
-import { /*LoginScreen, SignupScreen,*/
+import { LoginScreen, SignupScreen,
   HomeScreen, TestSelection, TestSetup,
   VideoInfo, Video, Instructions, Instructions2, Instructions3, Instructions4, Instructions5, Instructions6, Instructions7, Instructions8, Instructions9, Instructions10, Instructions11, Instructions12,
   TakePicture, GuestTakePicture, Results, GuestResults,
@@ -32,8 +32,8 @@ export default class App extends React.Component {
 }
 
 const AppNavigator = StackNavigator({
-    // LoginScreen : {screen : LoginScreen},
-    // SignupScreen : {screen : SignupScreen},
+    LoginScreen : {screen : LoginScreen},
+    SignupScreen : {screen : SignupScreen},
     HomeScreen : {screen: HomeScreen},
     TestSelection : {screen : TestSelection},
     TestSetup : {screen : TestSetup},

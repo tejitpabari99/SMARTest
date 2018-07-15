@@ -40,7 +40,7 @@ class HomeScreen extends Component {
         <Text> </Text>
         <Text> </Text>
         <Button
-          onPress={() => this.props.navigation.navigate("TestSelection")}
+          onPress={() => this.props.navigation.navigate("TakePicture")}
           title="Get Started"
         />
       </View>
