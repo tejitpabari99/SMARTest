@@ -73,8 +73,6 @@ class Results extends Component {
 
   saveToFirebase = () => {
     var userId = firebase.auth().currentUser.uid;
-    console.log(userId);
-    console.log(this.state.test_hiv);
     firebase.database().ref("users/" + userId + "/tests").push({
         hiv: this.state.test_hiv,
         syphilis: this.state.test_syphilis,
