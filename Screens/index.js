@@ -20,6 +20,7 @@ export * from './Instructions12';
 export * from './TakePicture';
 export * from './GuestTakePicture';
 export * from './Results';
+export * from './SavedResults';
 export * from './GuestResults';
 export * from './Resources';
 export * from './TestAccuracy';

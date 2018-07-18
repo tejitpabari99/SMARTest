@@ -9,7 +9,6 @@ class ShowPlaces extends Component {
         var name, address, number, openM, openT, openW, openTh, openF, openSa, openS, openNow, placeNames, website;
 
         return Object.keys(places).map((obj, i) => {
-            console.log();
             return (
                 <View>
                     <Text />
