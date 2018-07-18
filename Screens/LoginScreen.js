@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   errorText: {
-    fontSize: 13,
+    fontSize: 15,
     alignSelf: "center",
     color: "red"
   }
