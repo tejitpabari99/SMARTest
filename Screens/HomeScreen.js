@@ -4,13 +4,15 @@ import {
   Text,
   View,
   ImageBackground,
-  Button,
-  Image
+  Image,
+  Button
 } from "react-native";
+
+import { TitleText, Box, Picture, GreenButton } from "./Styles";
 
 class HomeScreen extends Component {
   static navigationOptions = {
-    title: "Welcome",
+    title: "SMARTest",
     headerLeft: null,
     headerRight: (
       <Button
@@ -22,43 +24,27 @@ class HomeScreen extends Component {
 
   render() {
     return (
-      <View
-        style={styles.container}
-      >
-        <Text style={styles.title}> Welcome to SmartTest! </Text>
-        <Image
-          source={require("../Images/loginPic.jpg")}
-          style={{ width: 380, height: 200, marginBottom:15 }}
-        />
-        <Text> SmartTest is a companion app to rapid HIV </Text>
-        <Text> and syphillis tests. </Text>
-        <Text> </Text>
-        <Text> SmartTest will walk you through the testing </Text>
-        <Text> process, interpret your result and provide </Text>
-        <Text> resources for the next steps. </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Button
-          onPress={() => this.props.navigation.navigate("NearbyClinics")}
-          title="Get Started"
-        />
-      </View>
+        <Box>
+          <TitleText> Welcome to SmartTest! </TitleText>
+          <Picture
+            source={require("../Images/loginPic.jpg")}
+          />
+          <Text>SmartTest is a companion app to rapid HIV and syphillis tests. </Text>
+          <Text>SmartTest will walk you through the testing process, interpret your result and provide resources for the next steps. </Text>
+
+          <GreenButton onPress={() => this.props.navigation.navigate("NearbyClinics")} >
+            Get Started
+          </GreenButton>
+        </Box>
     );
   }
 }
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: "100%",
-    height: "100%",
-    alignItems: 'center'
-  },
   title: {
   	fontWeight: 'bold',
   	fontSize: 20,
   	marginBottom:15,
-  	marginBottom:10
+    alignSelf: 'center',
   }
 });
 

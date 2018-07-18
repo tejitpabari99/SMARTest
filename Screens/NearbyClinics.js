@@ -19,7 +19,7 @@ import {
   Spinner
 } from "native-base";
 
-import ShowPlaces from "./Components/ShowPlaces";
+import {ShowPlaces} from "./Components";
 
 const placesDict = {
   "10001": ["ChIJVVVl075ZwokRpvtKYbQc6tg"],

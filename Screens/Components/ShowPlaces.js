@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Text, View, TextInput, Linking } from 'react-native';
 import Autolink from 'react-native-autolink';
 
-class showPlaces extends Component {
+class ShowPlaces extends Component {
     render() {
         console.log('bb');
         var places = this.props.placesArray;
@@ -45,4 +45,4 @@ class showPlaces extends Component {
     };
 }
 
-export default showPlaces;
+export { ShowPlaces };
