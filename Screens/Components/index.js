@@ -1,1 +1,2 @@
-export * from './ShowPlaces'
+export * from './ShowPlaces';
+export * from './ShowResults';
