@@ -13,6 +13,8 @@ import {
 } from "native-base";
 import * as firebase from "firebase";
 
+import { GreenButton, BlueButton } from './Styles';
+
 class LoginScreen extends Component {
   constructor(props) {
     super(props);
@@ -59,31 +61,13 @@ class LoginScreen extends Component {
     }
     return (
       <View>
-        <TouchableOpacity>
-          <Button
-            style={{ marginTop: 10 }}
-            full
-            rounded
-            success
-            onPress={() =>
-              this.loginUser(this.state.email, this.state.password)
-            }
-          >
-            <Text>Log in</Text>
-          </Button>
-        </TouchableOpacity>
+          <GreenButton onPress={() => this.loginUser(this.state.email, this.state.password)}>
+            Log in
+          </GreenButton>
 
-        <TouchableOpacity>
-          <Button
-            style={{ marginTop: 10 }}
-            full
-            rounded
-            primary
-            onPress={() => this.props.navigation.navigate("SignupScreen")}
-          >
-            <Text style={{ color: "white" }}>Dont have an Account?</Text>
-          </Button>
-        </TouchableOpacity>
+          <BlueButton onPress={() => this.props.navigation.navigate("SignupScreen")}>
+            Dont have an Account?
+          </BlueButton>
       </View>
     );
   }
