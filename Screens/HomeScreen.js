@@ -35,6 +35,7 @@ class HomeScreen extends Component {
           <GreenButton onPress={() => this.props.navigation.navigate("SavedResults")} >
             Get Started
           </GreenButton>
+
         </Box>
     );
   }
