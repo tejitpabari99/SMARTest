@@ -19,7 +19,7 @@ import {
   Spinner
 } from "native-base";
 
-import {ShowPlaces} from "./Components";
+import {ShowPlaces} from './Components';
 
 const placesDict = {
   "10001": ["ChIJVVVl075ZwokRpvtKYbQc6tg"],
@@ -58,7 +58,7 @@ class NearbyClinics extends Component {
   };
 
   checkplace = () => {
-
+    this.setState({ places: []})
     for (var key in placesDict) {
       var that = this;
       if (key === this.state.zip) {
@@ -90,11 +90,10 @@ class NearbyClinics extends Component {
                 openTh: myjson.result.opening_hours.weekday_text[3],
                 openF: myjson.result.opening_hours.weekday_text[4],
                 openSa: myjson.result.opening_hours.weekday_text[5],
-                openS: myjson.result.opening_hours.weekday_text[6]
+                openS: myjson.result.opening_hours.weekday_text[6],
               };
 
               that.setState(prevState => {
-                console.log("aa");
                 return {
                   places: prevState.places.concat(newVar)
                 };
@@ -115,7 +114,7 @@ class NearbyClinics extends Component {
       <Picker
         selectedValue={this.state.zip}
         onValueChange={(itemValue, itemIndex) =>
-          this.setState({ zip: itemValue })
+          this.setState({ zip: itemValue})
         }
       >
         <Picker.Item label="10001" value="10001" />
@@ -168,6 +167,7 @@ class NearbyClinics extends Component {
         <View>{this.renderDropDown()}</View>
         <View>{this.renderButton()}</View>
         <ScrollView>
+        console.log(this.state.places)
           <ShowPlaces placesArray={this.state.places} />
         </ScrollView>
       </Container>

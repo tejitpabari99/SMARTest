@@ -31,21 +31,6 @@ class Share extends Component {
     };
   }
 
-  componentWillMount() {
-    var newSnap;
-    var userId = firebase.auth().currentUser.uid;
-    const ref = firebase.database().ref("users/" + userId + "/tests/");
-    ref.limitToLast(1).on("child_added", snapshot => {
-      newSnap = snapshot.val();
-      this.setState({
-        hiv: newSnap.hiv,
-        syphilis: newSnap.syphilis,
-        date: newSnap.date,
-        id: newSnap.id
-      });
-    });
-  }
-
   sendText = () => {
     axios
       .post(
@@ -133,7 +118,13 @@ class Share extends Component {
             <Label>Phone Number</Label>
             <Input
               autoCorrect={false}
-              onChangeText={phoneNumber => this.setState({ phoneNumber })}
+              onChangeText={phoneNumber => this.setState({
+                phoneNumber: phoneNumber,
+                hiv: this.props.navigation.state.params.newVar.hiv,
+                syphilis: this.props.navigation.state.params.newVar.syphilis,
+                date: this.props.navigation.state.params.newVar.date,
+                id: this.props.navigation.state.params.newVar.id
+              })}
             />
           </Item>
           <View>{this.renderButtonPhone()}</View>
@@ -142,7 +133,13 @@ class Share extends Component {
             <Label>Email</Label>
             <Input
               autoCorrect={false}
-              onChangeText={email => this.setState({ email })}
+              onChangeText={email => this.setState({
+                email: email,
+                hiv: this.props.navigation.state.params.newVar.hiv,
+                syphilis: this.props.navigation.state.params.newVar.syphilis,
+                date: this.props.navigation.state.params.newVar.date,
+                id: this.props.navigation.state.params.newVar.id
+               })}
             />
           </Item>
           <View>{this.renderButtonEmail()}</View>
