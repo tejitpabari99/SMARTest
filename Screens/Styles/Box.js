@@ -10,7 +10,7 @@ const Box = ({children}) => {
         flex: 2,
         backgroundColor: "#ffffff",
         padding: 15,
-        justifyContent: "flex-start"
+        justifyContent: "flex-start",
         // position: 'relative'
       }}
     >

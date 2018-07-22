@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, KeyboardAvoidingView, Image } from "react-native";
 import {
   Container,
   Content,
@@ -13,7 +13,7 @@ import {
 } from "native-base";
 import * as firebase from "firebase";
 
-import { GreenButton, BlueButton } from './Styles';
+import { GreenRoundButton, BlueRoundButton } from './Styles';
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -24,21 +24,17 @@ class LoginScreen extends Component {
       error: "",
       isLoading: false
     };
-    // this.props.navigation.navigate("HomeScreen");
   }
 
-  loginUser = (email, password) => {
-    try {
-      this.setState({ error: "", isLoading: true });
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.state.email, this.state.password)
-        .then(this.onLoginSuccess.bind(this));
-    } catch (error) {
-      this.setState({ isLoading: false });
-      this.setState({ error: error.toString() });
-      console.log(error.toString());
-    }
+  loginUser = () => {
+    const { email, password } = this.state;
+    this.setState({ error: '', isloading: true });
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(this.onLoginSuccess.bind(this))
+    .catch((error) => {
+      return this.setState({ isLoading: false, error: error.message });
+    });
   };
 
   onLoginSuccess() {
@@ -51,37 +47,40 @@ class LoginScreen extends Component {
     this.props.navigation.navigate("HomeScreen");
   }
 
-  static navigationOptions = {
-    title: "SMARTest Login Page"
-  };
-
   renderButton() {
     if (this.state.isLoading) {
       return <Spinner color={"red"} />;
     }
     return (
       <View>
-          <GreenButton onPress={() => this.loginUser(this.state.email, this.state.password)}>
+          <GreenRoundButton onPress={() => this.loginUser()}>
             Log in
-          </GreenButton>
+          </GreenRoundButton>
 
-          <BlueButton onPress={() => this.props.navigation.navigate("SignupScreen")}>
+          <BlueRoundButton onPress={() => this.props.navigation.navigate("SignupScreen")}>
             Dont have an Account?
-          </BlueButton>
+          </BlueRoundButton>
       </View>
     );
   }
 
   render() {
     return (
-      <Container style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+          <Image
+            source={require("../Images/SMARTest.png")}
+            style={{ alignSelf: 'center', marginBottom:15, }}
+          />
         <Form>
+          <View>
+            <Text style={styles.errorText}>{this.state.error}</Text>
+          </View>
           <Item floatingLabel>
             <Label>Email</Label>
             <Input
               autoCorrect={false}
               autoCapitalize={'none'}
-              autoFocus={true}
+              autoFocus={false}
               onChangeText={email => this.setState({ email })}
             />
           </Item>
@@ -98,10 +97,11 @@ class LoginScreen extends Component {
 
           <View>
             {this.renderButton()}
-            <Text style={styles.errorText}>{this.state.error}</Text>
           </View>
+          <View style={{ height: 60 }} />
+
         </Form>
-      </Container>
+      </KeyboardAvoidingView>
     );
   }
 }
