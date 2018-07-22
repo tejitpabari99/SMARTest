@@ -33,7 +33,6 @@ class Results extends Component {
     date: null,
     id: null,
     location: null,
-    countDelete: 0,
     countSave: 0
   }
 
@@ -85,12 +84,16 @@ class Results extends Component {
   componentWillMount() {
     this.calculateResult(tempResult);
   }
-
-  saveResult = () => {
-    if(this.state.countDelete === 1){
-      this.setState({ status: 'You have deleted your results. '})
-      return;
+  toShare = () => {
+    var newVar = {
+      hiv: this.state.test_hiv,
+      syphilis: this.state.test_syphilis,
+      date: this.state.date,
+      id: this.state.id
     }
+    this.props.navigation.navigate("Share", {newVar})
+  }
+  saveResult = () => {
     if(this.state.countSave === 1){
       this.setState({ status: 'Your results have already been saved. Please see the saved results page.' })
       return;
@@ -102,24 +105,6 @@ class Results extends Component {
     return;
     //save Result code
   }
-
-  deleteResult = () => {
-    if(this.state.countDelete === 1){
-      this.setState({ status: 'You have already deleted results. '})
-      return;
-    }
-    if(this.state.countSave === 1){
-      this.setState({ status: 'Your results have been saved. Please see the saved results page to delete the result.' })
-      return;
-    }
-    this.setState({
-      status: 'Your Results have been deleted',
-      countDelete: 1
-    });
-    //retrive data from firebase and delete results.
-    return;
-  }
-
 
   render() {
     {this.saveToFirebase()}
@@ -139,15 +124,14 @@ class Results extends Component {
           />
           <Text />
           <Button
-            onPress={() => this.deleteResult()}
-            title="Delete"
+            onPress={() => this.props.navigation.navigate("SavedResults")}
+            title="Results"
           />
           <Text />
           <Button
-            onPress={() => this.props.navigation.navigate("Share")}
+            onPress={() => this.toShare()}
             title="Share"
           />
-          <Text />
           <Text />
           <Button
             onPress={() => this.props.navigation.navigate("Resources")}

@@ -32,7 +32,7 @@ class HomeScreen extends Component {
           <Text>SmartTest is a companion app to rapid HIV and syphillis tests. </Text>
           <Text>SmartTest will walk you through the testing process, interpret your result and provide resources for the next steps. </Text>
 
-          <GreenButton onPress={() => this.props.navigation.navigate("SavedResults")} >
+          <GreenButton onPress={() => this.props.navigation.navigate("Results")} >
             Get Started
           </GreenButton>
 

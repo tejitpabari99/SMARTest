@@ -11,7 +11,7 @@ const Picture = ({source}) => {
         width: 343,
         height: 200,
         marginBottom:15,
-        
+
       }}
     />
   );

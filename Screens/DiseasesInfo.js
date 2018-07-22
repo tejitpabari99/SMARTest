@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button, Image, video } from "react-native";
+import { StyleSheet, Text, View, Button, Image, video, Linking } from "react-native";
 
 class DiseasesInfo extends Component {
   static navigationOptions = {
@@ -12,11 +12,11 @@ class DiseasesInfo extends Component {
         <Text> and syphillis. </Text>
         <Text> </Text>
         <Button
-          onPress={() => this.props.navigation.navigate("HIVInfo")}
+          onPress={() => Linking.openURL('https://www.cdc.gov/hiv/basics/index.html') }
           title="HIV Information"
         />
         <Button
-          onPress={() => this.props.navigation.navigate("SyphilisInfo")}
+          onPress={() => Linking.openURL('https://www.cdc.gov/tuskegee/syphilis.htm') }
           title="Syphilis Information"
         />
         <Button
