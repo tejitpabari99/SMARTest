@@ -3,15 +3,14 @@ import {
   Text
 } from "react-native";
 
-const TitleText = ({children}) => {
+const TextBox = ({children}) => {
   return(
     <Text
       style={{
-        fontWeight: 'bold',
-      	fontSize: 20,
-      	marginBottom:13,
+      	fontSize: 15,
+      	marginBottom:5,
         marginTop:5,
-        alignSelf: 'center',
+        includeFontPadding: true,
         color: "#000000",
       }}
     >
@@ -20,4 +19,4 @@ const TitleText = ({children}) => {
   );
 };
 
-export {TitleText};
+export {TextBox};

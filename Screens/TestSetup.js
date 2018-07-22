@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button, Image, Video } from "react-native";
+import {View} from 'react-native';
+import { TitleText, Box, GreenSmallButton, BlueSmallButton, TextBox, TextBoxTitle } from "./Styles";
 
 class TestSetup extends Component {
   static navigationOptions = {
@@ -20,31 +21,27 @@ class TestSetup extends Component {
 
   render() {
     return (
-      <View>
-        <Text> SELECT TESTING MODE BELOW : </Text>
+      <Box>
+        <TitleText>Select Testing mode below</TitleText>
+        <View style={{ alignItems: 'center'}}>
+          <GreenSmallButton onPress={() => this.me()} >
+            Just Me
+          </GreenSmallButton>
+          <BlueSmallButton onPress={() => this.partner()} >
+            Just My Partner
+          </BlueSmallButton>
+          <GreenSmallButton onPress={() => this.duo()} >
+            Duo Test
+          </GreenSmallButton>
+        </View>
+        <TextBox />
+        <TextBox />
+        <TextBoxTitle>Note</TextBoxTitle>
+        <TextBox>Just My partner will lead to the guest account mode where results cannot be saved. </TextBox>
+        <TextBox>Duo Test Mode will enable simultaneous testing (e.g you and your partner), however the Partners Results cannot be saved. </TextBox>
+        <TextBox />
 
-        <Button
-          onPress={() => this.me()}
-          title="JUST ME "
-        />
-
-        <Button
-          onPress={() => this.partner()}
-          title="JUST MY PARTNER "
-        />
-
-        <Button
-          onPress={() => this.duo()}
-          title="DUO TEST "
-        />
-        <Text> NOTE: </Text>
-        <Text>Just My partner will lead to the guest account mode </Text>
-        <Text> where results cannot be saved. </Text>
-        <Text> </Text>
-        <Text> Duo Test Mode will enable simultaneous </Text>
-        <Text> testing (e.g you and your partner), however the Partners </Text>
-        <Text> Results cannot be saved.</Text>
-      </View>
+      </Box>
     );
   }
 }

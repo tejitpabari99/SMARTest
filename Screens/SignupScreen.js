@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, KeyboardAvoidingView, Image } from "react-native";
 import {
   Container,
   Content,
@@ -13,17 +13,49 @@ import {
 } from "native-base";
 import * as firebase from "firebase";
 
+import { BlueButton } from './Styles';
+
 class SignupScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
       password: "",
-      error: ""
+      error: "",
+      isLoading: false
     };
   }
 
-  writeUserData() {
+  static navigationOptions = {
+    title: "SMARTest Sign up"
+  };
+
+  signupUser = () => {
+    if (this.state.password.length < 8) {
+      return this.setState({ error: "Your password should contain at least 8 characters." });
+    }
+    const { email, password } = this.state;
+    this.setState({ error: '', isloading: true });
+
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(this.onSignupSuccess.bind(this))
+    .catch((error) => {
+      return this.setState({ error: error.message, isLoading: false });
+    });
+  };
+
+  onSignupSuccess() {
+    this.setState({
+      email: "",
+      password: "",
+      isLoading: false,
+      error: ""
+    });
+    this.writeUserData()
+    this.props.navigation.navigate("HomeScreen");
+  }
+
+  writeUserData = () => {
     var userId = firebase.auth().currentUser.uid
     var today = new Date();
     var date = (today.getMonth()+1)+'.'+today.getDate()+'.'+today.getFullYear();
@@ -32,63 +64,30 @@ class SignupScreen extends Component {
     });
   }
 
-  signupUser = (email, password) => {
-    try {
-      if (this.state.password.length < 8) {
-        this.setState({
-          error: "Your password should contain at least 8 characters."
-        });
-        return;
-      }
-      this.setState({ error: "", isLoading: true });
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.state.email, this.state.password)
-        .then(this.onSignupSuccess.bind(this));
-    } catch (error) {
-      this.setState({
-        error: error.toString(),
-        email: "",
-        password: "",
-        isLoading: false
-      });
-      console.log(error.toString());
-    }
-  };
-
-  onSignupSuccess() {
-    this.setState({ error: "", isLoading: false });
-    {this.writeUserData()}
-    this.props.navigation.navigate("HomeScreen");
-  }
-
-  onButtonPress() {
+  renderButton() {
     if (this.state.isLoading) {
       return <Spinner color={"red"} />;
     }
     return (
-      <TouchableOpacity>
-        <Button
-          style={{ marginTop: 10 }}
-          full
-          rounded
-          primary
-          onPress={() => this.signupUser(this.state.email, this.state.password)}
-        >
-          <Text style={{ color: "white" }}>Create an account</Text>
-        </Button>
-      </TouchableOpacity>
+      <View>
+        <BlueButton onPress={() => this.signupUser()}>
+          Create An Account
+        </BlueButton>
+      </View>
     );
   }
 
-  static navigationOptions = {
-    title: "SMARTest Signup Page"
-  };
-
   render() {
     return (
-      <Container style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
         <Form>
+          <Image
+            source={require("../Images/SMARTest.png")}
+            style={{ alignSelf: 'center', marginBottom:15, }}
+          />
+          <View>
+            <Text style={styles.errorText}>{this.state.error}</Text>
+          </View>
           <Item floatingLabel>
             <Label>Email</Label>
             <Input
@@ -107,11 +106,12 @@ class SignupScreen extends Component {
           </Item>
 
           <View>
-            {this.onButtonPress()}
-            <Text style={styles.errorText}>{this.state.error}</Text>
+            {this.renderButton()}
           </View>
+          <View style={{ height: 60 }} />
+
         </Form>
-      </Container>
+      </KeyboardAvoidingView>
     );
   }
 }

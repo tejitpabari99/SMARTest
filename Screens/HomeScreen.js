@@ -1,52 +1,39 @@
 import React, { Component } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  ImageBackground,
-  Image,
-  Button
-} from "react-native";
 
-import { TitleText, Box, Picture, GreenButton } from "./Styles";
+import { TitleText, Box, Picture, GreenButton, TextBox } from "./Styles";
 
 class HomeScreen extends Component {
   static navigationOptions = {
     title: "SMARTest",
-    headerLeft: null,
-    headerRight: (
-      <Button
-        onPress={() => alert('Logged Out!\n(Actually this doesn\'t do anything right now.)')}
-        title="Log Out"
-      />
-    ),
+    // headerLeft: null,
+    // headerRight: (
+    //   <Button
+    //     onPress={() => alert('Logged Out!\n(Actually this doesn\'t do anything right now.)')}
+    //     title="Log Out"
+    //   />
+    // ),
   };
 
   render() {
     return (
         <Box>
-          <TitleText> Welcome to SmartTest! </TitleText>
+          <TitleText>SMARTTest</TitleText>
+
           <Picture
             source={require("../Images/loginPic.jpg")}
           />
-          <Text>SmartTest is a companion app to rapid HIV and syphillis tests. </Text>
-          <Text>SmartTest will walk you through the testing process, interpret your result and provide resources for the next steps. </Text>
+
+          <TextBox>SmartTest is a companion app to rapid HIV and Syphillis tests. </TextBox>
+          <TextBox>SmartTest will walk you through the testing process, interpret your result and provide resources for the next steps. </TextBox>
+          <TextBox />
 
           <GreenButton onPress={() => this.props.navigation.navigate("Results")} >
             Get Started
           </GreenButton>
-
+          
         </Box>
     );
   }
 }
-const styles = StyleSheet.create({
-  title: {
-  	fontWeight: 'bold',
-  	fontSize: 20,
-  	marginBottom:15,
-    alignSelf: 'center',
-  }
-});
 
 export { HomeScreen };

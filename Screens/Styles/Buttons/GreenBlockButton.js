@@ -7,14 +7,14 @@ import {
   Button
 } from "native-base";
 
-const BlueButton = ({ onPress, children }) => {
+const GreenBlockButton = ({ onPress, children }) => {
   return(
     <TouchableOpacity>
       <Button
-        style={{ marginTop: 10 }}
+        style={{ marginTop: 10, marginBottom: 10 }}
         full
-        rounded
-        info
+        block
+        success
         onPress={onPress}
       >
         <Text> {children} </Text>
@@ -23,4 +23,4 @@ const BlueButton = ({ onPress, children }) => {
   );
 };
 
-export {BlueButton};
+export {GreenBlockButton};
