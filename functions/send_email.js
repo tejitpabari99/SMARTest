@@ -1,7 +1,7 @@
 const functions = require('firebase-functions');
 
 const sg = require('sendgrid')(
-  process.env.SENDGRID_API_KEY || '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'
+  process.env.SENDGRID_API_KEY
 );
 
 // exports.sendmail = functions.https.onRequest((req, res) => {
@@ -19,10 +19,10 @@ function sendMail(formData) {
         to: [{ email: `${formData.email}` }],
         subject: 'SMARTest Results'
       }],
-      from: { email: 'smartestappcolumbia@smartest-df9af.firebaseapp.com' },
+      from: { email: 'noreply@email-smartest-df9af.firebaseapp.com' },
       content: [{
-        type: 'text/html',
-        value: `HIV: ${formData.hiv}\nSyphilis: ${formData.syphilis}\n\nTest Date: ${formData.date}\nID: ${formData.id}\n(This ID can be used to verify the sender of the message) \n\nPLEASE DO NOT REPLY TO THIS MESSAGE. THIS IS A SEND ONLY NUMBER`,
+        type: 'text/plain',
+        value: `HIV: ${formData.hiv}\nSyphilis: ${formData.syphilis}\nTest Date: ${formData.date}\nID: ${formData.id}\n(This ID can be used to verify the sender of the message)\n\nPLEASE DO NOT REPLY TO THIS MESSAGE. THIS IS A SEND ONLY NUMBER`,
       }]
     }
   });

@@ -49,7 +49,7 @@ const placesDict = {
 
 class NearbyClinics extends Component {
   static navigationOptions = {
-    title: "Share"
+    title: "Nearby Clinics"
   };
   state = {
     zip: "",
@@ -166,8 +166,8 @@ class NearbyClinics extends Component {
       <Container style={styles.container}>
         <View>{this.renderDropDown()}</View>
         <View>{this.renderButton()}</View>
+        <Text />
         <ScrollView>
-        console.log(this.state.places)
           <ShowPlaces placesArray={this.state.places} />
         </ScrollView>
       </Container>

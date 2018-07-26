@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button, Image } from "react-native";
+import { TitleText, Box, GreenBlockButton, BlueBlockButton, TextBox } from "./Styles";
 
 class Resources extends Component {
   static navigationOptions = {
@@ -7,29 +7,22 @@ class Resources extends Component {
   };
   render() {
     return (
-      <View>
-        <Button
-          onPress={() => this.props.navigation.navigate("TestAccuracy")}
-          title="Test Accuracy"
-        />
-        <Text />
-        <Button
-          onPress={() => this.props.navigation.navigate("WindowPeriod")}
-          title="Window Period"
-        />
-        <Text />
-        <Text />
-        <Button
-          onPress={() => this.props.navigation.navigate("DiseasesInfo")}
-          title="Diseases Info"
-        />
-        <Text />
-        <Text />
-        <Button
-          onPress={() => this.props.navigation.navigate("NearbyClinics")}
-          title="Nearby Clinics"
-        />
-      </View>
+      <Box>
+        <TitleText>Resources</TitleText>
+        <TextBox />
+        <GreenBlockButton onPress={() => this.props.navigation.navigate("TestAccuracy")} >
+          Test Accuracy
+        </GreenBlockButton>
+        <BlueBlockButton onPress={() => this.props.navigation.navigate("WindowPeriod")} >
+          Window Period
+        </BlueBlockButton>
+        <GreenBlockButton onPress={() => this.props.navigation.navigate("DiseasesInfo")} >
+          Diseases Info
+        </GreenBlockButton>
+        <BlueBlockButton onPress={() => this.props.navigation.navigate("NearbyClinics")} >
+          Nearby Clinics
+        </BlueBlockButton>
+      </Box>
     );
   }
 }

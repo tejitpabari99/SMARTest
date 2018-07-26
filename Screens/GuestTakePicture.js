@@ -3,7 +3,7 @@ import { StyleSheet ,Text, View,Button,Image,video} from 'react-native';
 
 class GuestTakePicture extends Component {
    static navigationOptions = {
-    title: 'Take Picture',
+    title: 'Guest Take Picture',
   };
   render() {
     return (

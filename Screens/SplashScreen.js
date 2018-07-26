@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, Image } from "react-native";
 import {Spinner, Container} from 'native-base';
+import {Logo} from "./Styles"
 
 class SplashScreen extends Component {
   constructor(props){
@@ -24,11 +25,8 @@ class SplashScreen extends Component {
     if (!this.state.timePassed) {
       return (
         <Container style={styles.container}>
-          <Image
-            source={require("../Images/SMARTest.png")}
-            style={{ alignSelf: 'center', marginBottom:35 }}
-          />
-          <Spinner color={"red"} />
+          <Logo />
+          <Spinner color={"blue"} />
         </Container>
 
       )

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button, Image, video, Linking } from "react-native";
+import { Linking } from "react-native";
+import { TitleText, Box, GreenBlockButton, BlueBlockButton, TextBox } from "./Styles";
+
 
 class DiseasesInfo extends Component {
   static navigationOptions = {
@@ -7,23 +9,18 @@ class DiseasesInfo extends Component {
   };
   render() {
     return (
-      <View>
-        <Text> Click on the links to learn more about HIV </Text>
-        <Text> and syphillis. </Text>
-        <Text> </Text>
-        <Button
-          onPress={() => Linking.openURL('https://www.cdc.gov/hiv/basics/index.html') }
-          title="HIV Information"
-        />
-        <Button
-          onPress={() => Linking.openURL('https://www.cdc.gov/tuskegee/syphilis.htm') }
-          title="Syphilis Information"
-        />
-        <Button
-          onPress={() => this.props.navigation.navigate("Resources")}
-          title="Back"
-        />
-      </View>
+      <Box>
+        <TitleText>Diseases Info</TitleText>
+        <TextBox>Click on the links to learn more about HIV and syphillis.</TextBox>
+
+        <GreenBlockButton onPress={() => Linking.openURL('https://www.cdc.gov/hiv/basics/index.html')} >
+          HIV Information
+        </GreenBlockButton>
+        <BlueBlockButton onPress={() => Linking.openURL('https://www.cdc.gov/tuskegee/syphilis.htm')} >
+          Syphilis Information
+        </BlueBlockButton>
+
+      </Box>
     );
   }
 }

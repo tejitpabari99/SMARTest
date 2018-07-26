@@ -4,7 +4,7 @@ import { TitleText, Box, GreenBlockButton, TextBox } from "./Styles";
 
 class TestSelection extends Component {
   static navigationOptions = {
-    title: "Select Test"
+    title: "Test Selection"
   };
   render() {
     return (

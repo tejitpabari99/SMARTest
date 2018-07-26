@@ -1,19 +1,8 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, KeyboardAvoidingView, Image } from "react-native";
-import {
-  Container,
-  Content,
-  Header,
-  Button,
-  Label,
-  Form,
-  Item,
-  Input,
-  Spinner
-} from "native-base";
+import { View, KeyboardAvoidingView, Image, StyleSheet } from "react-native";
 import * as firebase from "firebase";
 
-import { GreenRoundButton, BlueRoundButton } from './Styles';
+import { GreenRoundButton, BlueRoundButton, ErrorText, TextInput, Logo } from './Styles';
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -47,60 +36,22 @@ class LoginScreen extends Component {
     this.props.navigation.navigate("HomeScreen");
   }
 
-  renderButton() {
-    if (this.state.isLoading) {
-      return <Spinner color={"red"} />;
-    }
-    return (
-      <View>
-          <GreenRoundButton onPress={() => this.loginUser()}>
-            Log in
-          </GreenRoundButton>
-
-          <BlueRoundButton onPress={() => this.props.navigation.navigate("SignupScreen")}>
-            Dont have an Account?
-          </BlueRoundButton>
-      </View>
-    );
-  }
-
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-          <Image
-            source={require("../Images/SMARTest.png")}
-            style={{ alignSelf: 'center', marginBottom:15, }}
-          />
-        <Form>
-          <View>
-            <Text style={styles.errorText}>{this.state.error}</Text>
-          </View>
-          <Item floatingLabel>
-            <Label>Email</Label>
-            <Input
-              autoCorrect={false}
-              autoCapitalize={'none'}
-              autoFocus={false}
-              onChangeText={email => this.setState({ email })}
-            />
-          </Item>
+        <Logo />
+        <ErrorText>{this.state.error}</ErrorText>
+        <TextInput onChangeText={email => this.setState({ email })}> Email </TextInput>
+        <TextInput secureTextEntry={true} onChangeText={password => this.setState({ password })}> Password </TextInput>
 
-          <Item floatingLabel>
-            <Label>Password</Label>
-            <Input
-              secureTextEntry={true}
-              autoCorrect={false}
-              autoCapitalize={'none'}
-              onChangeText={password => this.setState({ password })}
-            />
-          </Item>
+        <GreenRoundButton onPress={() => this.loginUser()}>
+          Log in
+        </GreenRoundButton>
+        <BlueRoundButton onPress={() => this.props.navigation.navigate("SignupScreen")}>
+          Dont have an Account?
+        </BlueRoundButton>
 
-          <View>
-            {this.renderButton()}
-          </View>
-          <View style={{ height: 60 }} />
-
-        </Form>
+        <View style={{ height: 60 }} />
       </KeyboardAvoidingView>
     );
   }
@@ -108,16 +59,11 @@ class LoginScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 2,
     backgroundColor: "#fff",
-    padding: 10,
+    padding: 15,
     justifyContent: "center"
   },
-  errorText: {
-    fontSize: 15,
-    alignSelf: "center",
-    color: "red"
-  }
 });
 
 export { LoginScreen };
