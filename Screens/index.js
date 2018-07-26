@@ -29,5 +29,3 @@ export * from './WindowPeriod';
 export * from './Share';
 export * from './NearbyClinics';
 export * from './DiseasesInfo';
-export * from './SyphilisInfo';
-export * from './HIVInfo';

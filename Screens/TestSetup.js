@@ -4,7 +4,7 @@ import { TitleText, Box, GreenSmallButton, BlueSmallButton, TextBox, TextBoxTitl
 
 class TestSetup extends Component {
   static navigationOptions = {
-    title: "Test Options"
+    title: "Test Setup"
   };
   me = () => {
     global.userSelection = 0;

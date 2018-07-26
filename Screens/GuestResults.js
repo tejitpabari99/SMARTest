@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Button, Image } from "react-native";
+import { TitleText, Box, GreenBlockButton, BlueBlockButton, GreenRoundButton, TextBox, TextBoxTitle, Card, CardSection, CardText } from "./Styles";
+
 
 const temp_hiv = Math.floor(Math.random() * 2);
 const temp_syphilis = Math.floor(Math.random() * 2);
@@ -10,7 +12,7 @@ const tempResult = {
 
 class GuestResults extends Component {
   static navigationOptions = {
-    title: "RESULTS"
+    title: "Guest Results"
   };
 
   state = {
@@ -52,27 +54,32 @@ class GuestResults extends Component {
 
   render() {
     return (
-      <View>
-        <Text> Result </Text>
-        <Text> YOUR RESULT IS DISPLAYED HERE: </Text>
-        <Text> HIV - {this.state.test_hiv}</Text>
-        <Text> SYPHILIS - {this.state.test_syphilis}</Text>
-        <Text> Date - {this.state.date}</Text>
-
-        <Button
-          onPress={() => this.props.navigation.navigate("Resources")}
-          title="Resources"
-        />
-
-        <Text />
-        <Text />
-        <Text> Any positive results should be confirmed by a </Text>
-        <Text> healthcare provider.</Text>
-        <Text />
-        <Text />
-        <Text>Negative results may not detect a recent infection. For</Text>
-        <Text> for more information, click on the resources tab.</Text>
-      </View>
+      <Box>
+        <TitleText>Your Results are</TitleText>
+        <Card>
+          <CardSection>
+              <CardText> Date - {this.state.date}</CardText>
+          </CardSection>
+          <CardSection>
+            <CardText> HIV - {this.state.test_hiv}</CardText>
+            <CardText> SYPHILIS - {this.state.test_syphilis}</CardText>
+          </CardSection>
+        </Card>
+        <TextBox />
+        <BlueBlockButton onPress={() => this.props.navigation.navigate("Resources")} >
+          Resources
+        </BlueBlockButton>
+        <TextBox />
+        <TextBox />
+        <TextBox />
+        <TextBoxTitle>Note</TextBoxTitle>
+        <TextBox>Any positive results should be confirmed by a healthcare provider.</TextBox>
+        <TextBox>Negative results may not detect a recent infection. For more information, click on the resources tab.</TextBox>
+        <TextBox />
+        <GreenRoundButton onPress={() => this.props.navigation.navigate("TestSelection")} >
+          New Test
+        </GreenRoundButton>
+      </Box>
     );
   }
 }

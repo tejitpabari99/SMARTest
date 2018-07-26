@@ -1,31 +1,24 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button, Image, video } from "react-native";
+import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
 
 class Instructions2 extends Component {
   static navigationOptions = {
-    title: "Prepare Gauze"
+    title: "Preparing Gauze"
   };
   render() {
     return (
-      <View>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text />
-        <Text />
-        <Image
-          source={require("../Images/2.png")}
-          style={{ width: 380, height: 200 }}
-        />
-        <Text> Open Gauze packet and place </Text>
-        <Text> it nearby for future uses</Text>
-        <Text />
+      <Box>
+        <TitleText>Preparing Gauze</TitleText>
+        <CenterTextBox />
+        <Picture source={require("../Images/2.png")} />
+        <CenterTextBox>Open Gauze packet and place it nearby for future uses</CenterTextBox>
+        <CenterTextBox />
 
-        <Button
-          onPress={() => this.props.navigation.navigate("Instructions3")}
-          title="Next"
-        />
-      </View>
+        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions3")} >
+          Next
+        </GreenRoundButton>
+
+      </Box>
     );
   }
 }

@@ -1,16 +1,6 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import {
-  Container,
-  Content,
-  Header,
-  Button,
-  Label,
-  Form,
-  Item,
-  Input,
-  Spinner
-} from "native-base";
+import { Box, GreenRoundButton, BlueRoundButton, ErrorText, TextInput, Logo, SuccessText } from './Styles';
+
 import axios from "axios";
 import * as firebase from "firebase";
 
@@ -27,7 +17,9 @@ class Share extends Component {
       syphilis: "",
       email: "",
       date: "",
-      id: ""
+      id: "",
+      successText: "",
+      errorText: "",
     };
   }
 
@@ -44,10 +36,21 @@ class Share extends Component {
         }
       )
       .then(function(response) {
-        console.log(response);
+        console.log(response)
+        this.setState({
+          successText: "Your results have been shared",
+          errorText: "",
+          phoneNumber: "",
+          email: ""
+        })
       })
       .catch(function(error) {
-        console.log(error);
+        this.setState({
+          successText: "",
+          errorText: error.toString(),
+          phoneNumber: "",
+          email: ""
+        })
       });
   };
 
@@ -61,101 +64,68 @@ class Share extends Component {
         id: this.state.id
       })
       .then(function(response) {
-        console.log(response);
+        console.log(response)
+        this.setState({
+          successText: "Your results have been shared",
+          errorText: "",
+          phoneNumber: "",
+          email: ""
+        })
       })
       .catch(function(error) {
-        console.log(error);
+        this.setState({
+          successText: "",
+          errorText: error.toString(),
+          phoneNumber: "",
+          email: ""
+        })
       });
   };
 
-  renderButtonPhone() {
-    if (this.state.isLoading) {
-      return <Spinner color={"red"} />;
-    }
-    return (
-      <View>
-        <TouchableOpacity>
-          <Button
-            style={{ marginTop: 10 }}
-            full
-            rounded
-            success
-            onPress={() => this.sendText()}
-          >
-            <Text>Send Text</Text>
-          </Button>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-
-  renderButtonEmail() {
-    if (this.state.isLoading) {
-      return <Spinner color={"red"} />;
-    }
-    return (
-      <View>
-        <TouchableOpacity>
-          <Button
-            style={{ marginTop: 10 }}
-            full
-            rounded
-            success
-            onPress={() => this.sendEmail()}
-          >
-            <Text>Send Email</Text>
-          </Button>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-
   render() {
+    var that = this;
     return (
-      <Container style={styles.container}>
-        <Form>
-          <Item floatingLabel>
-            <Label>Phone Number</Label>
-            <Input
-              autoCorrect={false}
-              onChangeText={phoneNumber => this.setState({
-                phoneNumber: phoneNumber,
-                hiv: this.props.navigation.state.params.newVar.hiv,
-                syphilis: this.props.navigation.state.params.newVar.syphilis,
-                date: this.props.navigation.state.params.newVar.date,
-                id: this.props.navigation.state.params.newVar.id
-              })}
-            />
-          </Item>
-          <View>{this.renderButtonPhone()}</View>
+      <Box>
+        <TextInput
+        value={this.state.phoneNumber}
+        onChangeText={
+          phoneNumber => this.setState({
+          phoneNumber: phoneNumber,
+          hiv: this.props.navigation.state.params.newVar.hiv,
+          syphilis: this.props.navigation.state.params.newVar.syphilis,
+          date: this.props.navigation.state.params.newVar.date,
+          id: this.props.navigation.state.params.newVar.id
+          })
+        }>
+          Phone Number
+        </TextInput>
+        <GreenRoundButton onPress={() => this.sendText()}>
+          Send Text
+        </GreenRoundButton>
 
-          <Item floatingLabel>
-            <Label>Email</Label>
-            <Input
-              autoCorrect={false}
-              onChangeText={email => this.setState({
-                email: email,
-                hiv: this.props.navigation.state.params.newVar.hiv,
-                syphilis: this.props.navigation.state.params.newVar.syphilis,
-                date: this.props.navigation.state.params.newVar.date,
-                id: this.props.navigation.state.params.newVar.id
-               })}
-            />
-          </Item>
-          <View>{this.renderButtonEmail()}</View>
-        </Form>
-      </Container>
+        <TextInput
+        onChangeText={
+          email => this.setState({
+            email: email,
+            hiv: this.props.navigation.state.params.newVar.hiv,
+            syphilis: this.props.navigation.state.params.newVar.syphilis,
+            date: this.props.navigation.state.params.newVar.date,
+            id: this.props.navigation.state.params.newVar.id
+          })
+        }>
+          Email
+        </TextInput>
+        <BlueRoundButton onPress={() => this.sendEmail()}>
+          Send Email
+        </BlueRoundButton>
+
+        <SuccessText>{this.state.successText} </SuccessText>
+        <ErrorText>{this.state.errorText} </ErrorText>
+
+
+      </Box>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    padding: 10,
-    justifyContent: "flex-start"
-  }
-});
 
 export { Share };

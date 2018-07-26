@@ -5,3 +5,4 @@ Videos/
 node_modules/
 yarn.lock
 package-lock.json
+GOOGLE_APPLICATION_CREDENTIALS.json

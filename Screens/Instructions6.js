@@ -1,32 +1,28 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button, Image, video } from "react-native";
+import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
 
 class Instructions6 extends Component {
   static navigationOptions = {
-    title: "Sterilize Finger"
+    title: "Sterilizing Finger Contd.."
   };
   render() {
     return (
-      <View>
-        <Text> Pick up alcohol swab </Text>
-        <Image
-          source={require("../Images/alcohol.jpg")}
-          style={{ width: 370, height: 250 }}
-        />
-        <Text> </Text>
-        <Text> Wipe the tip of your finger </Text>
-        <Text> with the swab and let it dry </Text>
-        <Text> completely.</Text>
-        <Image
-          source={require("../Images/7B.png")}
-          style={{ width: 370, height: 250 }}
-        />
+      <Box>
+        <TitleText>Sterilizing Finger Contd..</TitleText>
+        <CenterTextBox />
+        <Picture source={require("../Images/alcohol.jpg")} />
+        <CenterTextBox>Pick up alcohol swab</CenterTextBox>
+        <CenterTextBox />
+        <Picture source={require("../Images/7B.png")} />
+        <CenterTextBox>Wipe the tip of your finger with the swab and let it dry completely.</CenterTextBox>
+        <CenterTextBox>Massage your finger to stimulate blood flow</CenterTextBox>
+        <CenterTextBox />
 
-        <Button
-          onPress={() => this.props.navigation.navigate("Instructions7")}
-          title="Next"
-        />
-      </View>
+        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions7")} >
+          Next
+        </GreenRoundButton>
+
+      </Box>
     );
   }
 }

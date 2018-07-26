@@ -3,13 +3,14 @@ import {
   Text
 } from "react-native";
 
-const TextBox = ({children}) => {
+const SuccessText = ({children}) => {
   return(
     <Text
       style={{
-      	fontSize: 15,
+      	fontSize: 18,
         includeFontPadding: true,
-        color: "#000000",
+        color: "#4400ff",
+        alignSelf: 'center'
       }}
     >
       {children}
@@ -17,4 +18,4 @@ const TextBox = ({children}) => {
   );
 };
 
-export {TextBox};
+export {SuccessText};

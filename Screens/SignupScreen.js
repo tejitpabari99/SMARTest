@@ -1,19 +1,8 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, KeyboardAvoidingView, Image } from "react-native";
-import {
-  Container,
-  Content,
-  Header,
-  Button,
-  Label,
-  Form,
-  Item,
-  Input,
-  Spinner
-} from "native-base";
+import { View, KeyboardAvoidingView, Image, StyleSheet } from "react-native";
 import * as firebase from "firebase";
 
-import { BlueButton } from './Styles';
+import { GreenRoundButton, BlueRoundButton, ErrorText, TextInput, Logo } from './Styles';
 
 class SignupScreen extends Component {
   constructor(props) {
@@ -27,7 +16,7 @@ class SignupScreen extends Component {
   }
 
   static navigationOptions = {
-    title: "SMARTest Sign up"
+    title: "Sign up"
   };
 
   signupUser = () => {
@@ -64,53 +53,19 @@ class SignupScreen extends Component {
     });
   }
 
-  renderButton() {
-    if (this.state.isLoading) {
-      return <Spinner color={"red"} />;
-    }
-    return (
-      <View>
-        <BlueButton onPress={() => this.signupUser()}>
-          Create An Account
-        </BlueButton>
-      </View>
-    );
-  }
-
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-        <Form>
-          <Image
-            source={require("../Images/SMARTest.png")}
-            style={{ alignSelf: 'center', marginBottom:15, }}
-          />
-          <View>
-            <Text style={styles.errorText}>{this.state.error}</Text>
-          </View>
-          <Item floatingLabel>
-            <Label>Email</Label>
-            <Input
-              autoCorrect={false}
-              onChangeText={email => this.setState({ email })}
-            />
-          </Item>
+        <Logo />
+        <ErrorText>{this.state.error}</ErrorText>
+        <TextInput onChangeText={email => this.setState({ email })}> Email </TextInput>
+        <TextInput secureTextEntry={true} onChangeText={password => this.setState({ password })}> Password </TextInput>
 
-          <Item floatingLabel>
-            <Label>Password</Label>
-            <Input
-              secureTextEntry={true}
-              autoCorrect={false}
-              onChangeText={password => this.setState({ password })}
-            />
-          </Item>
+        <BlueRoundButton onPress={() => this.signupUser()}>
+          Create An Account
+        </BlueRoundButton>
 
-          <View>
-            {this.renderButton()}
-          </View>
-          <View style={{ height: 60 }} />
-
-        </Form>
+        <View style={{ height: 60 }} />
       </KeyboardAvoidingView>
     );
   }
@@ -122,11 +77,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     padding: 10,
     justifyContent: "center"
-  },
-  errorText: {
-    fontSize: 13,
-    alignSelf: "center",
-    color: "red"
   }
 });
 

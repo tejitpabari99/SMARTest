@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, ScrollView, Button, Image, View } from "react-native";
-import { Container } from "native-base";
+import { TitleText, Box, GreenSmallButton, BlueSmallButton, TextBox, Card, CardSection, CardText } from "./Styles";
+import {View, ScrollView} from 'react-native';
+
 import * as firebase from 'firebase';
 import _ from 'lodash';
 
 class SavedResults extends Component {
   static navigationOptions = {
-    title: "Results"
+    title: "Saved Results"
   };
 
   state={
@@ -52,24 +53,29 @@ class SavedResults extends Component {
     return Object.keys(tempResults).map((obj, i) => {
       return (
         <View>
-          <Text />
-          <Text>HIV: {tempResults[obj].hiv}</Text>
-          <Text>SYPHILIS: {tempResults[obj].syphilis}</Text>
-          <Text>Date: {tempResults[obj].date}</Text>
-          <Text>ID: {tempResults[obj].id}</Text>
-          <Button
-            onPress={() => this.deleteFromDatabase(this.state.results[obj])}
-            title="Delete"
-          />
-          <Button
-            onPress={() => this.toShare(this.state.results[obj])}
-            title="Share"
-          />
+          <Card>
+            <CardSection>
+                <CardText>Date: {tempResults[obj].date}</CardText>
+                <CardText>ID: {tempResults[obj].id}</CardText>
+            </CardSection>
+            <CardSection>
+              <CardText>HIV: {tempResults[obj].hiv}</CardText>
+              <CardText>SYPHILIS: {tempResults[obj].syphilis}</CardText>
+            </CardSection>
+          </Card>
         </View>
       )
     })
   }
-
+/*<View style={{ flexDirection: "row" }}>
+  <GreenSmallButton onPress={() => this.toShare(this.state.results[obj])} >
+    Share
+  </GreenSmallButton>
+  <BlueSmallButton onPress={() => this.deleteFromDatabase(this.state.results[obj])} >
+    Results
+  </BlueSmallButton>
+</View>
+<TextBox />*/
   toShare = (result) => {
     var newVar = {
       hiv: result.hiv,
@@ -82,21 +88,15 @@ class SavedResults extends Component {
 
   render() {
     return(
-      <Container style={styles.container}>
+      <Box>
         <ScrollView>
-          <Text>Results</Text>
-          <Text/>
+          <TitleText>Results</TitleText>
           {this.showReslts()}
         </ScrollView>
-      </Container>
+      </Box>
+
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 10
-  }
-});
 
 export { SavedResults };

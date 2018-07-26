@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button, Image, video } from "react-native";
+import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
 
 class Instructions4 extends Component {
   static navigationOptions = {
@@ -7,28 +7,20 @@ class Instructions4 extends Component {
   };
   render() {
     return (
-      <View>
-        <Text> PICK UP THE SOLUTION TUBE #1 WITH </Text>
-        <Text> THE RED CAP AND TWIST OPEN THE CAP. </Text>
-        <Text />
-        <Text />
-        <Text />
-        <Text />
-        <Image
-          source={require("../Images/redVile.jpg")}
-          style={{ width: 370, height: 250 }}
-        />
-        <Text> PLACE IT NEARBY FOR FUTURE STEPS</Text>
-        <Text> BE CAREFULL NOT TO KNOCK IT OVER! </Text>
-        <Text />
-        <Text />
-        <Text> </Text>
+      <Box>
+        <TitleText>Prepare Sample Collector</TitleText>
 
-        <Button
-          onPress={() => this.props.navigation.navigate("Instructions5")}
-          title="Next"
-        />
-      </View>
+        <CenterTextBox />
+        <Picture source={require("../Images/redVile.jpg")} />
+        <CenterTextBox>Pick up the Solution tube #1 with the red cap and twist open the cap.</CenterTextBox>
+        <CenterTextBox>Place it nearby for future uses Be Careful not to knock it over!</CenterTextBox>
+        <CenterTextBox />
+
+        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions5")} >
+          Next
+        </GreenRoundButton>
+
+      </Box>
     );
   }
 }

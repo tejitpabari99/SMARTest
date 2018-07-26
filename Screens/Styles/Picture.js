@@ -10,8 +10,8 @@ const Picture = ({source}) => {
       style={{
         width: 343,
         height: 200,
-        marginBottom:15,
-
+        marginBottom:2,
+        alignSelf: 'center'
       }}
     />
   );

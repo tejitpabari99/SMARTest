@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { TitleText, Box, Picture, GreenButton, TextBox } from "./Styles";
+import { TitleText, Box, Picture, GreenRoundButton, TextBox } from "./Styles";
 
 class HomeScreen extends Component {
   static navigationOptions = {
@@ -22,15 +22,15 @@ class HomeScreen extends Component {
           <Picture
             source={require("../Images/loginPic.jpg")}
           />
-
+          <TextBox />
           <TextBox>SmartTest is a companion app to rapid HIV and Syphillis tests. </TextBox>
           <TextBox>SmartTest will walk you through the testing process, interpret your result and provide resources for the next steps. </TextBox>
           <TextBox />
 
-          <GreenButton onPress={() => this.props.navigation.navigate("Results")} >
+          <GreenRoundButton onPress={() => this.props.navigation.navigate("Results")} >
             Get Started
-          </GreenButton>
-          
+          </GreenRoundButton>
+
         </Box>
     );
   }
