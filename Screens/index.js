@@ -1,6 +1,7 @@
 export * from './SplashScreen';
 export * from './LoginScreen';
 export * from './SignupScreen';
+export * from './ForgotPassword';
 export * from './HomeScreen';
 export * from './TestSelection';
 export * from './TestSetup';

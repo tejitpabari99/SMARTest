@@ -4,7 +4,7 @@ const sg = require('sendgrid')(
   process.env.SENDGRID_API_KEY
 );
 
-// exports.sendmail = functions.https.onRequest((req, res) => {
+// exports.sendmail = functions.https.onRequest((req, res) => { noreply@email-smartest-df9af.firebaseapp.com
 module.exports = ((req,res) => {
   sendMail(req.body);
   res.send("Mail Successfully Sent!");
@@ -19,7 +19,7 @@ function sendMail(formData) {
         to: [{ email: `${formData.email}` }],
         subject: 'SMARTest Results'
       }],
-      from: { email: 'noreply@email-smartest-df9af.firebaseapp.com' },
+      from: { email: 'smartest@smartest-df9af.firebaseapp.com' },
       content: [{
         type: 'text/plain',
         value: `HIV: ${formData.hiv}\nSyphilis: ${formData.syphilis}\nTest Date: ${formData.date}\nID: ${formData.id}\n(This ID can be used to verify the sender of the message)\n\nPLEASE DO NOT REPLY TO THIS MESSAGE. THIS IS A SEND ONLY NUMBER`,

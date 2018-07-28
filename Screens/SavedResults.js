@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { TitleText, Box, GreenSmallButton, BlueSmallButton, TextBox, Card, CardSection, CardText } from "./Styles";
+import { TitleText, Box, GreenSmallButton, BlueSmallButton, TextBox, Card, CardSection, CardText, } from "./Styles";
 import {View, ScrollView} from 'react-native';
+import {Spinner} from "native-base";
 
 import * as firebase from 'firebase';
 import _ from 'lodash';
@@ -12,7 +13,8 @@ class SavedResults extends Component {
 
   state={
     results: [],
-    tempResult: null
+    tempResult: null,
+    timePassed: false
   }
 
   readDataFirebase = () => {
@@ -48,6 +50,16 @@ class SavedResults extends Component {
     this.setState({ results: _.without(this.state.results, result)})
   }
 
+  componentDidMount() {
+    setTimeout( () => {
+      this.setTimePassed();
+    },4000);
+  }
+
+  setTimePassed() {
+    this.setState({ timePassed: true});
+  }
+
   showReslts =() => {
     var tempResults = this.state.results.reverse();
     return Object.keys(tempResults).map((obj, i) => {
@@ -62,20 +74,20 @@ class SavedResults extends Component {
               <CardText>HIV: {tempResults[obj].hiv}</CardText>
               <CardText>SYPHILIS: {tempResults[obj].syphilis}</CardText>
             </CardSection>
+            <CardSection>
+              <GreenSmallButton onPress={() => this.toShare(this.state.results[obj])} >
+                Share
+              </GreenSmallButton>
+              <BlueSmallButton onPress={() => this.deleteFromDatabase(this.state.results[obj])} >
+                Delete
+              </BlueSmallButton>
+            </CardSection>
           </Card>
         </View>
       )
-    })
+    });
   }
-/*<View style={{ flexDirection: "row" }}>
-  <GreenSmallButton onPress={() => this.toShare(this.state.results[obj])} >
-    Share
-  </GreenSmallButton>
-  <BlueSmallButton onPress={() => this.deleteFromDatabase(this.state.results[obj])} >
-    Results
-  </BlueSmallButton>
-</View>
-<TextBox />*/
+
   toShare = (result) => {
     var newVar = {
       hiv: result.hiv,
@@ -87,15 +99,26 @@ class SavedResults extends Component {
   }
 
   render() {
-    return(
-      <Box>
-        <ScrollView>
-          <TitleText>Results</TitleText>
-          {this.showReslts()}
-        </ScrollView>
-      </Box>
-
-    )
+    if (!this.state.timePassed) {
+      return (
+        <Box>
+          <ScrollView>
+            <TitleText>Results</TitleText>
+            <Spinner color={"blue"} />
+          </ScrollView>
+        </Box>
+      )
+    }
+    else {
+      return(
+        <Box>
+          <ScrollView>
+            <TitleText>Results</TitleText>
+            {this.showReslts()}
+          </ScrollView>
+        </Box>
+      )
+    }
   }
 }
 

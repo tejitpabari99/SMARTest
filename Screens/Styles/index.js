@@ -18,3 +18,4 @@ export * from "./Buttons/BlueBlockButton";
 export * from "./Buttons/GreenSmallButton";
 export * from "./Buttons/BlueSmallButton";
 export * from "./Buttons/RedRoundButton";
+export * from "./Buttons/ForgotPassword";

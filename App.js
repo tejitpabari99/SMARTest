@@ -5,7 +5,7 @@ import * as firebase from "firebase";
 
 import './Global/global.js'
 
-import { SplashScreen, LoginScreen, SignupScreen,
+import { SplashScreen, LoginScreen, SignupScreen, ForgotPassword,
   HomeScreen, TestSelection, TestSetup,
   VideoInfo, Video, Instructions, Instructions2, Instructions3, Instructions4, Instructions5, Instructions6, Instructions7, Instructions8, Instructions9, Instructions10, Instructions11, Instructions12,
   TakePicture, GuestTakePicture, Results, GuestResults, SavedResults,
@@ -35,6 +35,7 @@ const AppNavigator = StackNavigator({
     SplashScreen : {screen : SplashScreen},
     LoginScreen : {screen : LoginScreen},
     SignupScreen : {screen : SignupScreen},
+    // ForgotPassword : {screen : ForgotPassword},
     HomeScreen : {screen: HomeScreen},
     TestSelection : {screen : TestSelection},
     TestSetup : {screen : TestSetup},

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, KeyboardAvoidingView, Image, StyleSheet } from "react-native";
 import * as firebase from "firebase";
 
-import { GreenRoundButton, BlueRoundButton, ErrorText, TextInput, Logo } from './Styles';
+import { GreenRoundButton, BlueRoundButton, ErrorText, TextInput, Logo, ForgotPassword } from './Styles';
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -35,6 +35,7 @@ class LoginScreen extends Component {
     });
     this.props.navigation.navigate("HomeScreen");
   }
+  // <ForgotPassword onPress={() => this.props.navigation.navigate("ForgotPassword")}>Forgot Password</ForgotPassword>
 
   render() {
     return (
