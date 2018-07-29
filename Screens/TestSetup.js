@@ -1,63 +1,49 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button, Image, Video } from "react-native";
+import {View} from 'react-native';
+import { TitleText, Box, GreenSmallButton, BlueSmallButton, TextBox, TextBoxTitle } from "./Styles";
 
 class TestSetup extends Component {
   static navigationOptions = {
-    title: "Test Options"
+    title: "Test Setup"
   };
+  me = () => {
+    global.userSelection = 0;
+    this.props.navigation.navigate("VideoInfo");
+  };
+  partner = () => {
+    global.userSelection = 1;
+    this.props.navigation.navigate("VideoInfo");
+  };
+  duo = () => {
+    global.userSelection = 2;
+    this.props.navigation.navigate("VideoInfo");
+  };
+
   render() {
     return (
-      <View>
-        <Text> SELECT TESTING MODE BELOW : </Text>
+      <Box>
+        <TitleText>Select Testing mode below</TitleText>
+        <View style={{ alignItems: 'center'}}>
+          <GreenSmallButton onPress={() => this.me()} >
+            Just Me
+          </GreenSmallButton>
+          <BlueSmallButton onPress={() => this.partner()} >
+            Just My Partner
+          </BlueSmallButton>
+          <GreenSmallButton onPress={() => this.duo()} >
+            Duo Test
+          </GreenSmallButton>
+        </View>
+        <TextBox />
+        <TextBox />
+        <TextBoxTitle>Note</TextBoxTitle>
+        <TextBox>Just My partner will lead to the guest account mode where results cannot be saved. </TextBox>
+        <TextBox>Duo Test Mode will enable simultaneous testing (e.g you and your partner), however the Partners Results cannot be saved. </TextBox>
+        <TextBox />
 
-        <Button
-          onPress={() => this.props.navigation.navigate("VideoInfo")}
-          title="JUST ME "
-        />
-
-        <Button
-          onPress={() => this.props.navigation.navigate("GuestTestSelection")}
-          title="JUST MY PARTNER "
-        />
-
-        <Button
-          onPress={() => this.props.navigation.navigate("DuoTest")}
-          title="DUO TEST "
-        />
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> NOTE: </Text>
-        <Text>Just My partner will lead to the guest account mode </Text>
-        <Text> where results cannot be saved. </Text>
-        <Text> </Text>
-        <Text> Duo Test Mode will enable simultaneous </Text>
-        <Text> testing (e.g you and your partner), however the Partners </Text>
-        <Text> Results cannot be saved.</Text>
-      </View>
+      </Box>
     );
   }
 }
 
-export default TestSetup;
+export { TestSetup };

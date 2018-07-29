@@ -1,35 +1,28 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button, Image, video } from "react-native";
+import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
 
 class Instructions5 extends Component {
   static navigationOptions = {
-    title: "Sterilize Finger"
+    title: "Sterilizing Finger"
   };
   render() {
     return (
-      <View>
-        <Text> CHOOSE A FINGER TO PRICK. </Text>
-        <Text> WE RECOMMEND ONE ON YOUR NON-DOMINANT </Text>
-        <Text> HAND. </Text>
-        <Image
-          source={require("../Images/8B.png")}
-          style={{ width: 370, height: 250 }}
-        />
-        <Text />
+      <Box>
+        <TitleText>Sterilizing Finger</TitleText>
+        <CenterTextBox />
+        <Picture source={require("../Images/8B.png")} />
+        <CenterTextBox>Choose a finger to prick. We recommend once on your non-dominant hand.</CenterTextBox>
 
-        <Text />
+        <CenterTextBox>Massage your finger to stimulate blood flow</CenterTextBox>
+        <CenterTextBox />
 
-        <Text> MASSAGE YOUR FINGER TO STIMULATE BLOOD FLOW </Text>
-        <Text> </Text>
-        <Text />
+        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions6")} >
+          Next
+        </GreenRoundButton>
 
-        <Button
-          onPress={() => this.props.navigation.navigate("Instructions6")}
-          title="Next"
-        />
-      </View>
+      </Box>
     );
   }
 }
 
-export default Instructions5;
+export { Instructions5 };

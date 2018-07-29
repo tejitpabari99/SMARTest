@@ -1,65 +1,39 @@
 import React, { Component } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  ImageBackground,
-  Button,
-  Image
-} from "react-native";
+
+import { TitleText, Box, Picture, GreenRoundButton, TextBox } from "./Styles";
 
 class HomeScreen extends Component {
   static navigationOptions = {
-    title: "Welcome",
-    headerLeft: null,
-    headerRight: (
-      <Button
-        onPress={() => alert('Logged Out!\n(Actually this doesn\'t do anything right now.)')}
-        title="Log Out"
-      />
-    ),
+    title: "SMARTest",
+    // headerLeft: null,
+    // headerRight: (
+    //   <Button
+    //     onPress={() => alert('Logged Out!\n(Actually this doesn\'t do anything right now.)')}
+    //     title="Log Out"
+    //   />
+    // ),
   };
-  
+
   render() {
     return (
-      <View
-        style={styles.container}
-      >
-        <Text style={styles.title}> Welcome to SmartTest! </Text>
-        <Image
-          source={require("../Images/loginPic.jpg")}
-          style={{ width: 380, height: 200, marginBottom:15 }}
-        />
-        <Text> SmartTest is a companion app to rapid HIV </Text>
-        <Text> and syphillis tests. </Text>
-        <Text> </Text>
-        <Text> SmartTest will walk you through the testing </Text>
-        <Text> process, interpret your result and provide </Text>
-        <Text> resources for the next steps. </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Button
-          onPress={() => this.props.navigation.navigate("TestSelection")}
-          title="Get Started"
-        />
-      </View>
+        <Box>
+          <TitleText>SMARTTest</TitleText>
+
+          <Picture
+            source={require("../Images/loginPic.jpg")}
+          />
+          <TextBox />
+          <TextBox>SmartTest is a companion app to rapid HIV and Syphillis tests. </TextBox>
+          <TextBox>SmartTest will walk you through the testing process, interpret your result and provide resources for the next steps. </TextBox>
+          <TextBox />
+
+          <GreenRoundButton onPress={() => this.props.navigation.navigate("Results")} >
+            Get Started
+          </GreenRoundButton>
+
+        </Box>
     );
   }
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: "100%",
-    height: "100%",
-    alignItems: 'center'
-  },
-  title: {
-  	fontWeight: 'bold',
-  	fontSize: 20,
-  	marginBottom:15,
-  	marginBottom:10
-  }
-});
 
-export default HomeScreen;
+export { HomeScreen };

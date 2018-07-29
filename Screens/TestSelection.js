@@ -1,24 +1,22 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button, Image, video } from "react-native";
+
+import { TitleText, Box, GreenBlockButton, TextBox } from "./Styles";
 
 class TestSelection extends Component {
   static navigationOptions = {
-    title: "Select Test"
+    title: "Test Selection"
   };
   render() {
     return (
-      <View>
-        <Text>SELECT A TEST BELOW : </Text>
-        <Text> </Text>
-        <Text> </Text>
-
-        <Button
-          onPress={() => this.props.navigation.navigate("TestSetup")}
-          title="INSTI HIV & SYPHILLIS TEST"
-        />
-      </View>
+      <Box>
+        <TitleText>SELECT A TEST BELOW</TitleText>
+        <TextBox />
+        <GreenBlockButton onPress={() => this.props.navigation.navigate("TestSetup")} >
+          INSTI HIV & SYPHILLIS TEST
+        </GreenBlockButton>
+      </Box>
     );
   }
 }
 
-export default TestSelection;
+export { TestSelection };

@@ -1,0 +1,73 @@
+import React, { Component } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ImageBackground,
+  Button,
+  Image
+} from "react-native";
+
+<<<<<<< HEAD:Screens/VideoPlaceHolder.js
+import Video from "react-native-video";
+=======
+// import { Video } from "expo";
+// import VideoPlayer from "@expo/videoplayer";
+>>>>>>> master:Screens/Video.js
+
+class Video extends Component {
+  static navigationOptions = {
+    title: "Video"
+  };
+
+  render() {
+    return (
+<<<<<<< HEAD:Screens/VideoPlaceHolder.js
+      <View style={styles.backgroundVideo}>
+        <Video
+          source={require("../Videos/InstiV2.mp4")}
+          ref={(ref) => {
+             this.player = ref
+           }}
+           onLoad={(data) => { this.player.presentFullscreenPlayer(); }}
+           onEnd={(data) => { this.player.dismissFullscreenPlayer(); }}
+           style={styles.backgroundVideo}
+        />
+
+        <Text />
+=======
+      <View>
+        <Text> This is a video placeholder</Text>
+        <Text> Removed the Video Place holder</Text>
+>>>>>>> master:Screens/Video.js
+        <Text />
+        <Text />
+        <Text />
+
+        <Button
+          onPress={() => this.props.navigation.navigate("Instructions")}
+          title="NEXT"
+        />
+      </View>
+    );
+  }
+  /*onLoad(data) {
+    console.log("triggered!");
+    this.player.presentFullscreenPlayer();
+  }*/
+}
+
+<<<<<<< HEAD:Screens/VideoPlaceHolder.js
+var styles = StyleSheet.create({
+  backgroundVideo: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+  },
+});
+
+export default VideoPlaceHolder;
+=======
+export { Video };
+>>>>>>> master:Screens/Video.js

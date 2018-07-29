@@ -30,4 +30,4 @@ class TestAccuracy extends Component {
   }
 }
 
-export default TestAccuracy;
+export { TestAccuracy };

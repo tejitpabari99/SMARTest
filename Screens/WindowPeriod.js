@@ -31,7 +31,7 @@ class WindowPeriod extends Component {
         </Text>
         <Text> </Text>
         <Button
-          onPress={() => this.props.navigation.navigate("GuestResources")}
+          onPress={() => this.props.navigation.navigate("Resources")}
           title="Back"
         />
       </View>
@@ -39,4 +39,4 @@ class WindowPeriod extends Component {
   }
 }
 
-export default WindowPeriod;
+export { WindowPeriod };

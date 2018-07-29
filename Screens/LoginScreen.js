@@ -1,17 +1,8 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import {
-  Container,
-  Content,
-  Header,
-  Button,
-  Label,
-  Form,
-  Item,
-  Input,
-  Spinner
-} from "native-base";
+import { View, KeyboardAvoidingView, Image, StyleSheet } from "react-native";
 import * as firebase from "firebase";
+
+import { GreenRoundButton, BlueRoundButton, ErrorText, TextInput, Logo, ForgotPassword } from './Styles';
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -22,21 +13,17 @@ class LoginScreen extends Component {
       error: "",
       isLoading: false
     };
-    this.props.navigation.navigate("HomeScreen");
   }
 
-  loginUser = (email, password) => {
-    try {
-      this.setState({ error: "", isLoading: true });
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.state.email, this.state.password)
-        .then(this.onLoginSuccess.bind(this));
-    } catch (error) {
-      this.setState({ isLoading: false });
-      this.setState({ error: error.toString() });
-      console.log(error.toString());
-    }
+  loginUser = () => {
+    const { email, password } = this.state;
+    this.setState({ error: '', isloading: true });
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(this.onLoginSuccess.bind(this))
+    .catch((error) => {
+      return this.setState({ isLoading: false, error: error.message });
+    });
   };
 
   onLoginSuccess() {
@@ -48,92 +35,36 @@ class LoginScreen extends Component {
     });
     this.props.navigation.navigate("HomeScreen");
   }
-
-  static navigationOptions = {
-    title: "SMARTest Login Page"
-  };
-
-  renderButton() {
-    if (this.state.isLoading) {
-      return <Spinner color={"red"} />;
-    }
-    return (
-      <View>
-        <TouchableOpacity>
-          <Button
-            style={{ marginTop: 10 }}
-            full
-            rounded
-            success
-            onPress={() =>
-              this.loginUser(this.state.email, this.state.password)
-            }
-          >
-            <Text>Log in</Text>
-          </Button>
-        </TouchableOpacity>
-
-        <TouchableOpacity>
-          <Button
-            style={{ marginTop: 10 }}
-            full
-            rounded
-            primary
-            onPress={() => this.props.navigation.navigate("SignupScreen")}
-          >
-            <Text style={{ color: "white" }}>Dont have an Account?</Text>
-          </Button>
-        </TouchableOpacity>
-      </View>
-    );
-  }
+  // <ForgotPassword onPress={() => this.props.navigation.navigate("ForgotPassword")}>Forgot Password</ForgotPassword>
 
   render() {
     return (
-      <Container style={styles.container}>
-        <Form>
-          <Item floatingLabel>
-            <Label>Email</Label>
-            <Input
-              autoCorrect={false}
-              autoCapitalize={'none'}
-              autoFocus={true}
-              onChangeText={email => this.setState({ email })}
-            />
-          </Item>
+      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+        <Logo />
+        <ErrorText>{this.state.error}</ErrorText>
+        <TextInput onChangeText={email => this.setState({ email })}> Email </TextInput>
+        <TextInput secureTextEntry={true} onChangeText={password => this.setState({ password })}> Password </TextInput>
 
-          <Item floatingLabel>
-            <Label>Password</Label>
-            <Input
-              secureTextEntry={true}
-              autoCorrect={false}
-              autoCapitalize={'none'}
-              onChangeText={password => this.setState({ password })}
-            />
-          </Item>
+        <GreenRoundButton onPress={() => this.loginUser()}>
+          Log in
+        </GreenRoundButton>
+        <BlueRoundButton onPress={() => this.props.navigation.navigate("SignupScreen")}>
+          Dont have an Account?
+        </BlueRoundButton>
 
-          <View>
-            {this.renderButton()}
-            <Text style={styles.errorText}>{this.state.error}</Text>
-          </View>
-        </Form>
-      </Container>
+        <View style={{ height: 60 }} />
+      </KeyboardAvoidingView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 2,
     backgroundColor: "#fff",
-    padding: 10,
+    padding: 15,
     justifyContent: "center"
   },
-  errorText: {
-    fontSize: 13,
-    alignSelf: "center",
-    color: "red"
-  }
 });
 
-export default LoginScreen;
+export { LoginScreen };

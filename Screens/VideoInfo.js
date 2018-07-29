@@ -1,12 +1,6 @@
 import React, { Component } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  ImageBackground,
-  Button,
-  Image
-} from "react-native";
+import { TitleText, Box, TextBoxTitle, GreenRoundButton, TextBox, Picture } from "./Styles";
+
 
 class VideoInfo extends Component {
   static navigationOptions = {
@@ -15,28 +9,22 @@ class VideoInfo extends Component {
 
   render() {
     return (
-      <View>
-        <Text> First you will see a short instructional video </Text>
-        <Text> that provides an overview of the test. </Text>
-        <Text />
+      <Box>
+        <TitleText>Video Info</TitleText>
 
-        <Text> Then you will see step-by-step instructions </Text>
-        <Text> to run the test yourself. </Text>
-        <Text />
-        <Text />
-        <Text />
-        <Button
-          onPress={() => this.props.navigation.navigate("VideoPlaceHolder")}
-          title="NEXT"
-        />
+        <TextBox />
+        <TextBox>First you will see a short instructional video that provides an overview of the test.</TextBox>
+        <TextBox />
+        <TextBox>Then you will see step-by-step instructions to run the test yourself.</TextBox>
+        <TextBox />
 
-        <Text />
-        <Text />
-        <Text />
-        <Text />
-      </View>
+        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Video")} >
+          Next
+        </GreenRoundButton>
+
+      </Box>
     );
   }
 }
 
-export default VideoInfo;
+export { VideoInfo };

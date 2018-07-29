@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button, Image, video } from "react-native";
+import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
 
 class Instructions9 extends Component {
   static navigationOptions = {
@@ -7,25 +7,21 @@ class Instructions9 extends Component {
   };
   render() {
     return (
-      <View>
-        <Text> Wipe your finger with the gauze </Text>
-        <Text> and put on a bandage.</Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Image
-          source={require("../Images/10.png")}
-          style={{ width: 370, height: 250 }}
-        />
+      <Box>
+        <TitleText>Bandaging Finger</TitleText>
 
-        <Button
-          onPress={() => this.props.navigation.navigate("Instructions10")}
-          title="Next"
-        />
-      </View>
+        <CenterTextBox />
+        <Picture source={require("../Images/10.png")} />
+        <CenterTextBox>Wipe your finger with the gauze and put on a bandage.</CenterTextBox>
+        <CenterTextBox />
+
+        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions10")} >
+          Next
+        </GreenRoundButton>
+
+      </Box>
     );
   }
 }
 
-export default Instructions9;
+export { Instructions9 };

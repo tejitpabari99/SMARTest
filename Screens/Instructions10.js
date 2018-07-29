@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button, Image, video } from "react-native";
+import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
 
 class Instructions10 extends Component {
   static navigationOptions = {
@@ -7,31 +7,24 @@ class Instructions10 extends Component {
   };
   render() {
     return (
-      <View>
-        <Text> Recap solution tube #1 and mix </Text>
-        <Text> contents by inverting several times.</Text>
-        <Text> </Text>
-        <Text> </Text>
-        <Image
-          source={require("../Images/11A.png")}
-          style={{ width: 370, height: 250 }}
-        />
+      <Box>
+        <TitleText>Simple Transfer</TitleText>
 
-        <Text> pour the contents to the center </Text>
-        <Text> of the test membrane. </Text>
-        <Text> </Text>
-        <Image
-          source={require("../Images/11B.png")}
-          style={{ width: 370, height: 250 }}
-        />
+        <CenterTextBox />
+        <Picture source={require("../Images/11A.png")} />
+        <CenterTextBox>Recap solution tube #1 and mix contents by inverting several times.</CenterTextBox>
+        <CenterTextBox />
+        <Picture source={require("../Images/11B.png")} />
+        <CenterTextBox>pour the contents to the center of the test membrane.</CenterTextBox>
+        <CenterTextBox />
 
-        <Button
-          onPress={() => this.props.navigation.navigate("Instructions11")}
-          title="Next"
-        />
-      </View>
+        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions11")} >
+          Next
+        </GreenRoundButton>
+
+      </Box>
     );
   }
 }
 
-export default Instructions10;
+export { Instructions10 };

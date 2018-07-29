@@ -1,12 +1,7 @@
 import React, { Component } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  Image,
-  ScrollView
-} from "react-native";
+
+import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
+
 
 class Instructions extends Component {
   static navigationOptions = {
@@ -14,74 +9,43 @@ class Instructions extends Component {
   };
   render() {
     return (
-      <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
-        <Text> INSTI MULTIPLEX </Text>
-        <Text> KIT MATERIALS </Text>
+      <Box>
+        <TitleText>Material List</TitleText>
 
-        <Text />
-        <Text />
-        <Image
-          source={require("../Images/membraneUnit.jpg")}
-          style={{ width: 350, height: 200 }}
-        />
-        <Text> Membrane Unit</Text>
-        <Text />
-        <Text />
-        <Image
-          source={require("../Images/5.jpg")}
-          style={{ width: 350, height: 200 }}
-        />
-        <Text> Solution 1 Vial</Text>
-        <Text />
-        <Text />
-        <Image
-          source={require("../Images/12A.jpg")}
-          style={{ width: 350, height: 200 }}
-        />
-        <Text> Solution 2 Vial</Text>
-        <Text />
-        <Text />
-        <Image
-          source={require("../Images/13A.jpg")}
-          style={{ width: 350, height: 200 }}
-        />
-        <Text> Solution 3 Vial</Text>
-        <Text />
-        <Text />
-        <Image
-          source={require("../Images/lancet.jpg")}
-          style={{ width: 350, height: 200 }}
-        />
-        <Text> Single use Lancet</Text>
-        <Text />
-        <Text />
-        <Image
-          source={require("../Images/alcohol.jpg")}
-          style={{ width: 350, height: 200 }}
-        />
-        <Text> Alcohol Swab</Text>
-        <Text />
-        <Text />
-        <Image
-          source={require("../Images/7A.jpg")}
-          style={{ width: 350, height: 200 }}
-        />
-        <Text> Gauze Pad </Text>
-        <Text />
-        <Text />
-        <Image
-          source={require("../Images/bandage.jpg")}
-          style={{ width: 350, height: 200 }}
-        />
-        <Text> Bandage </Text>
+        <TextBoxTitle>INSTI MULTIPLEX Kit Material</TextBoxTitle>
+        <CenterTextBox />
+        <Picture source={require("../Images/membraneUnit.jpg")} />
+        <CenterTextBox>Membrane Unit</CenterTextBox>
+        <CenterTextBox />
+        <Picture source={require("../Images/5.jpg")} />
+        <CenterTextBox>Solution 1 Vial</CenterTextBox>
+        <CenterTextBox />
+        <Picture source={require("../Images/12A.jpg")} />
+        <CenterTextBox>Solution 2 Vial</CenterTextBox>
+        <CenterTextBox />
+        <Picture source={require("../Images/13A.jpg")} />
+        <CenterTextBox>Solution 3 Vial</CenterTextBox>
+        <CenterTextBox />
+        <Picture source={require("../Images/lancet.jpg")} />
+        <CenterTextBox>Single use Lancet</CenterTextBox>
+        <CenterTextBox />
+        <Picture source={require("../Images/alcohol.jpg")} />
+        <CenterTextBox>Alcohol Swab</CenterTextBox>
+        <CenterTextBox />
+        <Picture source={require("../Images/7A.jpg")} />
+        <CenterTextBox>Gauze Pad</CenterTextBox>
+        <CenterTextBox />
+        <Picture source={require("../Images/bandage.jpg")} />
+        <CenterTextBox>Bandage</CenterTextBox>
+        <CenterTextBox />
+        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions2")} >
+          Next
+        </GreenRoundButton>
 
-        <Button
-          onPress={() => this.props.navigation.navigate("Instructions2")}
-          title="Next"
-        />
-      </ScrollView>
+      </Box>
+
     );
   }
 }
 
-export default Instructions;
+export { Instructions };
