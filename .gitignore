@@ -1,8 +1,6 @@
 .DS_Store
 .expo
 app/
-Images/
 Videos/
 node_modules/
 package-lock.json
-*.framework
