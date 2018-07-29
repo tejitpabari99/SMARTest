@@ -1,7 +1,5 @@
 .DS_Store
 .expo
-app/
-Videos/
 node_modules/
 package-lock.json
 GOOGLE_APPLICATION_CREDENTIALS.json
