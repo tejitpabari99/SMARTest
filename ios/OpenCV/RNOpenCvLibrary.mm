@@ -29,7 +29,7 @@ RCT_EXPORT_METHOD(checkForBlurryImage:(NSString *)imageAsBase64 callback:(RCTRes
   
   callback(@[[NSNull null], dataArray]);
 }
-
+/*
 RCT_EXPORT_METHOD(getImageMask:(NSString *)imageAsBase64 callback:(RCTResponseSenderBlock)callback) {
   UIImage* image = [self decodeBase64ToImage:imageAsBase64];
   NSString* maskedImageInBase64 = [self getImageMask:image];
@@ -41,12 +41,12 @@ RCT_EXPORT_METHOD(getImageMask:(NSString *)imageAsBase64 callback:(RCTResponseSe
   
   callback(@[[NSNull null], dataArray]);
 }
-
-RCT_EXPORT_METHOD(getTestResults:(NSString *)imageAsBase64 callback:(RCTResponseSenderBlock)callback) {
+*/
+RCT_EXPORT_METHOD(getProcessedImage:(NSString *)imageAsBase64 callback:(RCTResponseSenderBlock)callback) {
   UIImage* image = [self decodeBase64ToImage:imageAsBase64];
-  NSString* testResults = [self getTestResults:image];
+  NSString* processedImageInBase64 = [self getProcessedImage:image];
   
-  id objects[] = { testResults };
+  id objects[] = { processedImageInBase64 };
   NSUInteger count = sizeof(objects) / sizeof(id);
   NSArray *dataArray = [NSArray arrayWithObjects:objects
                                            count:count];
@@ -94,11 +94,16 @@ RCT_EXPORT_METHOD(getTestResults:(NSString *)imageAsBase64 callback:(RCTResponse
   cv::Mat processedMask;
   
   cv::Mat kernel;
-  cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3,3));
-  NSLog(@"Size: %dx%d", kernel.rows, kernel.cols);
-  //NSLog(@"row1: %d %d ", kernel.rows, kernel.cols);
+  kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3,3));
   cv::morphologyEx(mask, processedMask, cv::MORPH_OPEN, kernel);
-  cv::pyrUp(processedMask, processedMask);
+  
+  return processedMask;
+}
+
+- (cv::Mat) smoothOut:(cv::Mat) mask {
+  cv::Mat processedMask;
+  
+  cv::pyrUp(mask, processedMask);
   for (int i = 0; i < 15; i++) {
     cv::medianBlur(processedMask, processedMask, 15);
   }
@@ -109,114 +114,108 @@ RCT_EXPORT_METHOD(getTestResults:(NSString *)imageAsBase64 callback:(RCTResponse
   return processedMask;
 }
 
-- (cv::Mat) detectSmallestCircle:(cv::Mat) mask {
-  cv::Mat processedMask;
+- (std::vector<cv::KeyPoint>) detectSmallestCircle:(cv::Mat) mask {
+  cv::SimpleBlobDetector::Params circleDetectorParams;
+  circleDetectorParams.filterByArea = true;
+  circleDetectorParams.minArea = 20000;       // 800    //200
+  circleDetectorParams.maxArea = 700000;      // 7000   //7000
   
-  /*
-   def detect_smallest_circle(thresholded_image):
-   
-     # Set up the detector with appropriate parameters for circle detection.
-     circle_detector_params = cv2.SimpleBlobDetector_Params()
-   
-     circle_detector_params.filterByArea = True
-     circle_detector_params.minArea = 200     # 800
-     circle_detector_params.maxArea = 7000    # 7000
-   
-     circle_detector_params.filterByCircularity = True
-     circle_detector_params.minCircularity = 0.5
-   
-     circle_detector_params.filterByInertia = True
-     circle_detector_params.minInertiaRatio = 0.5
-   
-     return detect_blob(thresholded_image, circle_detector_params)
-   */
+  circleDetectorParams.filterByCircularity = true;
+  circleDetectorParams.minCircularity = 0.5;
   
-  return processedMask;
+  circleDetectorParams.filterByInertia = true;
+  circleDetectorParams.minInertiaRatio = 0.5;
+  
+  return [self detectBlob:mask withParams:circleDetectorParams];
 }
 
-- (cv::Mat) detectDots:(cv::Mat) mask {
-  cv::Mat processedMask;
+- (std::vector<cv::KeyPoint>) detectDots:(cv::Mat) mask aroundCenter:(cv::Point) center withRadius:(float) radius {
   
+  if (radius < 20) {
+    radius = 20;
+  }
+  
+  // Set up the detector with appropriate parameters for dot detection.
+  cv::SimpleBlobDetector::Params dotDetectorParams;
+  
+  dotDetectorParams.filterByArea = true;
+  dotDetectorParams.minArea = 20;
+  dotDetectorParams.maxArea = 400;
+  
+  dotDetectorParams.filterByCircularity = true;
+  dotDetectorParams.minCircularity = 0.5;
+  
+  dotDetectorParams.filterByInertia = true;
+  dotDetectorParams.minInertiaRatio = 0.5;
+  
+  // Inverse image b/c SimpleBlobDetector only detects black areas.
+  mask = 255 - mask; // if doesn't work, try cv::Mat::ones(mask.rows, mask.cols, mask.type()) * 255
+  
+  std::vector<cv::KeyPoint> dots = [self detectBlob:mask withParams:dotDetectorParams];
+  std::vector<cv::KeyPoint> filteredDots;
+  /*
+  for (int i = 0; i < dots.size(); i++) {
+    if (<#condition#>) {
+      <#statements#>
+    }
+  }*/
   /* TODO: Implementation not so urgent.
    def detect_dot(thresholded_image, center = None, radius = None):
    
-     # Inverse image b/c SimpleBlobDetector only detects black areas
-     thresholded_image = thresholded_image==0
-   
-     # Set up the detector with appropriate parameters for dot detection.
-     dot_detector_params = cv2.SimpleBlobDetector_Params()
-   
-     dot_detector_params.filterByArea = True
-     dot_detector_params.minArea = 20
-     dot_detector_params.maxArea = 400
-   
-     dot_detector_params.filterByCircularity = True
-     dot_detector_params.minCircularity = 0.5
-   
-     dot_detector_params.filterByInertia = True
-     dot_detector_params.minInertiaRatio = 0.5
-   
-     dots = detect_blob(thresholded_image, dot_detector_params)
+     dots = detect_blob(thresholded_image, dotDetectorParams)
    
      if center == None or radius == None:
-     return dots
+       return dots
      #print("radius: {}".format(radius))
      if radius < 20:
-     radius = 20
+       radius = 20
    
      filtered_dots = []
    
      for dot in dots:
-     #print("dist: {}".format(euclidean_dist(dot.pt, center)))
-     if euclidean_dist(dot.pt, center) <= radius:
-     filtered_dots.append(dot)
+       #print("dist: {}".format(euclidean_dist(dot.pt, center)))
+       if euclidean_dist(dot.pt, center) <= radius:
+         filtered_dots.append(dot)
    
      return filtered_dots
    */
   
-  return processedMask;
+  return filteredDots;
 }
 
-- (cv::Mat) detectBlob:(cv::Mat) mask {
-  cv::Mat processedMask;
+- (std::vector<cv::KeyPoint>) detectBlob:(cv::Mat) image withParams:(cv::SimpleBlobDetector::Params) params {
   
-  /* TODO: To implement this method!
-   def detect_blob(thresholded_image, blob_detector_params):
-   
-     if thresholded_image.mean() <= 1:
-     thresholded_image = thresholded_image * 255
-   
-     if not thresholded_image.dtype == 'uint8':
-     thresholded_image = thresholded_image.astype('uint8')
-   
-     # Set up the detector with given parameters.
-     detector = cv2.SimpleBlobDetector_create(blob_detector_params)
-   
-     # Detect blobs.
-     keypoints = detector.detect(thresholded_image)
-   
-     return keypoints
-   */
+  if (cv::mean(image)[0] < 1.1) {
+    image = image * 255.0;
+  }
   
-  return processedMask;
+  if (!(image.type() == CV_8U)) {
+    NSLog(@"Log: Type non-conforming!");
+    cv::Mat newIntImage;
+    image.convertTo(newIntImage, CV_8U);
+    image = newIntImage;
+  }
+  
+  cv::Ptr<cv::SimpleBlobDetector> detector = cv::SimpleBlobDetector::create(params);
+  std::vector<cv::KeyPoint> keypoints;
+  
+  detector->detect(image, keypoints);
+  
+  return keypoints;
 }
 
-- (cv::Mat) drawKeypoints:(cv::Mat) keypoints onImage:(cv::Mat) image {
-  cv::Mat processedMask;
+- (cv::Mat) drawKeypoints:(std::vector<cv::KeyPoint>) keypoints onImage:(cv::Mat) image {
   
-  // cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS
-  // ensures the size of the circle corresponds to the size of blob
+  cv::Mat imageWithKeypoints;
   
-  /* TODO: To implement this method!
-   def draw_keypoints(keypoints, image):
-     # cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS ensures the size of the circle corresponds to the size of blob
-     return cv2.drawKeypoints(image, keypoints, np.array([]), (0,0,255), cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
-   */
+  // cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS ensures the size of the circle corresponds to the size of blob
+  cv::drawKeypoints(image, keypoints, imageWithKeypoints, cv::Scalar(255,0,0), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
   
-  return processedMask;
+  return imageWithKeypoints;
 }
 
-- (NSString *) getImageMask:(UIImage *) image {
+- (NSString *) getProcessedImage:(UIImage *) image {
+  
   // converting UIImage to grayed OpenCV format - Mat
   cv::Mat matImage = [self convertUIImageToCVMat:image];
   cv::Mat matImageGrey;
@@ -225,46 +224,64 @@ RCT_EXPORT_METHOD(getTestResults:(NSString *)imageAsBase64 callback:(RCTResponse
   // getting thresholded image mask and denoise
   cv::Mat thresholdMask;
   cv::adaptiveThreshold(matImageGrey, thresholdMask, 255.0, cv::ADAPTIVE_THRESH_MEAN_C, cv::THRESH_BINARY_INV, 13.0, 2.0);
-  cv::Mat denoisedMask = [self denoise:thresholdMask];
+  thresholdMask = [self denoise:thresholdMask];
+  cv::Mat smoothedMask = [self smoothOut:thresholdMask];
   
-  return [self encodeImageToBase64: [self UIImageFromCVMat: denoisedMask]];
-}
-
-- (NSString *) getTestResults:(UIImage *) image {
+  std::vector<cv::KeyPoint> circlesDetected = [self detectSmallestCircle: smoothedMask];
   
-  /* TODO: To implement this method!
-   
-   // Get circle and crop with bounding rect, then send image to server.
-   
-   circles_detected = detect_smallest_circle(opened_sm)
-   
-   if len(circles_detected) < 1:
-   circles_detected = detect_smallest_circle(opened_mask)
-   if len(circles_detected) < 1:
-   #print("Failed to detect circle!")
-   return img
-   
-   img_with_circle = draw_keypoints(circles_detected, opened_mask)
-   
-   dots_detected = detect_dot(opened_mask, circles_detected[0].pt, circles_detected[0].size/2)
-   
-   img_with_dots = draw_keypoints(dots_detected, opened_mask)
-   
-   # Show keypoints
-   cv2.imshow("img_with_circle", img_with_circle)
-   cv2.imshow("img_with_dots", img_with_dots)
-   */
-  return @"hello";
+  if (circlesDetected.size() < 1) {
+    circlesDetected = [self detectSmallestCircle: thresholdMask];
+  }
+  
+  if (circlesDetected.size() < 1) {
+    NSLog(@"Error: Failed to detect Circle of Interest!");
+    return [self encodeImageToBase64:[self UIImageFromCVMat:smoothedMask withOrientation:image.imageOrientation]];
+    //return @"{\"error\" : \"Failed to detect Circle of Interest!\"}";
+  }
+  
+  cv::Point2f centerOfCircle = circlesDetected[0].pt;
+  float radiusOfCircle = circlesDetected[0].size/2;
+  
+  NSLog(@"Log: Original Radius of Circle is %f", radiusOfCircle);
+  
+  if (radiusOfCircle < 200) {
+    radiusOfCircle = 200;
+  }
+  
+  NSLog(@"Log: Radius of Circle is %f", radiusOfCircle);
+  
+  cv::Rect boundingRect(cvFloor(centerOfCircle.x - radiusOfCircle), cvFloor(centerOfCircle.y - radiusOfCircle), cvCeil(2 * radiusOfCircle), cvCeil(2 * radiusOfCircle));
+  
+  cv::Mat cropped(thresholdMask, boundingRect);
+  cv::Mat maskROI;
+  cropped.copyTo(maskROI);
+  
+  cv::Mat imageWithDetectedCircles = [self drawKeypoints:circlesDetected onImage:smoothedMask];
+  
+  /*std::vector<cv::KeyPoint> dotsDetected = [self detectDots:thresholdMask aroundCenter:centerOfCircle withRadius:radiusOfCircle];
+  cv::Mat imageWithDetectedDots = [self drawKeypoints:dotsDetected onImage:thresholdMask];//*/
+  
+  return [self encodeImageToBase64:[self UIImageFromCVMat:imageWithDetectedCircles withOrientation:image.imageOrientation]];
 }
-
 
 
 // MARK: - Utility Functions for Image Type Conversions
 
 - (cv::Mat)convertUIImageToCVMat:(UIImage *)image {
   CGColorSpaceRef colorSpace = CGImageGetColorSpace(image.CGImage);
-  CGFloat cols = image.size.width;
-  CGFloat rows = image.size.height;
+  CGFloat cols, rows;
+  
+  NSLog(@"Image (h, w): (%f, %f)", image.size.height, image.size.width);
+  NSLog(@"%ld", (long)image.imageOrientation);
+  
+  if  (image.imageOrientation == UIImageOrientationLeft
+       || image.imageOrientation == UIImageOrientationRight) {
+    cols = image.size.height;
+    rows = image.size.width;
+  } else {
+    cols = image.size.width;
+    rows = image.size.height;
+  }
   
   cv::Mat cvMat(rows, cols, CV_8UC4); // 8 bits per component, 4 channels (color channels + alpha)
   
@@ -283,7 +300,7 @@ RCT_EXPORT_METHOD(getTestResults:(NSString *)imageAsBase64 callback:(RCTResponse
   return cvMat;
 }
 
--(UIImage *)UIImageFromCVMat:(cv::Mat)cvMat
+-(UIImage *)UIImageFromCVMat:(cv::Mat)cvMat withOrientation:(UIImageOrientation) orientation
 {
   NSData *data = [NSData dataWithBytes:cvMat.data length:cvMat.elemSize()*cvMat.total()];
   CGColorSpaceRef colorSpace;
@@ -307,7 +324,7 @@ RCT_EXPORT_METHOD(getTestResults:(NSString *)imageAsBase64 callback:(RCTResponse
                                       kCGRenderingIntentDefault                   //intent
                                       );
   // Getting UIImage from CGImage
-  UIImage *finalImage = [UIImage imageWithCGImage:imageRef];
+  UIImage *finalImage = [UIImage imageWithCGImage:imageRef scale:1.0 orientation:orientation];
   CGImageRelease(imageRef);
   CGDataProviderRelease(provider);
   CGColorSpaceRelease(colorSpace);
@@ -321,6 +338,7 @@ RCT_EXPORT_METHOD(getTestResults:(NSString *)imageAsBase64 callback:(RCTResponse
 }
 
 - (NSString *)encodeImageToBase64:(UIImage *)image {
+  //return [UIImageJPEGRepresentation(image, 1.0) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
   return [UIImagePNGRepresentation(image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
 }
 

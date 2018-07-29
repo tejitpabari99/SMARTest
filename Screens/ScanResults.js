@@ -5,7 +5,7 @@ import OpenCV from './OpenCV';
 
 class ScanResults extends Component {
   static navigationOptions = {
-    title: 'Scan Results',
+    title: 'Scan Results'
   };
 
   constructor() {
@@ -13,6 +13,7 @@ class ScanResults extends Component {
     this.state = {
       previewImageData: '',
       enablePreview: false,
+      canContinue: false
    };
   }
 
@@ -79,17 +80,29 @@ class ScanResults extends Component {
   takePicture = async function() {
     if (this.camera) {
       const options = { quality: 0.5, base64: true };
-      const data = await this.camera.takePictureAsync(options)
-      this.checkForBlurryImage(data.base64).then(blurryPhoto => {
+      const data = await this.camera.takePictureAsync(options);
+      alert("Processing... Please wait.");
+      this.presentBase64ImageData(data.base64);
+      /*this.checkForBlurryImage(data.base64).then(blurryPhoto => {
         if (blurryPhoto) {
           alert('Photo is blurred!\nPlease take a new one.');
-          this.retake();
         }
       }).catch(err => {
         console.log('err', err)
-      });
-      this.getImageMask(data.base64).then(mask => {
-        this.presentBase64ImageData(mask);
+      });*/
+      this.getProcessedImage(data.base64).then(processedImageInBase64 => {
+        alert("Processed image is back!");
+        this.presentBase64ImageData(processedImageInBase64);
+        
+        /*console.log("Results: "+results);
+        JSON.parse(results);
+        if (results.error != null ) {
+          alert(results.error + "Please take a new one.");
+          this.retake();
+        }*/
+        // Store results with Firebase
+        this.state.canContinue = true;
+        //this.forceUpdate();
       }).catch(err => {
         console.log('err', err);
       });
@@ -112,32 +125,16 @@ class ScanResults extends Component {
     });
   }
 
-  getImageMask(imageAsBase64) {
+  getProcessedImage(imageAsBase64) {
     return new Promise((resolve, reject) => {
       if (Platform.OS === 'android') {
-        OpenCV.getImageMask(imageAsBase64, error => {
+        OpenCV.getProcessedImage(imageAsBase64, error => {
           // error handling
         }, msg => {
           resolve(msg);
         });
       } else {
-        OpenCV.getImageMask(imageAsBase64, (error, dataArray) => {
-          resolve(dataArray[0]);
-        });
-      }
-    });
-  }
-
-  getTestResults(imageAsBase64) {
-    return new Promise((resolve, reject) => {
-      if (Platform.OS === 'android') {
-        OpenCV.getTestResults(imageAsBase64, error => {
-          // error handling
-        }, msg => {
-          resolve(msg);
-        });
-      } else {
-        OpenCV.getTestResults(imageAsBase64, (error, dataArray) => {
+        OpenCV.getProcessedImage(imageAsBase64, (error, dataArray) => {
           resolve(dataArray[0]);
         });
       }
@@ -145,8 +142,8 @@ class ScanResults extends Component {
   }
 
   presentBase64ImageData(imgData) {
-    this.state.enablePreview = true;
     this.state.previewImageData = imgData;
+    this.state.enablePreview = true;
     this.forceUpdate();
   }
 
@@ -157,16 +154,10 @@ class ScanResults extends Component {
   }
 
   continue() {
-    if (this.state.previewImageData == "") {
-      alert("Error: Please take another image!");
-      retake();
+    if (!this.state.canContinue) {
+      alert("Please take a qualified photo to continue!");
       return;
     }
-    this.getTestResults(this.state.previewImageData).then(results => {
-      // Store results with Firebase
-    }).catch(err => {
-      console.log('err', err);
-    });
     this.props.navigation.navigate ('PreResults');
   }
 
@@ -213,6 +204,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: '2%',
     width: '100%',
+    maxWidth: 300,
     marginBottom: 20,
     alignSelf: 'center',
     flexDirection: 'row',
@@ -221,7 +213,7 @@ const styles = StyleSheet.create({
   preview: {
     position: 'absolute',
     alignSelf: 'center',
-    top: '8%',
+    top: '5%',
     width: '80%',
     height: '80%'
   }
