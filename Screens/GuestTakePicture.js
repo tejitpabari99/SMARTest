@@ -57,7 +57,7 @@ class GuestTakePicture extends Component {
             permissionDialogMessage={'We need your permission to use your camera phone'}
         />
         <Image
-          source={require("../Images/ScanOverlayRectangle.png")}
+          source={require("../Images/ScanOverlayRectangle_2.png")}
           style={styles.overlayRect}
           resizeMode="contain"
         />
