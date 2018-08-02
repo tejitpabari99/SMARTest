@@ -4,7 +4,7 @@ import { TitleText, Box, Picture, GreenRoundButton, TextBox } from "./Styles";
 
 class HomeScreen extends Component {
   static navigationOptions = {
-    title: "SMARTest",
+    title: "SMARTtest",
     // headerLeft: null,
     // headerRight: (
     //   <Button
@@ -17,17 +17,17 @@ class HomeScreen extends Component {
   render() {
     return (
         <Box>
-          <TitleText>SMARTTest</TitleText>
+          <TitleText>SMARTtest</TitleText>
 
           <Picture
             source={require("../Images/loginPic.jpg")}
           />
           <TextBox />
-          <TextBox>SmartTest is a companion app to rapid HIV and Syphillis tests. </TextBox>
-          <TextBox>SmartTest will walk you through the testing process, interpret your result and provide resources for the next steps. </TextBox>
+          <TextBox>SMARTtest is a companion app to rapid HIV and Syphilis tests. </TextBox>
+          <TextBox>SMARTtest will walk you through the testing process, interpret your result and provide resources for the next steps. </TextBox>
           <TextBox />
 
-          <GreenRoundButton onPress={() => this.props.navigation.navigate("Results")} >
+          <GreenRoundButton onPress={() => this.props.navigation.navigate("TestSelection")} >
             Get Started
           </GreenRoundButton>
 

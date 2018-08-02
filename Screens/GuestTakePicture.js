@@ -5,6 +5,23 @@ class GuestTakePicture extends Component {
    static navigationOptions = {
     title: 'Guest Take Picture',
   };
+
+  checkUserSelection = () => {
+    if (global.userSelection === 2) {
+      return (
+        <Button onPress= {() => this.props.navigation.navigate ('Results')}
+          title="Results"/>
+      );
+    }
+    else {
+      return (
+        <Button onPress= {() => this.props.navigation.navigate ('GuestResults')}
+          title="Results"/>
+      );
+
+    }
+  };
+
   render() {
     return (
       <View>
@@ -30,8 +47,8 @@ class GuestTakePicture extends Component {
         <Text>                                                                </Text>
         <Button onPress= {() => this.props.navigation.navigate ('GuestTakePicture')}
           title="Retake"/>
-        <Button onPress= {() => this.props.navigation.navigate ('GuestResults')}
-          title="Results"/>
+        {this.checkUserSelection()}
+
       </View>
     );
   }

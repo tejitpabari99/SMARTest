@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as firebase from 'firebase';
 import { View } from 'react-native';
-import { TitleText, SuccessText, Box, GreenBlockButton, BlueBlockButton, GreenRoundButton, TextBox, TextBoxTitle, Card, CardSection, CardText } from "./Styles";
+import { TitleText, SuccessText, Box, GreenBlockButton, BlueBlockButton, GreenRoundButton, TextBox, TextBoxTitle, LeftTextBox, Card, CardSection, CardText } from "./Styles";
 
 
 const temp_hiv = Math.floor(Math.random() * 2);
@@ -27,6 +27,16 @@ class Results extends Component {
     location: null,
     countSave: 0
   }
+
+  checkUserSelection = () => {
+    if (global.userSelection === 2) {
+      return (
+        <GreenBlockButton onPress={() => this.props.navigation.navigate("GuestResults")} >
+          Partner Results
+        </GreenBlockButton>
+      );
+    }
+  };
 
   // predict_json = (project, model, instance, version) => {
   //   var service = googleapiclient.discovery.build('ml', 'v1');
@@ -183,10 +193,13 @@ class Results extends Component {
         <BlueBlockButton onPress={() => this.props.navigation.navigate("Resources")} >
           Resources
         </BlueBlockButton>
-
+        <LeftTextBox />
+        {this.checkUserSelection()}
+        <LeftTextBox />
+        <LeftTextBox />
         <TextBoxTitle>Note</TextBoxTitle>
-        <TextBox>Any positive results should be confirmed by a healthcare provider.</TextBox>
-        <TextBox>Negative results may not detect a recent infection. For more information, click on the resources tab.</TextBox>
+        <LeftTextBox>Any positive results should be confirmed by a healthcare provider.</LeftTextBox>
+        <LeftTextBox>Negative results may not detect a recent infection. For more information, click on the resources tab.</LeftTextBox>
 
         <GreenRoundButton onPress={() => this.props.navigation.navigate("TestSelection")} >
           New Test

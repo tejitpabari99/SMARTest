@@ -12,7 +12,6 @@ class Instructions extends Component {
       <Box>
         <TitleText>Material List</TitleText>
 
-        <TextBoxTitle>INSTI MULTIPLEX Kit Material</TextBoxTitle>
         <CenterTextBox />
         <Picture source={require("../Images/membraneUnit.jpg")} />
         <CenterTextBox>Membrane Unit</CenterTextBox>
@@ -27,7 +26,7 @@ class Instructions extends Component {
         <CenterTextBox>Solution 3 Vial</CenterTextBox>
         <CenterTextBox />
         <Picture source={require("../Images/lancet.jpg")} />
-        <CenterTextBox>Single use Lancet</CenterTextBox>
+        <CenterTextBox>Single-use Lancet</CenterTextBox>
         <CenterTextBox />
         <Picture source={require("../Images/alcohol.jpg")} />
         <CenterTextBox>Alcohol Swab</CenterTextBox>

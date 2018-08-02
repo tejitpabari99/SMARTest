@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
+import { TitleText, Box, TextBoxTitle, GreenRoundButton, LeftTextBox, Picture } from "./Styles";
 
 class Instructions12 extends Component {
   static navigationOptions = {
@@ -19,13 +19,13 @@ class Instructions12 extends Component {
       <Box>
         <TitleText>Running the Test - 2</TitleText>
 
-        <CenterTextBox />
+        <LeftTextBox />
         <Picture source={require("../Images/13A.jpg")} />
-        <CenterTextBox>Pick up solution tube #3 and mix it well.</CenterTextBox>
-        <CenterTextBox />
+        <LeftTextBox>Pick up solution tube #3 and mix it well.</LeftTextBox>
+        <LeftTextBox />
         <Picture source={require("../Images/13B.png")} />
-        <CenterTextBox>Remove the cap and pour on to the center of the test membrane.</CenterTextBox>
-        <CenterTextBox />
+        <LeftTextBox>Remove the cap and pour on to the center of the test membrane.</LeftTextBox>
+        <LeftTextBox />
 
         <GreenRoundButton onPress={() =>  this.checkUserSelection()} >
           Next

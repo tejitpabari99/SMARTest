@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
+import { TitleText, Box, TextBoxTitle, GreenRoundButton, LeftTextBox, Picture } from "./Styles";
 
 class Instructions8 extends Component {
   static navigationOptions = {
@@ -10,12 +10,12 @@ class Instructions8 extends Component {
       <Box>
         <TitleText>Collecting Blood</TitleText>
 
-        <CenterTextBox />
+        <LeftTextBox />
 
         <Picture source={require("../Images/9.png")} />
-        <CenterTextBox>Squeeze your finger to extract blood.</CenterTextBox>
-        <CenterTextBox>Grab solution tube #1 and drop the blood directly into the tube. Make sure you get a few drops of blood into the tube.</CenterTextBox>
-        <CenterTextBox />
+        <LeftTextBox>Squeeze your finger to extract blood.</LeftTextBox>
+        <LeftTextBox>Grab solution tube #1 and drop the blood directly into the tube. Make sure you get a few drops of blood into the tube.</LeftTextBox>
+        <LeftTextBox />
 
         <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions9")} >
           Next

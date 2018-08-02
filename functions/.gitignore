@@ -1,2 +1,4 @@
 sendgrid.env
 twilio.js
+GOOGLE_APPLICATION_CREDENTIALS.json
+gapi.env

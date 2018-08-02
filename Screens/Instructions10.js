@@ -1,22 +1,22 @@
 import React, { Component } from "react";
-import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
+import { TitleText, Box, TextBoxTitle, GreenRoundButton, LeftTextBox, Picture } from "./Styles";
 
 class Instructions10 extends Component {
   static navigationOptions = {
-    title: "Simple Transfer"
+    title: "Sample Transfer"
   };
   render() {
     return (
       <Box>
-        <TitleText>Simple Transfer</TitleText>
+        <TitleText>Sample Transfer</TitleText>
 
-        <CenterTextBox />
+        <LeftTextBox />
         <Picture source={require("../Images/11A.png")} />
-        <CenterTextBox>Recap solution tube #1 and mix contents by inverting several times.</CenterTextBox>
-        <CenterTextBox />
+        <LeftTextBox>Recap solution tube #1 and mix contents by inverting several times.</LeftTextBox>
+        <LeftTextBox />
         <Picture source={require("../Images/11B.png")} />
-        <CenterTextBox>pour the contents to the center of the test membrane.</CenterTextBox>
-        <CenterTextBox />
+        <LeftTextBox>Pour the contents to the center of the test membrane.</LeftTextBox>
+        <LeftTextBox />
 
         <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions11")} >
           Next

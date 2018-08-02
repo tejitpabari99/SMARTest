@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
+import { TitleText, Box, TextBoxTitle, GreenRoundButton, LeftTextBox, Picture } from "./Styles";
 
 class Instructions2 extends Component {
   static navigationOptions = {
@@ -9,10 +9,10 @@ class Instructions2 extends Component {
     return (
       <Box>
         <TitleText>Preparing Gauze</TitleText>
-        <CenterTextBox />
+        <LeftTextBox />
         <Picture source={require("../Images/2.png")} />
-        <CenterTextBox>Open Gauze packet and place it nearby for future uses</CenterTextBox>
-        <CenterTextBox />
+        <LeftTextBox>Open Gauze packet and place it nearby for future use.</LeftTextBox>
+        <LeftTextBox />
 
         <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions3")} >
           Next

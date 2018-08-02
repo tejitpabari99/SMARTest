@@ -74,7 +74,7 @@ class GuestResults extends Component {
         <TextBox />
         <TextBoxTitle>Note</TextBoxTitle>
         <TextBox>Any positive results should be confirmed by a healthcare provider.</TextBox>
-        <TextBox>Negative results may not detect a recent infection. For more information, click on the resources tab.</TextBox>
+        <TextBox>Negative results may not detect a recent infection. For more information click on the resources tab.</TextBox>
         <TextBox />
         <GreenRoundButton onPress={() => this.props.navigation.navigate("TestSelection")} >
           New Test

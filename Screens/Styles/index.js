@@ -5,7 +5,8 @@ export * from "./TextBoxTitle";
 export * from "./TextBox";
 export * from "./SuccessText";
 export * from "./ErrorText";
-export * from "./CenterTextBox"
+export * from "./CenterTextBox";
+export * from "./LeftTextBox"
 export * from "./TextInput";
 export * from "./Results/Card";
 export * from "./Results/CardSection";

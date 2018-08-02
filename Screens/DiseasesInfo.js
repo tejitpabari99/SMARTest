@@ -11,7 +11,7 @@ class DiseasesInfo extends Component {
     return (
       <Box>
         <TitleText>Diseases Info</TitleText>
-        <TextBox>Click on the links to learn more about HIV and syphillis.</TextBox>
+        <TextBox>Click on the links to learn more about HIV and syphilis.</TextBox>
 
         <GreenBlockButton onPress={() => Linking.openURL('https://www.cdc.gov/hiv/basics/index.html')} >
           HIV Information

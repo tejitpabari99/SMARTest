@@ -12,7 +12,7 @@ class TestSelection extends Component {
         <TitleText>SELECT A TEST BELOW</TitleText>
         <TextBox />
         <GreenBlockButton onPress={() => this.props.navigation.navigate("TestSetup")} >
-          INSTI HIV & SYPHILLIS TEST
+          INSTI HIV & SYPHILIS TEST
         </GreenBlockButton>
       </Box>
     );
