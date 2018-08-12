@@ -4,6 +4,13 @@ import {Spinner, Container} from 'native-base';
 import {Logo} from "./Styles"
 
 class SplashScreen extends Component {
+
+  static navigationOptions = {
+    title: "",
+    headerLeft: null,
+    headerRight: null,
+  };
+  
   constructor(props){
     super(props);
     this.state = {

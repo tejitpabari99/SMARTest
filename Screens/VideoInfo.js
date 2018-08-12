@@ -18,7 +18,7 @@ class VideoInfo extends Component {
         <TextBox>Then you will see step-by-step instructions to run the test yourself.</TextBox>
         <TextBox />
 
-        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Video")} >
+        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("VideoPlayer2")} >
           Next
         </GreenRoundButton>
 

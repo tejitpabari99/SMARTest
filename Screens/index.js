@@ -6,7 +6,7 @@ export * from './HomeScreen';
 export * from './TestSelection';
 export * from './TestSetup';
 export * from './VideoInfo';
-export * from './Video';
+export * from './VideoPlayer2';
 export * from './Instructions';
 export * from './Instructions2';
 export * from './Instructions3';

@@ -5,6 +5,11 @@ import * as firebase from "firebase";
 import { GreenRoundButton, BlueRoundButton, ErrorText, TextInput, Logo, ForgotPassword } from './Styles';
 
 class LoginScreen extends Component {
+  static navigationOptions = {
+    title: "",
+    headerLeft: null,
+    headerRight: null,
+  };
   constructor(props) {
     super(props);
     this.state = {

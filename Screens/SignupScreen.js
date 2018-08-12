@@ -5,6 +5,12 @@ import * as firebase from "firebase";
 import { GreenRoundButton, BlueRoundButton, ErrorText, TextInput, Logo } from './Styles';
 
 class SignupScreen extends Component {
+
+  static navigationOptions = {
+    title: "",
+    headerRight: null,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -14,10 +20,6 @@ class SignupScreen extends Component {
       isLoading: false
     };
   }
-
-  static navigationOptions = {
-    title: "Sign up"
-  };
 
   signupUser = () => {
     if (this.state.password.length < 8) {

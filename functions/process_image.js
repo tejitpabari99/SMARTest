@@ -1,11 +1,8 @@
-const { google } = require("googleapis")
-// (
-//   process.env.GOOGLE_APPLICATION_CREDENTIALS
-// );
+const {google} = require("googleapis");
+const path = require('path');
 
 predict_json = (image) => {
-  console.log(process.env.GOOGLE_APPLICATION_CREDENTIALS);
-  auth(function(err, authClient) {
+  auth( (err, authClient) => {
     const instance = {
       image: image
     };
@@ -26,7 +23,7 @@ predict_json = (image) => {
             instances: [instance]
           }
         },
-        function(err, result) {
+        (err, result) => {
           if (err) {
             return callback(err);
           }
@@ -75,8 +72,12 @@ predict_json = (image) => {
   });
 };
 
-function auth(callback) {
-  google.auth.getApplicationDefault(function(err, authClient) {
+async function auth(callback) {
+  const authClient = await google.auth.getClient({
+    keyFile: path.join(__dirname, 'GOOGLE_APPLICATION_CREDENTIALS.json'),
+    scopes: 'https://www.googleapis.com/auth/drive.readonly'
+  });
+  google.auth.getApplicationDefault( (err, authClient) => {
     if (err) {
       return callback(err);
     }
@@ -85,7 +86,7 @@ function auth(callback) {
         "https://www.googleapis.com/auth/cloud-platform"
       ]);
     }
-    callback(null, authClient);
+    return callback(null, authClient);
   });
 }
 

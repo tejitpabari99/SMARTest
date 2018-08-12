@@ -1,10 +1,17 @@
 import React, { Component } from "react";
-
+import {Button} from 'react-native'
 import { TitleText, Box, Picture, GreenRoundButton, TextBox } from "./Styles";
+import firebase from 'firebase';
 
 class HomeScreen extends Component {
-  static navigationOptions = {
-    title: "SMARTtest",
+  static navigationOptions = ({ navigation }) => {
+    const {state, setParams} = navigation;
+
+    return {
+      title: "SMARTtest",
+      headerLeft: null,
+    }
+
     // headerLeft: null,
     // headerRight: (
     //   <Button

@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { StyleSheet ,Text, View} from 'react-native';
 import {StackNavigator} from 'react-navigation';
 import * as firebase from "firebase";
+import {Button} from 'react-native'
 
 import './Global/global.js'
 
 import { SplashScreen, LoginScreen, SignupScreen, ForgotPassword,
   HomeScreen, TestSelection, TestSetup,
-  VideoInfo, Video, Instructions, Instructions2, Instructions3, Instructions4, Instructions5, Instructions6, Instructions7, Instructions8, Instructions9, Instructions10, Instructions11, Instructions12,
+  VideoInfo, VideoPlayer2, Instructions, Instructions2, Instructions3, Instructions4, Instructions5, Instructions6, Instructions7, Instructions8, Instructions9, Instructions10, Instructions11, Instructions12,
   TakePicture, GuestTakePicture, Results, GuestResults, SavedResults,
   Resources, TestAccuracy, WindowPeriod, Share, NearbyClinics, DiseasesInfo
 } from './Screens';
@@ -40,7 +41,7 @@ const AppNavigator = StackNavigator({
   TestSelection : {screen : TestSelection},
   TestSetup : {screen : TestSetup},
   VideoInfo : {screen : VideoInfo},
-  Video : {screen : Video},
+  VideoPlayer2 : {screen : VideoPlayer2},
   Instructions : {screen : Instructions},
   Instructions2 : {screen : Instructions2},
   Instructions3 : {screen : Instructions3},
@@ -64,7 +65,24 @@ const AppNavigator = StackNavigator({
   Share: {screen : Share},
   NearbyClinics: {screen : NearbyClinics},
   DiseasesInfo: {screen : DiseasesInfo},
-})
+},
+{
+  navigationOptions: ({ navigation}) => ({
+    headerRight: (
+      <Button
+        onPress={() => firebase.auth().signOut()
+          .then(function() {
+            navigation.navigate('LoginScreen');
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+        }
+        title="Signout"
+      />
+    ),
+  })
+});
 
 const styles = StyleSheet.create({
     container:{
