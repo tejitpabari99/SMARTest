@@ -26,6 +26,7 @@ class TakePicture extends Component {
 
   checkUserSelection = () => {
     if (global.userSelection === 2) {
+      console.log(this.state.previewImageData)
       return (
         <TouchableOpacity
             onPress={() => this.props.navigation.navigate("GuestTakePicture")}
@@ -36,6 +37,7 @@ class TakePicture extends Component {
       );
     }
     else {
+      console.log(this.state.previewImageData)
       return (
         <TouchableOpacity
             onPress={() => this.props.navigation.navigate("Results")}

@@ -3,6 +3,7 @@ import { StyleSheet ,Text, View} from 'react-native';
 import {StackNavigator} from 'react-navigation';
 import * as firebase from "firebase";
 import {Button} from 'react-native'
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 import './Global/global.js'
 
@@ -68,6 +69,10 @@ const AppNavigator = StackNavigator({
 },
 {
   navigationOptions: ({ navigation}) => ({
+    headerLeft: (
+      <Ionicons name='ios-arrow-back' />
+      <Text>  Back<Text>
+    )
     headerRight: (
       <Button
         onPress={() => firebase.auth().signOut()

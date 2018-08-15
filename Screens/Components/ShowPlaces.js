@@ -26,10 +26,10 @@ class ShowPlaces extends Component {
       return (
         <View>
           <Text />
-          <Text>Name: {places[obj].name}</Text>
-          <Text>Address: {places[obj].address}</Text>
+          <Text>{places[obj].name}</Text>
+          <Text>{places[obj].address}</Text>
           <Text>
-            Website:{' '}
+
             <Text
               style={{ textDecorationLine: 'underline', color: '#1f22b3'}}
               onPress={() => Linking.openURL(places[obj].website)}>
@@ -37,7 +37,6 @@ class ShowPlaces extends Component {
             </Text>
           </Text>
           <Text>
-            Phone Number:
             <Autolink
               text=  {places[obj].number}
               phone = "tel:{places[obj].number}"

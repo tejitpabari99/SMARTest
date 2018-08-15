@@ -1,5 +1,15 @@
 {
-    "expo": {
-        "sdkVersion": "27.0.0"
+   "expo": {
+    "name": "SMARTtest App",
+    "icon": "./Images/icon.png",
+    "version": "1.0.0",
+    "slug": "your-app-slug",
+    "sdkVersion": "27.0.0",
+    "ios": {
+      "bundleIdentifier": "com.columbia.smarttestapp"
+    },
+    "android": {
+      "package": "com.columbia.smarttestapp"
     }
-}
+   }
+ }
