@@ -69,10 +69,7 @@ const AppNavigator = StackNavigator({
 },
 {
   navigationOptions: ({ navigation}) => ({
-    headerLeft: (
-      <Ionicons name='ios-arrow-back' />
-      <Text>  Back<Text>
-    )
+    headerBackTitle: 'Back',
     headerRight: (
       <Button
         onPress={() => firebase.auth().signOut()
