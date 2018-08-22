@@ -3,31 +3,34 @@ import {Text} from "react-native";
 import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture,LeftTextBox } from "./Styles";
 import { Container, Header, Content, Footer, FooterTab,Button } from 'native-base';
 
-class Instructions8 extends Component {
+class BlueLancet extends Component {
   static navigationOptions = {
-    title: "Collecting Blood"
+    title: "Pulling Blue Lancet"
   };
   render() {
     return (
       <Box>
-        <TitleText>Collecting Blood</TitleText>
+        <TitleText>Pulling Blue Lancet</TitleText>
 
         <LeftTextBox />
-
-        <Picture source={require("../Images/9.png")} />
-        <LeftTextBox>         Squeeze your finger to extract blood.</LeftTextBox>
+        <LeftTextBox>     Pull the clear cap from the top of the blue  </LeftTextBox>
+        <LeftTextBox>                                   lancet. </LeftTextBox>
+        <Text></Text>
+        <Picture source={require("../Images/blueLancet.jpeg")} />
         <Text></Text>
 
-        <LeftTextBox>     Grab solution tube #1 and drop the blood directly into the tube. Make sure you get a few </LeftTextBox>
-        <LeftTextBox>              drops of blood into the tube.</LeftTextBox>
+        <LeftTextBox>             Place it nearby for future use.</LeftTextBox>
         <LeftTextBox />
 
-        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions9")} >
+        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions11")} >
           Next
         </GreenRoundButton>
         <Text></Text>
-          <LeftTextBox>        Careful not to let the blood touch the rim </LeftTextBox>
-          <LeftTextBox>                               of the tube.</LeftTextBox>
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
         <Text></Text>
         <Text></Text>
         <Text></Text>
@@ -48,14 +51,15 @@ class Instructions8 extends Component {
                                     <Text>Resources</Text>
                                     </Button>
 
-              <Button onPress={() => this.props.navigation.navigate("SavedResults")}>
+              <Button onPress={() => this.props.navigation.navigate("Results")}>
                                     <Text>Results</Text>
                                     </Button>
 
-      </FooterTab>
+        </FooterTab>
+
       </Box>
     );
   }
 }
 
-export { Instructions8 };
+export { BlueLancet };

@@ -13,9 +13,11 @@ class VideoInfo extends Component {
         <TitleText>Video Info</TitleText>
 
         <TextBox />
-        <TextBox>First you will see a short instructional video that provides an overview of the test.</TextBox>
+        <TextBox>First you will see a short instructional video that </TextBox>
+        <TextBox>         provides an overview of the test.</TextBox>
         <TextBox />
-        <TextBox>Then you will see step-by-step instructions to run the test yourself.</TextBox>
+        <TextBox>Then you will see step-by-step instructions to run</TextBox>
+        <TextBox>                         the test yourself.</TextBox>
         <TextBox />
 
         <GreenRoundButton onPress={() =>  this.props.navigation.navigate("VideoPlayer2")} >

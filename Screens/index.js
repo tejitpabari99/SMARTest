@@ -30,3 +30,5 @@ export * from './WindowPeriod';
 export * from './Share';
 export * from './NearbyClinics';
 export * from './DiseasesInfo';
+export * from './NewLancetAddition';
+export * from './BlueLancet';
