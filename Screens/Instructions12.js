@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { TitleText, Box, TextBoxTitle, GreenRoundButton, LeftTextBox, Picture } from "./Styles";
+import {Text} from "react-native";
+import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture,LeftTextBox } from "./Styles";
+import { Container, Header, Content, Footer, FooterTab,Button } from 'native-base';
 
 class Instructions12 extends Component {
   static navigationOptions = {
@@ -21,16 +23,33 @@ class Instructions12 extends Component {
 
         <LeftTextBox />
         <Picture source={require("../Images/13A.jpg")} />
-        <LeftTextBox>Pick up solution tube #3 and mix it well.</LeftTextBox>
+        <LeftTextBox>       Pick up solution tube #3 </LeftTextBox>
         <LeftTextBox />
         <Picture source={require("../Images/13B.png")} />
-        <LeftTextBox>Remove the cap and pour on to the center of the test membrane.</LeftTextBox>
+        <LeftTextBox>Remove the cap and pour on to the center of</LeftTextBox>
+          <LeftTextBox>                       the test membrane.</LeftTextBox>
         <LeftTextBox />
 
         <GreenRoundButton onPress={() =>  this.checkUserSelection()} >
           Next
         </GreenRoundButton>
+        <Text></Text>
 
+
+        <FooterTab>
+              <Button onPress={() => this.props.navigation.navigate("HomeScreen")}>
+                                    <Text>New Test</Text>
+                                    </Button>
+
+              <Button onPress={() => this.props.navigation.navigate("Resources")}>
+                                    <Text>Resources</Text>
+                                    </Button>
+
+              <Button onPress={() => this.props.navigation.navigate("SavedResults")}>
+                                    <Text>Results</Text>
+                                    </Button>
+
+        </FooterTab>
       </Box>
     );
   }

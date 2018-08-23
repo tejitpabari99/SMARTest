@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-
+import {Text} from "react-native";
 import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
-
+import { Container, Header, Content, Footer, FooterTab,Button } from 'native-base';
 
 class Instructions extends Component {
   static navigationOptions = {
@@ -10,6 +10,7 @@ class Instructions extends Component {
   render() {
     return (
       <Box>
+
         <TitleText>Material List</TitleText>
 
         <CenterTextBox />
@@ -40,6 +41,27 @@ class Instructions extends Component {
         <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions2")} >
           Next
         </GreenRoundButton>
+        <Text></Text>
+        <Text></Text>
+
+
+
+        <FooterTab>
+                                    <Button onPress={() => this.props.navigation.navigate("HomeScreen")}>
+                                    <Text>New Test</Text>
+                                    </Button>
+
+                                  <Button onPress={() => this.props.navigation.navigate("Resources")}>
+                                    <Text>Resources</Text>
+                                    </Button>
+
+                                    <Button onPress={() => this.props.navigation.navigate("SavedResults")}>
+                                    <Text>Results</Text>
+                                    </Button>
+
+                                  </FooterTab>
+
+
 
       </Box>
 

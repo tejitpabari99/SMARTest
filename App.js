@@ -11,7 +11,7 @@ import { SplashScreen, LoginScreen, SignupScreen, ForgotPassword,
   HomeScreen, TestSelection, TestSetup,
   VideoInfo, VideoPlayer2, Instructions, Instructions2, Instructions3, Instructions4, Instructions5, Instructions6, Instructions7, Instructions8, Instructions9, Instructions10, Instructions11, Instructions12,
   TakePicture, GuestTakePicture, Results, GuestResults, SavedResults,
-  Resources, TestAccuracy, WindowPeriod, Share, NearbyClinics, DiseasesInfo
+  Resources, TestAccuracy, WindowPeriod, Share, NearbyClinics, DiseasesInfo, NewLancetAddition,BlueLancet
 } from './Screens';
 
 const firebaseConfig = {
@@ -34,10 +34,10 @@ export default class App extends React.Component {
 }
 
 const AppNavigator = StackNavigator({
-  SplashScreen : {screen : SplashScreen},
+  // SplashScreen : {screen : SplashScreen},
   LoginScreen : {screen : LoginScreen},
   SignupScreen : {screen : SignupScreen},
-  // ForgotPassword : {screen : ForgotPassword},
+  ForgotPassword : {screen : ForgotPassword},
   HomeScreen : {screen: HomeScreen},
   TestSelection : {screen : TestSelection},
   TestSetup : {screen : TestSetup},
@@ -66,6 +66,8 @@ const AppNavigator = StackNavigator({
   Share: {screen : Share},
   NearbyClinics: {screen : NearbyClinics},
   DiseasesInfo: {screen : DiseasesInfo},
+  NewLancetAddition: {screen :NewLancetAddition},
+  BlueLancet:{ screen:  BlueLancet}
 },
 {
   navigationOptions: ({ navigation}) => ({

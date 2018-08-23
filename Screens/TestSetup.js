@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 import { TitleText, Box, GreenSmallButton, BlueSmallButton, TextBox, TextBoxTitle } from "./Styles";
 
 class TestSetup extends Component {
@@ -36,10 +36,30 @@ class TestSetup extends Component {
         </View>
         <TextBox />
         <TextBox />
-        <TextBoxTitle>Note</TextBoxTitle>
-        <TextBox>{"'Just My Partner' will lead to the guest account mode where results cannot be saved."}</TextBox>
-        <TextBox>{"'Duo Test' mode will enable simultaneous testing (e.g you and your partner), however the partner's results cannot be saved."}</TextBox>
-        <TextBox />
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
+
+
+
+        <TextBoxTitle>                                  Note</TextBoxTitle>
+        <Text></Text>
+        <TextBox>{"'Just My Partner' will lead to the guest account "}</TextBox>
+         <TextBox>        {"mode where results cannot be saved."}</TextBox>
+         <Text></Text>
+        <TextBox>{"'Duo Test' mode will enable simultaneous testing (e.g., you and your partner),however the partner's"}</TextBox>
+        <TextBox>                  {"result cannot be saved."}</TextBox>
 
       </Box>
     );
