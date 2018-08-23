@@ -13,8 +13,12 @@ const tempResult = {
 const GOOGLE_APPLICATION_CREDENTIALS='./GOOGLE_APPLICATION_CREDENTIALS.json';
 
 class Results extends Component {
-  static navigationOptions = {
-    title: "Results"
+  static navigationOptions = ({ navigation }) => {
+    const {state, setParams} = navigation;
+    return {
+      title: "Results",
+      headerLeft: null,
+    }
   };
 
   state = {
@@ -30,50 +34,16 @@ class Results extends Component {
 
   checkUserSelection = () => {
     if (global.userSelection === 2) {
+      var newVar = this.props.navigation.state.params.newVar
       return (
-        <GreenBlockButton onPress={() => this.props.navigation.navigate("GuestResults")} >
+        <GreenBlockButton onPress={() => this.props.navigation.navigate("GuestResults", {newVar})} >
           Partner Results
         </GreenBlockButton>
       );
     }
   };
 
-  // predict_json = (project, model, instance, version) => {
-  //   var service = googleapiclient.discovery.build('ml', 'v1');
-  //   var name = `projects/${project}/models/${model}`;
-  //   if (version === 'None') {
-  //     name = name + `/versions/${version}`;
-  //   }
-  //   var response = service.projects().predict(
-  //     name=name,
-  //     body={'instances': instances}
-  //   ).execute()
-  //   console.log(response);
-  //   // if ()'error' in response:
-  //   //     raise RuntimeError(response['error'])
-  //   return response['predictions']
-  // }
-
-  // calculateResult = () => {
-  //   var sample_array = new Array(32);
-  //   for (var i = 0; i < 32; i++) {
-  //     sample_array[i] = new Array(32);
-  //     for(var j=0; j<32; j++){
-  //       sample_array[i][j] = 0;
-  //     }
-  //   }
-  //
-  //   const project = 'smartest-df9af';
-  //   const model = 'machinelearning';
-  //   const picture = '../Images/5.jpg';
-  //
-  //   const instance = {
-  //     'image': sample_array
-  //   }
-  //   const version = 'version1';
-  //   this.predict_json(project, model, instance, version)
-  // }
-  calculateResult = (result) => {
+  calculateResult = (userResult) => {
     var hiv, syphilis = '';
 
     var lat = 40.7999209;
@@ -84,18 +54,25 @@ class Results extends Component {
     var date = today.getMonth() + 1 + "-" + today.getDate() + "-" + today.getFullYear();
     var time = today.getTime();
 
-    if(result.hiv === 0) {
+    if(userResult === 0) {
       hiv = 'Negative';
+      syphilis = 'Negative'
     }
-    else {
+    else if(userResult === 1){
+      hiv = 'Negative';
+      syphilis = 'Positive'
+    }
+    else if(userResult === 2){
       hiv = 'Positive';
+      syphilis = 'Negative'
     }
-
-    if(syphilis === 0) {
-      syphilis = 'Negative';
+    else if(userResult === 3){
+      hiv = 'Positive';
+      syphilis = 'Positive'
     }
     else {
-      syphilis = 'Positive';
+      hiv = 'Invalid';
+      syphilis = 'Invalid'
     }
 
     this.setState({
@@ -106,23 +83,6 @@ class Results extends Component {
       id: time
     });
   }
-
-
-  /*
-  // get model, instance and version from Ongun
-  // Send json data to a deployed model for prediction.
-  //   Args:
-  //     project (str): project where the Cloud ML Engine Model is deployed.
-  //     model (str): model name.
-  //     instances ([Mapping[str: Any]]): Keys should be the names of Tensors
-  //       your deployed model expects as inputs. Values should be datatypes
-  //       convertible to Tensors, or (potentially nested) lists of datatypes
-  //       convertible to tensors.
-  //     version: str, version of the model to target.
-  //   Returns:
-  //     Mapping[str: any]: dictionary of prediction results defined by themodel.
-  // project = ''
-  */
 
   saveToFirebase = () => {
     var userId = firebase.auth().currentUser.uid;
@@ -136,7 +96,8 @@ class Results extends Component {
   }
 
   componentWillMount() {
-    this.calculateResult(tempResult);
+    var userResult = parseInt(this.props.navigation.state.params.newVar.userResult)
+    this.calculateResult(userResult);
   }
 
   toShare = () => {
@@ -159,7 +120,6 @@ class Results extends Component {
       countSave: 1
     });
     return;
-    //save Result code
   }
 
   render() {

@@ -6,19 +6,10 @@ import firebase from 'firebase';
 class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     const {state, setParams} = navigation;
-
     return {
       title: "SMARTtest",
       headerLeft: null,
     }
-
-    // headerLeft: null,
-    // headerRight: (
-    //   <Button
-    //     onPress={() => alert('Logged Out!\n(Actually this doesn\'t do anything right now.)')}
-    //     title="Log Out"
-    //   />
-    // ),
   };
 
   render() {

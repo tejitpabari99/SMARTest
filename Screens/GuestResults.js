@@ -11,8 +11,19 @@ const tempResult = {
 }
 
 class GuestResults extends Component {
-  static navigationOptions = {
-    title: "Guest Results"
+  static navigationOptions = ({ navigation }) => {
+    const {state, setParams} = navigation;
+    if(global.userSelection !== 2){
+      return {
+        title: "Guest Results",
+        headerLeft: null,
+      }
+    }
+    else {
+      return {
+        title: "Guest Results",
+      }
+    }
   };
 
   state = {
@@ -21,24 +32,31 @@ class GuestResults extends Component {
     date: null,
   }
 
-  calculateResult = (result) => {
+  calculateResult = (guestResult) => {
     var hiv, syphilis = '';
+
+    var lat = 40.7999209;
+    var lng = -73.96831020000002;
+    var location = lat + " , " + lng;
 
     var today = new Date();
     var date = today.getMonth() + 1 + "-" + today.getDate() + "-" + today.getFullYear();
 
-    if(result.hiv === 0) {
+    if(guestResult === 0) {
       hiv = 'Negative';
+      syphilis = 'Negative'
     }
-    else {
+    else if(guestResult === 1){
+      hiv = 'Negative';
+      syphilis = 'Positive'
+    }
+    else if(guestResult === 2){
       hiv = 'Positive';
+      syphilis = 'Negative'
     }
-
-    if(syphilis === 0) {
-      syphilis = 'Negative';
-    }
-    else {
-      syphilis = 'Positive';
+    else if(guestResult === 3){
+      hiv = 'Positive';
+      syphilis = 'Positive'
     }
 
     this.setState({
@@ -49,7 +67,8 @@ class GuestResults extends Component {
   }
 
   componentWillMount() {
-    this.calculateResult(tempResult);
+    var guestResult = parseInt(this.props.navigation.state.params.newVar.guestResult)
+    this.calculateResult(guestResult);
   }
 
   render() {

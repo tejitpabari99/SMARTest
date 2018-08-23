@@ -3,13 +3,17 @@
     "name": "SMARTtest App",
     "icon": "./Images/icon.png",
     "version": "1.0.0",
-    "slug": "your-app-slug",
+    "slug": "SMARTtest-App",
     "sdkVersion": "27.0.0",
     "ios": {
       "bundleIdentifier": "com.columbia.smarttestapp"
     },
     "android": {
-      "package": "com.columbia.smarttestapp"
+      "package": "com.columbia.smarttestapp",
+      "permissions": [
+        "CAMERA",
+        "READ_PHONE_STATE"
+      ]
     }
    }
  }
