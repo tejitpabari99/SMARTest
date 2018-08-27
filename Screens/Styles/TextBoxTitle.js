@@ -12,7 +12,8 @@ const TextBoxTitle = ({children}) => {
         marginTop:2,
         includeFontPadding: true,
         color: "#000000",
-        textDecorationLine: 'underline'
+        textDecorationLine: 'underline',
+        textAlign: 'center'
       }}
     >
       {children}

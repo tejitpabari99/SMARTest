@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import {Text} from "react-native";
-import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture,LeftTextBox } from "./Styles";
-import { Container, Header, Content, Footer, FooterTab,Button } from 'native-base';
+
+import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
+import { FooterTab,Button } from 'native-base';
 
 class BlueLancet extends Component {
   static navigationOptions = {
@@ -12,31 +13,17 @@ class BlueLancet extends Component {
       <Box>
         <TitleText>Pulling Blue Lancet</TitleText>
 
-        <LeftTextBox />
-        <LeftTextBox>     Pull the clear cap from the top of the blue  </LeftTextBox>
-        <LeftTextBox>                                   lancet. </LeftTextBox>
-        <Text></Text>
+        <CenterTextBox />
+        <CenterTextBox> Pull the clear cap from the top of the blue lancet.</CenterTextBox>
+        <CenterTextBox />
         <Picture source={require("../Images/blueLancet.jpeg")} />
-        <Text></Text>
 
-        <LeftTextBox>             Place it nearby for future use.</LeftTextBox>
-        <LeftTextBox />
+        <CenterTextBox>  Place it nearby for future use.</CenterTextBox>
+        <CenterTextBox />
 
         <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions11")} >
           Next
         </GreenRoundButton>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
 
 
 

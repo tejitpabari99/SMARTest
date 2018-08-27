@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Text} from "react-native";
-import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture,LeftTextBox } from "./Styles";
+
+import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
 import { Container, Header, Content, Footer, FooterTab,Button } from 'native-base';
 
 class Instructions2 extends Component {
@@ -11,30 +12,15 @@ class Instructions2 extends Component {
     return (
       <Box>
         <TitleText>Preparing Gauze</TitleText>
-        <LeftTextBox />
+        <CenterTextBox />
         <Picture source={require("../Images/2.png")} />
-        <LeftTextBox>Open Gauze packet and place it nearby for</LeftTextBox>
-        <LeftTextBox>                             future use.</LeftTextBox>
+        <CenterTextBox> Open Gauze packet and place it nearby for future use.</CenterTextBox>
 
         <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions3")} >
           Next
         </GreenRoundButton>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
+        <CenterTextBox />
+
         <FooterTab>
                                     <Button onPress={() => this.props.navigation.navigate("HomeScreen")}>
                                     <Text>New Test</Text>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {View, Text} from 'react-native';
-import { TitleText, Box, GreenSmallButton, BlueSmallButton, TextBox, TextBoxTitle } from "./Styles";
+import { TitleText, Box, GreenSmallButton, BlueSmallButton, TextBox, TextBoxTitle, CenterTextBox } from "./Styles";
 
 class TestSetup extends Component {
   static navigationOptions = {
@@ -36,30 +36,11 @@ class TestSetup extends Component {
         </View>
         <TextBox />
         <TextBox />
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
 
 
-
-        <TextBoxTitle>                                  Note</TextBoxTitle>
-        <Text></Text>
-        <TextBox>{"'Just My Partner' will lead to the guest account "}</TextBox>
-         <TextBox>        {"mode where results cannot be saved."}</TextBox>
-         <Text></Text>
-        <TextBox>{"'Duo Test' mode will enable simultaneous testing (e.g., you and your partner),however the partner's"}</TextBox>
-        <TextBox>                  {"result cannot be saved."}</TextBox>
+        <TextBoxTitle> Note</TextBoxTitle>
+        <CenterTextBox>{"'Just My Partner' will lead to the guest account mode where results cannot be saved."}</CenterTextBox>
+        <CenterTextBox>{"'Duo Test' mode will enable simultaneous testing (e.g., you and your partner),however the partner's result cannot be saved."}</CenterTextBox>
 
       </Box>
     );

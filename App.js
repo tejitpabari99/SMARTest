@@ -9,9 +9,9 @@ import './Global/global.js'
 
 import { SplashScreen, LoginScreen, SignupScreen, ForgotPassword,
   HomeScreen, TestSelection, TestSetup,
-  VideoInfo, VideoPlayer2, Instructions, Instructions2, Instructions3, Instructions4, Instructions5, Instructions6, Instructions7, Instructions8, Instructions9, Instructions10, Instructions11, Instructions12,
-  TakePicture, GuestTakePicture, Results, GuestResults, SavedResults,
-  Resources, TestAccuracy, WindowPeriod, Share, NearbyClinics, DiseasesInfo, NewLancetAddition,BlueLancet
+  VideoInfo, VideoPlayer2, Instructions, Instructions2, Instructions3, Instructions4, Instructions5, Instructions6, Instructions7, Instructions8, Instructions9, NewLancetAddition, Instructions10, BlueLancet, Instructions11, Instructions12,
+  TakePicture, GuestTakePicture, PreResults, Results, GuestResults, SavedResults,
+  Resources, TestAccuracy, WindowPeriod, Share, NearbyClinics, DiseasesInfo
 } from './Screens';
 
 const firebaseConfig = {
@@ -34,7 +34,7 @@ export default class App extends React.Component {
 }
 
 const AppNavigator = StackNavigator({
-  // SplashScreen : {screen : SplashScreen},
+  SplashScreen : {screen : SplashScreen},
   LoginScreen : {screen : LoginScreen},
   SignupScreen : {screen : SignupScreen},
   ForgotPassword : {screen : ForgotPassword},
@@ -52,11 +52,14 @@ const AppNavigator = StackNavigator({
   Instructions7 : {screen : Instructions7},
   Instructions8: {screen : Instructions8},
   Instructions9: {screen : Instructions9},
+  NewLancetAddition: {screen: NewLancetAddition},
   Instructions10: {screen : Instructions10},
+  BlueLancet: {screen: BlueLancet},
   Instructions11: {screen : Instructions11},
   Instructions12: {screen : Instructions12},
   TakePicture: {screen : TakePicture},
   GuestTakePicture: {screen : GuestTakePicture},
+  PreResults: {screen: PreResults},
   Results: {screen : Results},
   GuestResults: {screen : GuestResults},
   SavedResults: {screen : SavedResults},

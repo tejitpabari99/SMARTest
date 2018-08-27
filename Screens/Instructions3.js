@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Text} from "react-native";
-import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture,LeftTextBox } from "./Styles";
+
+import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
 import { Container, Header, Content, Footer, FooterTab,Button } from 'native-base';
 
 class Instructions3 extends Component {
@@ -12,37 +13,31 @@ class Instructions3 extends Component {
       <Box>
 
         <TitleText>Preparing Test</TitleText>
-        <LeftTextBox />
+        <CenterTextBox />
         <Picture source={require("../Images/4A.png")} />
-        <LeftTextBox>     Pick up the test pouch and tear it open. </LeftTextBox>
-        <LeftTextBox>           Place the test on a flat surface.</LeftTextBox>
-        <LeftTextBox />
+        <CenterTextBox> Pick up the test pouch and tear it open. Place the test on a flat surface.</CenterTextBox>
+        <CenterTextBox />
         <Picture source={require("../Images/4B.jpg")} />
-        <LeftTextBox>Make sure to orient the test so the lip faces </LeftTextBox>
-        <LeftTextBox>                           towards you.</LeftTextBox>
+        <CenterTextBox>Make sure to orient the test so the lip faces towards you.</CenterTextBox>
 
         <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions4")} >
           Next
         </GreenRoundButton>
-        <Text></Text>
-        <Text></Text>
-
-
 
         <FooterTab>
-              <Button onPress={() => this.props.navigation.navigate("HomeScreen")}>
-                                    <Text>New Test</Text>
-                                    </Button>
+          <Button onPress={() => this.props.navigation.navigate("HomeScreen")}>
+                                <Text>New Test</Text>
+                                </Button>
 
-              <Button onPress={() => this.props.navigation.navigate("Resources")}>
-                                    <Text>Resources</Text>
-                                    </Button>
+          <Button onPress={() => this.props.navigation.navigate("Resources")}>
+                                <Text>Resources</Text>
+                                </Button>
 
-              <Button onPress={() => this.props.navigation.navigate("SavedResults")}>
-                                    <Text>Results</Text>
-                                    </Button>
+          <Button onPress={() => this.props.navigation.navigate("SavedResults")}>
+                                <Text>Results</Text>
+                                </Button>
 
-      </FooterTab>
+        </FooterTab>
 
       </Box>
     );

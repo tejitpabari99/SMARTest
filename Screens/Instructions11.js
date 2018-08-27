@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {Text} from "react-native";
-import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture,LeftTextBox } from "./Styles";
+import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
 import { Container, Header, Content, Footer, FooterTab,Button } from 'native-base';
 
 class Instructions11 extends Component {
@@ -12,19 +12,16 @@ class Instructions11 extends Component {
       <Box>
         <TitleText>Running the Test - 1</TitleText>
 
-        <LeftTextBox />
+        <CenterTextBox />
         <Picture source={require("../Images/12A.jpg")} />
-        <LeftTextBox>Pick up solution tube #2 and mix the contents </LeftTextBox>
-        <LeftTextBox>                 by inverting several times.</LeftTextBox>
-        <LeftTextBox />
+        <CenterTextBox>Pick up solution tube #2 and mix the contents by inverting several times.</CenterTextBox>
+        <CenterTextBox />
         <Picture source={require("../Images/12B.png")} />
-        <LeftTextBox>Remove the cap and pour contents into the </LeftTextBox>
-        <LeftTextBox>                     center of the test.</LeftTextBox>
-        <LeftTextBox />
+        <CenterTextBox>Remove the cap and pour contents into the center of the test.</CenterTextBox>
+        <CenterTextBox />
         <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions12")} >
           Next
         </GreenRoundButton>
-        <Text></Text>
 
 
         <FooterTab>
