@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Text} from "react-native";
-import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture,LeftTextBox } from "./Styles";
+
+import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
 import { Container, Header, Content, Footer, FooterTab,Button } from 'native-base';
 
 class Instructions5 extends Component {
@@ -11,31 +12,15 @@ class Instructions5 extends Component {
     return (
       <Box>
         <TitleText>Sterilizing Finger</TitleText>
-        <LeftTextBox />
+        <CenterTextBox />
         <Picture source={require("../Images/8B.png")} />
-        <LeftTextBox>Choose a finger to prick. We recommend once.</LeftTextBox>
-        <LeftTextBox>                  on your non-dominant hand.</LeftTextBox>
-        <Text></Text>
-        <LeftTextBox>   Massage your finger to stimulate blood flow.</LeftTextBox>
-        <LeftTextBox />
-
+        <CenterTextBox>Choose a finger to prick. We recommend once on your non-dominant hand.</CenterTextBox>
+        <CenterTextBox> Massage your finger to stimulate blood flow.</CenterTextBox>
+        <CenterTextBox />
+``
         <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions6")} >
           Next
         </GreenRoundButton>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-
 
         <FooterTab>
               <Button onPress={() => this.props.navigation.navigate("HomeScreen")}>

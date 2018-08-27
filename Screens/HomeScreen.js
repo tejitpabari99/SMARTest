@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import {Button, View, Text} from 'react-native'
+import {Text} from "react-native";
+
 import { TitleText, Box, Picture, GreenRoundButton, TextBox } from "./Styles";
 import firebase from 'firebase';
 
@@ -15,27 +16,22 @@ class HomeScreen extends Component {
   render() {
     return (
         <Box>
-//<View>
           <TitleText>SMARTtest</TitleText>
 
           <Picture
             source={require("../Images/loginPic.jpg")}
           />
           <TextBox />
-          <TextBox>SMARTtest is a companion app to rapid HIV and </TextBox>
-          <TextBox>                           Syphilis tests.</TextBox>
-          <Text></Text>
-          <TextBox>   SMARTtest will walk you through the testing </TextBox>
-          <TextBox>     process, interpret your result and provide  </TextBox>
-          <TextBox>            resources for the next steps.</TextBox>
-          <Text></Text>
+          <TextBox>SMARTtest is a companion app to rapid HIV and Syphilis tests.</TextBox>
+          <TextBox />
 
-                                                                          //TestSelection
+          <TextBox> SMARTtest will walk you through the testing process, interpret your result and provide resources for the next steps.</TextBox>
+          <TextBox />
+
           <GreenRoundButton onPress={() => this.props.navigation.navigate("TestSelection")} >
             Get Started
           </GreenRoundButton>
 
-        //</View>
 
         </Box>
 

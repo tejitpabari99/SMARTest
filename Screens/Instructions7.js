@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Text} from "react-native";
-import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture,LeftTextBox } from "./Styles";
+
+import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
 import { Container, Header, Content, Footer, FooterTab,Button } from 'native-base';
 
 class Instructions7 extends Component {
@@ -11,20 +12,18 @@ class Instructions7 extends Component {
     return (
       <Box>
         <TitleText>Extract Blood</TitleText>
-        <LeftTextBox />
+        <CenterTextBox />
         <Picture source={require("../Images/8A.png")} />
-        <LeftTextBox>     Place tip of lancet on the clean finger.</LeftTextBox>
-        <LeftTextBox>       Firmly push down on the other end.</LeftTextBox>
-        <LeftTextBox />
+        <CenterTextBox> Place tip of lancet on the clean finger. Firmly push down on the other end.</CenterTextBox>
+        <CenterTextBox />
         <Picture source={require("../Images/8B.png")} />
-        <LeftTextBox>         You will feel a momentary pinprick.</LeftTextBox>
-        <LeftTextBox>         Afterwards, discard lancet in trash.</LeftTextBox>
-        <LeftTextBox />
+        <CenterTextBox> You will feel a momentary pinprick.</CenterTextBox>
+        <CenterTextBox> Afterwards, discard lancet in trash.</CenterTextBox>
+        <CenterTextBox />
 
         <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions8")} >
           Next
         </GreenRoundButton>
-        <Text></Text>
 
         <FooterTab>
               <Button onPress={() => this.props.navigation.navigate("HomeScreen")}>

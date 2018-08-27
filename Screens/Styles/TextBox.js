@@ -10,6 +10,7 @@ const TextBox = ({children}) => {
       	fontSize: 15,
         includeFontPadding: true,
         color: "#000000",
+        textAlign: 'center'
       }}
     >
       {children}

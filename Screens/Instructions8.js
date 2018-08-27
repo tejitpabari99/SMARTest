@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {Text} from "react-native";
-import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture,LeftTextBox } from "./Styles";
+import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
 import { Container, Header, Content, Footer, FooterTab,Button } from 'native-base';
 
 class Instructions8 extends Component {
@@ -12,30 +12,18 @@ class Instructions8 extends Component {
       <Box>
         <TitleText>Collecting Blood</TitleText>
 
-        <LeftTextBox />
+        <CenterTextBox />
 
         <Picture source={require("../Images/9.png")} />
-        <LeftTextBox>         Squeeze your finger to extract blood.</LeftTextBox>
-        <Text></Text>
+        <CenterTextBox> Squeeze your finger to extract blood.</CenterTextBox>
 
-        <LeftTextBox>     Grab solution tube #1 and drop the blood directly into the tube. Make sure you get a few </LeftTextBox>
-        <LeftTextBox>              drops of blood into the tube.</LeftTextBox>
-        <LeftTextBox />
-
+        <CenterTextBox> Grab solution tube #1 and drop the blood directly into the tube. Make sure you get a few drops of blood into the tube.</CenterTextBox>
+        <CenterTextBox />
+        <CenterTextBox> Careful not to let the blood touch the rim  of the tube.</CenterTextBox>
+        <CenterTextBox />
         <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions9")} >
           Next
         </GreenRoundButton>
-        <Text></Text>
-          <LeftTextBox>        Careful not to let the blood touch the rim </LeftTextBox>
-          <LeftTextBox>                               of the tube.</LeftTextBox>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-
-
 
 
 

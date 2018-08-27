@@ -123,7 +123,9 @@ class Results extends Component {
   }
 
   render() {
-    {this.saveToFirebase()}
+    if(this.props.navigation.state.params.newVar.hasOwnProperty('userResult')) {
+      {this.saveToFirebase()}
+    }
     return (
 
       <Box>

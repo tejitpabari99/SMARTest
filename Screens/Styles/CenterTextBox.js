@@ -11,6 +11,7 @@ const CenterTextBox = ({children}) => {
         includeFontPadding: true,
         color: "#000000",
         alignSelf: 'center',
+        textAlign: 'center'
       }}
     >
       {children}

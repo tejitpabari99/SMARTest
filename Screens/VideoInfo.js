@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { TitleText, Box, TextBoxTitle, GreenRoundButton, TextBox, Picture } from "./Styles";
+import { TitleText, Box, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
 
 
 class VideoInfo extends Component {
@@ -12,13 +12,11 @@ class VideoInfo extends Component {
       <Box>
         <TitleText>Video Info</TitleText>
 
-        <TextBox />
-        <TextBox>First you will see a short instructional video that </TextBox>
-        <TextBox>         provides an overview of the test.</TextBox>
-        <TextBox />
-        <TextBox>Then you will see step-by-step instructions to run</TextBox>
-        <TextBox>                         the test yourself.</TextBox>
-        <TextBox />
+        <CenterTextBox />
+        <CenterTextBox>First you will see a short instructional video that provides an overview of the test.</CenterTextBox>
+        <CenterTextBox />
+        <CenterTextBox>Then you will see step-by-step instructions to run the test yourself.</CenterTextBox>
+        <CenterTextBox />
 
         <GreenRoundButton onPress={() =>  this.props.navigation.navigate("VideoPlayer2")} >
           Next
