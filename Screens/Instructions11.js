@@ -16,7 +16,7 @@ class Instructions11 extends Component {
         <Picture source={require("../Images/12A.jpg")} />
         <CenterTextBox>Pick up solution tube #2 and mix the contents by inverting several times.</CenterTextBox>
         <CenterTextBox />
-        <Picture source={require("../Images/12B.png")} />
+        <Picture source={require("../Images/12B.jpg")} />
         <CenterTextBox>Remove the cap and pour contents into the center of the test.</CenterTextBox>
         <CenterTextBox />
         <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions12")} >

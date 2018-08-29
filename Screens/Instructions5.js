@@ -13,7 +13,7 @@ class Instructions5 extends Component {
       <Box>
         <TitleText>Sterilizing Finger</TitleText>
         <CenterTextBox />
-        <Picture source={require("../Images/8B.png")} />
+        <Picture source={require("../Images/8B.jpg")} />
         <CenterTextBox>Choose a finger to prick. We recommend once on your non-dominant hand.</CenterTextBox>
         <CenterTextBox> Massage your finger to stimulate blood flow.</CenterTextBox>
         <CenterTextBox />

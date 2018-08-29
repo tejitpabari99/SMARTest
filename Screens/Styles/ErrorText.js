@@ -10,7 +10,8 @@ const ErrorText = ({children}) => {
       	fontSize: 18,
         includeFontPadding: true,
         color: "#ff0000",
-        alignSelf: 'center'
+        alignSelf: 'center',
+        textAlign: 'center'
       }}
     >
       {children}

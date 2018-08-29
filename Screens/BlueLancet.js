@@ -21,7 +21,7 @@ class BlueLancet extends Component {
         <CenterTextBox>  Place it nearby for future use.</CenterTextBox>
         <CenterTextBox />
 
-        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions11")} >
+        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions3")} >
           Next
         </GreenRoundButton>
 
@@ -38,7 +38,7 @@ class BlueLancet extends Component {
                                     <Text>Resources</Text>
                                     </Button>
 
-              <Button onPress={() => this.props.navigation.navigate("Results")}>
+              <Button onPress={() => this.props.navigation.navigate("SavedResults")}>
                                     <Text>Results</Text>
                                     </Button>
 

@@ -23,7 +23,8 @@ class Share extends Component {
     };
   }
 
-  sendText = () => {
+  sendText() {
+    var that = this;
     axios
       .post(
         "https://us-central1-smartest-df9af.cloudfunctions.net/sendMessage",
@@ -37,24 +38,28 @@ class Share extends Component {
       )
       .then(function(response) {
         console.log(response)
-        this.setState({
-          successText: "Your results have been shared",
+        that.setState({
+          successText: "Your results have been shared through text!",
           errorText: "",
           phoneNumber: "",
           email: ""
         })
       })
       .catch(function(error) {
-        this.setState({
-          successText: "",
-          errorText: error.toString(),
-          phoneNumber: "",
-          email: ""
-        })
+        if(res.status !== 200) {
+          console.log(error)
+          that.setState({
+            successText: "",
+            errorText: "Error. Please try again",
+            phoneNumber: "",
+            email: ""
+          })
+        }
       });
   };
 
   sendEmail = () => {
+    var that = this;
     axios
       .post("https://us-central1-smartest-df9af.cloudfunctions.net/sendEmail", {
         email: this.state.email,
@@ -65,20 +70,23 @@ class Share extends Component {
       })
       .then(function(response) {
         console.log(response)
-        this.setState({
-          successText: "Your results have been shared",
+        that.setState({
+          successText: "Your results have been shared through email!",
           errorText: "",
           phoneNumber: "",
           email: ""
         })
       })
       .catch(function(error) {
-        this.setState({
-          successText: "",
-          errorText: error.toString(),
-          phoneNumber: "",
-          email: ""
-        })
+        if(res.status !== 200) {
+          console.log(error)
+          that.setState({
+            successText: "",
+            errorText: "Error. Please try again",
+            phoneNumber: "",
+            email: ""
+          })
+        }
       });
   };
 
@@ -104,6 +112,7 @@ class Share extends Component {
         </GreenRoundButton>
 
         <TextInput
+        value={this.state.email}
         onChangeText={
           email => this.setState({
             email: email,
@@ -121,8 +130,6 @@ class Share extends Component {
 
         <SuccessText>{this.state.successText} </SuccessText>
         <ErrorText>{this.state.errorText} </ErrorText>
-
-
       </Box>
     );
   }

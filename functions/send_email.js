@@ -1,37 +1,20 @@
 const functions = require('firebase-functions');
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const sg = require('sendgrid')(
-  process.env.SENDGRID_API_KEY
-);
-
-// exports.sendmail = functions.https.onRequest((req, res) => { noreply@email-smartest-df9af.firebaseapp.com
-module.exports = ((req,res) => {
-  sendMail(req.body);
-  res.send("Mail Successfully Sent!");
-});
-
-function sendMail(formData) {
-  const mailRequest = sg.emptyRequest({
-    method: 'POST',
-    path: '/v3/mail/send',
-    body: {
-      personalizations: [{
-        to: [{ email: `${formData.email}` }],
-        subject: 'SMARTest Results'
-      }],
-      from: { email: 'smartest@smartest-df9af.firebaseapp.com' },
-      content: [{
-        type: 'text/plain',
-        value: `HIV: ${formData.hiv}\nSyphilis: ${formData.syphilis}\nTest Date: ${formData.date}\nID: ${formData.id}\n(This ID can be used to verify the sender of the message)\n\nPLEASE DO NOT REPLY TO THIS MESSAGE. THIS IS A SEND ONLY NUMBER`,
-      }]
-    }
-  });
-
-  sg.API(mailRequest, (error, response) => {
-    if (error) {
-      return res.status(422).send(err);
-    } else {
+module.exports = function(req, res) {
+  const msg = {
+    to: req.body.email,
+    from: 'smartest@smartest-df9af.firebaseapp.com',
+    subject: 'SMARTest Results',
+    text: `HIV: ${req.body.hiv}\nSyphilis: ${req.body.syphilis}\nTest Date: ${req.body.date}\nID: ${req.body.id}\n(This ID can be used to verify the sender of the message)\n\nPLEASE DO NOT REPLY TO THIS MESSAGE. THIS IS A SEND ONLY NUMBER`,
+    html: `<p>HIV ${req.body.hiv}</p> <p>Syphilis ${req.body.syphilis}</p> <p>Test Date: ${req.body.date}</p> <p>ID: ${req.body.id} (This ID can be used to verify the sender of the message)</p><p>PLEASE DO NOT REPLY TO THIS MESSAGE. THIS IS A SEND ONLY NUMBER</p>`,
+  };
+  sgMail.send(msg)
+    .then(() => {
       return res.status(200).send('Mail Sent Successfully');
-    }
-  });
+    })
+    .catch((err) => {
+      res.status(422).send({ error: err });
+    });
 }

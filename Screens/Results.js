@@ -93,11 +93,13 @@ class Results extends Component {
         date: this.state.date,
         id: this.state.id
       });
+    this.props.navigation.state.params.newVar = {}
   }
 
   componentWillMount() {
     var userResult = parseInt(this.props.navigation.state.params.newVar.userResult)
     this.calculateResult(userResult);
+    // this.calculateResult(tempResult);
   }
 
   toShare = () => {

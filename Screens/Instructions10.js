@@ -14,14 +14,14 @@ class Instructions10 extends Component {
         <TitleText>Sample Transfer</TitleText>
 
         <CenterTextBox />
-        <Picture source={require("../Images/11A.png")} />
+        <Picture source={require("../Images/11A.jpg")} />
         <CenterTextBox>Recap solution tube #1 and mix contents by inverting several times.</CenterTextBox>
         <CenterTextBox />
-        <Picture source={require("../Images/11B.png")} />
+        <Picture source={require("../Images/11B.jpg")} />
         <CenterTextBox>Pour the contents into the center of the test membrane.</CenterTextBox>
         <CenterTextBox />
 
-        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("BlueLancet")} >
+        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions11")} >
           Next
         </GreenRoundButton>
 

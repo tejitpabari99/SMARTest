@@ -14,7 +14,7 @@ class Instructions9 extends Component {
         <TitleText>Bandaging Finger</TitleText>
 
         <CenterTextBox />
-        <Picture source={require("../Images/10.png")} />
+        <Picture source={require("../Images/10.jpg")} />
         <CenterTextBox>Wipe your finger with the gauze and put on a  bandage.</CenterTextBox>
         <CenterTextBox />
 
