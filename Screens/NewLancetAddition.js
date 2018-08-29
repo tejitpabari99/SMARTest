@@ -32,7 +32,7 @@ class NewLancetAddition extends Component {
                                     <Text>Resources</Text>
                                     </Button>
 
-              <Button onPress={() => this.props.navigation.navigate("Results")}>
+              <Button onPress={() => this.props.navigation.navigate("SavedResults")}>
                                     <Text>Results</Text>
                                     </Button>
 

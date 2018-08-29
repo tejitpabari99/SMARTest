@@ -5,7 +5,7 @@ import { Container, Header, Content, Footer, FooterTab,Button } from 'native-bas
 
 class Instructions6 extends Component {
   static navigationOptions = {
-    title: "Sterilizing Finger Contd.."
+    title: "Sterilizing Finger Cont."
   };
   render() {
     return (

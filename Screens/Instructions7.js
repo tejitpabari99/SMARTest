@@ -13,10 +13,10 @@ class Instructions7 extends Component {
       <Box>
         <TitleText>Extract Blood</TitleText>
         <CenterTextBox />
-        <Picture source={require("../Images/8A.png")} />
+        <Picture source={require("../Images/8A.jpg")} />
         <CenterTextBox> Place tip of lancet on the clean finger. Firmly push down on the other end.</CenterTextBox>
         <CenterTextBox />
-        <Picture source={require("../Images/8B.png")} />
+        <Picture source={require("../Images/8B.jpg")} />
         <CenterTextBox> You will feel a momentary pinprick.</CenterTextBox>
         <CenterTextBox> Afterwards, discard lancet in trash.</CenterTextBox>
         <CenterTextBox />

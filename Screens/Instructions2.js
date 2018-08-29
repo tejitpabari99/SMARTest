@@ -13,10 +13,10 @@ class Instructions2 extends Component {
       <Box>
         <TitleText>Preparing Gauze</TitleText>
         <CenterTextBox />
-        <Picture source={require("../Images/2.png")} />
+        <Picture source={require("../Images/2.jpg")} />
         <CenterTextBox> Open Gauze packet and place it nearby for future use.</CenterTextBox>
 
-        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions3")} >
+        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("BlueLancet")} >
           Next
         </GreenRoundButton>
         <CenterTextBox />

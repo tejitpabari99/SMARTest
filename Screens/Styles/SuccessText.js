@@ -10,7 +10,8 @@ const SuccessText = ({children}) => {
       	fontSize: 18,
         includeFontPadding: true,
         color: "#4400ff",
-        alignSelf: 'center'
+        alignSelf: 'center',
+        textAlign: 'center'
       }}
     >
       {children}

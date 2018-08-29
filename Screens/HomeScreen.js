@@ -4,6 +4,9 @@ import {Text} from "react-native";
 import { TitleText, Box, Picture, GreenRoundButton, TextBox } from "./Styles";
 import firebase from 'firebase';
 
+var newVar = {}
+newVar['userResult'] = 'blah'
+
 class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     const {state, setParams} = navigation;
@@ -28,7 +31,7 @@ class HomeScreen extends Component {
           <TextBox> SMARTtest will walk you through the testing process, interpret your result and provide resources for the next steps.</TextBox>
           <TextBox />
 
-          <GreenRoundButton onPress={() => this.props.navigation.navigate("TestSelection")} >
+          <GreenRoundButton onPress={() => this.props.navigation.navigate("Results", {newVar})} >
             Get Started
           </GreenRoundButton>
 

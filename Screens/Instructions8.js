@@ -14,7 +14,7 @@ class Instructions8 extends Component {
 
         <CenterTextBox />
 
-        <Picture source={require("../Images/9.png")} />
+        <Picture source={require("../Images/9.jpg")} />
         <CenterTextBox> Squeeze your finger to extract blood.</CenterTextBox>
 
         <CenterTextBox> Grab solution tube #1 and drop the blood directly into the tube. Make sure you get a few drops of blood into the tube.</CenterTextBox>

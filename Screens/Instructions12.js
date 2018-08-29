@@ -25,7 +25,7 @@ class Instructions12 extends Component {
         <Picture source={require("../Images/13A.jpg")} />
         <CenterTextBox> Pick up solution tube #3 </CenterTextBox>
         <CenterTextBox />
-        <Picture source={require("../Images/13B.png")} />
+        <Picture source={require("../Images/13B.jpg")} />
         <CenterTextBox>Remove the cap and pour on to the center of the test membrane.</CenterTextBox>
         <CenterTextBox />
 

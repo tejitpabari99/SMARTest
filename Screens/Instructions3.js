@@ -14,7 +14,7 @@ class Instructions3 extends Component {
 
         <TitleText>Preparing Test</TitleText>
         <CenterTextBox />
-        <Picture source={require("../Images/4A.png")} />
+        <Picture source={require("../Images/4A.jpg")} />
         <CenterTextBox> Pick up the test pouch and tear it open. Place the test on a flat surface.</CenterTextBox>
         <CenterTextBox />
         <Picture source={require("../Images/4B.jpg")} />
