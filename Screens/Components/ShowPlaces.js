@@ -33,7 +33,7 @@ class ShowPlaces extends Component {
             <Text
               style={{ textDecorationLine: 'underline', color: '#1f22b3'}}
               onPress={() => Linking.openURL(places[obj].website)}>
-              {places[obj].website}
+              Click here for the website
             </Text>
           </Text>
           <Text>

@@ -30,7 +30,7 @@ class PreResults extends Component {
         <TitleText>Results</TitleText>
 
         <CenterTextBox />
-        <CenterTextBox> Your results will now be shown on the next page. </CenterTextBox>
+        <CenterTextBox> Your HIV and syphilis results will now be shown on the next page. </CenterTextBox>
         <CenterTextBox />
         <CenterTextBox />
         {this.checkUserSelection()}

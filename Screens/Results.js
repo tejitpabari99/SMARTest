@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as firebase from 'firebase';
 import { View } from 'react-native';
-import { TitleText, SuccessText, Box, GreenBlockButton, BlueBlockButton, GreenRoundButton, TextBox, TextBoxTitle, LeftTextBox, Card, CardSection, CardText } from "./Styles";
+import { TitleText, SuccessText, Box, GreenBlockButton, BlueBlockButton, GreenRoundButton, TextBox, TextBoxTitle, LeftTextBox, Card, CardSection, CenterTextBox, CardText } from "./Styles";
 
 
 const temp_hiv = Math.floor(Math.random() * 2);
@@ -51,7 +51,7 @@ class Results extends Component {
     var location = lat + " , " + lng;
 
     var today = new Date();
-    var date = today.getMonth() + 1 + "-" + today.getDate() + "-" + today.getFullYear();
+    var date = today.getMonth() + 1 + "-" + today.getDate() + "-" + today.getFullYear() + " / " + today.getHours() + ":" + today.getMinutes();
     var time = today.getTime();
 
     if(userResult === 0) {
@@ -134,12 +134,12 @@ class Results extends Component {
         <TitleText>Your Results are</TitleText>
         <Card>
           <CardSection>
-              <CardText> Date - {this.state.date}</CardText>
-              <CardText> ID - {this.state.id}</CardText>
+              <CardText> Date: {this.state.date}</CardText>
+              <CardText> ID: {this.state.id}</CardText>
           </CardSection>
           <CardSection>
-            <CardText> HIV - {this.state.test_hiv}</CardText>
-            <CardText> SYPHILIS - {this.state.test_syphilis}</CardText>
+            <CardText> HIV: {this.state.test_hiv}</CardText>
+            <CardText> SYPHILIS: {this.state.test_syphilis}</CardText>
           </CardSection>
         </Card>
         <TextBox />
@@ -162,8 +162,8 @@ class Results extends Component {
         <LeftTextBox />
         <LeftTextBox />
         <TextBoxTitle>Note</TextBoxTitle>
-        <LeftTextBox>Any positive results should be confirmed by a healthcare provider.</LeftTextBox>
-        <LeftTextBox>Negative results may not detect a recent infection. For more information, click on the resources tab.</LeftTextBox>
+        <CenterTextBox>Any positive results should be confirmed by a healthcare provider.</CenterTextBox>
+        <CenterTextBox>Negative results may not detect a recent infection. For more information, click on the resources tab.</CenterTextBox>
 
         <GreenRoundButton onPress={() => this.props.navigation.navigate("TestSelection")} >
           New Test

@@ -15,7 +15,8 @@ class HomeScreen extends Component {
       headerLeft: null,
     }
   };
-
+  //
+  // <GreenRoundButton onPress={() => this.props.navigation.navigate("TestSelection")} >
   render() {
     return (
         <Box>
@@ -25,12 +26,11 @@ class HomeScreen extends Component {
             source={require("../Images/loginPic.jpg")}
           />
           <TextBox />
-          <TextBox>SMARTtest is a companion app to rapid HIV and Syphilis tests.</TextBox>
+          <TextBox>SMARTtest is a companion app to rapid HIV and syphilis tests.</TextBox>
           <TextBox />
 
           <TextBox> SMARTtest will walk you through the testing process, interpret your result and provide resources for the next steps.</TextBox>
           <TextBox />
-
           <GreenRoundButton onPress={() => this.props.navigation.navigate("Results", {newVar})} >
             Get Started
           </GreenRoundButton>

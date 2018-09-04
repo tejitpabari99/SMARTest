@@ -10,7 +10,7 @@ class Instructions6 extends Component {
   render() {
     return (
       <Box>
-        <TitleText>Sterilizing Finger Contd..</TitleText>
+        <TitleText>Sterilizing Finger Cont.</TitleText>
         <CenterTextBox />
         <Picture source={require("../Images/alcohol.jpg")} />
         <CenterTextBox> Pick up alcohol swab</CenterTextBox>
