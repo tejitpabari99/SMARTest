@@ -19,7 +19,7 @@ class NewLancetAddition extends Component {
         <CenterTextBox> Please discard this pouch. You will not be using these materials.</CenterTextBox>
         <CenterTextBox />
 
-        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions10")} >
+        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions2")} >
           Next
         </GreenRoundButton>
 

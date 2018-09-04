@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Button, Image } from "react-native";
-import { TitleText, Box, GreenBlockButton, BlueBlockButton, GreenRoundButton, TextBox, TextBoxTitle, Card, CardSection, CardText } from "./Styles";
+import { TitleText, Box, GreenBlockButton, BlueBlockButton, GreenRoundButton, TextBox, TextBoxTitle, Card, CenterTextBox, CardSection, CardText } from "./Styles";
 
 
 const temp_hiv = Math.floor(Math.random() * 2);
@@ -92,8 +92,8 @@ class GuestResults extends Component {
         <TextBox />
         <TextBox />
         <TextBoxTitle>Note</TextBoxTitle>
-        <TextBox>Any positive results should be confirmed by a healthcare provider.</TextBox>
-        <TextBox>Negative results may not detect a recent infection. For more information click on the resources tab.</TextBox>
+        <CenterTextBox>Any positive results should be confirmed by a healthcare provider.</CenterTextBox>
+        <CenterTextBox>Negative results may not detect a recent infection. For more information click on the resources tab.</CenterTextBox>
         <TextBox />
         <GreenRoundButton onPress={() => this.props.navigation.navigate("TestSelection")} >
           New Test

@@ -54,7 +54,7 @@ class LoginScreen extends Component {
           Log in
         </GreenRoundButton>
         <BlueRoundButton onPress={() => this.props.navigation.navigate("SignupScreen")}>
-          Dont have an Account?
+          Dont have an account?
         </BlueRoundButton>
 
         <View style={{ height: 60 }} />

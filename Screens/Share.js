@@ -46,15 +46,13 @@ class Share extends Component {
         })
       })
       .catch(function(error) {
-        if(res.status !== 200) {
-          console.log(error)
-          that.setState({
-            successText: "",
-            errorText: "Error. Please try again",
-            phoneNumber: "",
-            email: ""
-          })
-        }
+        console.log(error)
+        that.setState({
+          successText: "",
+          errorText: "Error. Please try again",
+          phoneNumber: "",
+          email: ""
+        })
       });
   };
 
@@ -78,15 +76,13 @@ class Share extends Component {
         })
       })
       .catch(function(error) {
-        if(res.status !== 200) {
-          console.log(error)
-          that.setState({
-            successText: "",
-            errorText: "Error. Please try again",
-            phoneNumber: "",
-            email: ""
-          })
-        }
+        console.log(error)
+        that.setState({
+          successText: "",
+          errorText: "Error. Please try again",
+          phoneNumber: "",
+          email: ""
+        })
       });
   };
 

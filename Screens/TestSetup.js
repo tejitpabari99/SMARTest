@@ -40,6 +40,7 @@ class TestSetup extends Component {
 
         <TextBoxTitle> Note</TextBoxTitle>
         <CenterTextBox>{"'Just My Partner' will lead to the guest account mode where results cannot be saved."}</CenterTextBox>
+        <TextBox />
         <CenterTextBox>{"'Duo Test' mode will enable simultaneous testing (e.g., you and your partner),however the partner's result cannot be saved."}</CenterTextBox>
 
       </Box>

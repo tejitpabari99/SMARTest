@@ -38,7 +38,7 @@ class Instructions extends Component {
         <Picture source={require("../Images/bandage.jpg")} />
         <CenterTextBox>Bandage</CenterTextBox>
         <CenterTextBox />
-        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions2")} >
+        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("NewLancetAddition")} >
           Next
         </GreenRoundButton>
         <Text></Text>

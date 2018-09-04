@@ -13,6 +13,7 @@ class TestAccuracy extends Component {
 
 
         <CenterTextBox>The INSTI Multiplex is extremely accurate when performed correctly. </CenterTextBox>
+        <CenterTextBox />
         <CenterTextBox> It has been shown to have a sensitivity of 99.6% and a specificity of 99.3% for the detection of HIV-1 and HIV-2 antibodies in finger-stick samples, and a 100% sensitivity and specificity for the detection of Secondary Syphilis</CenterTextBox>
       </Box>
     );

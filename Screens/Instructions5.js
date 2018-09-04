@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {Text} from "react-native";
 
-import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
+import { TitleText, Box, TextBoxTitle, GreenRoundButton, TextBox, CenterTextBox, Picture } from "./Styles";
 import { Container, Header, Content, Footer, FooterTab,Button } from 'native-base';
 
 class Instructions5 extends Component {
@@ -15,6 +15,7 @@ class Instructions5 extends Component {
         <CenterTextBox />
         <Picture source={require("../Images/8B.jpg")} />
         <CenterTextBox>Choose a finger to prick. We recommend once on your non-dominant hand.</CenterTextBox>
+        <TextBox />
         <CenterTextBox> Massage your finger to stimulate blood flow.</CenterTextBox>
         <CenterTextBox />
 ``
