@@ -141,6 +141,9 @@ class TakePicture extends Component {
             resizeMode="contain"
           />
           <View style={styles.topText}>
+            <Text style={{ alignSelf: 'center', color: '#f00', fontWeight: 'bold' }}>Place test kit on a dark, flat background</Text>
+            <Text style={{ alignSelf: 'center', color: '#f00', fontWeight: 'bold' }}>and take a photo within 5 minutes.</Text>
+            <Text />
             <Text style={{ alignSelf: 'center', color: '#f00', fontWeight: 'bold' }}>Please align the edges of the test to </Text>
             <Text style={{ alignSelf: 'center', color: '#f00', fontWeight: 'bold' }}>the center of the square below:</Text>
             {this.renderError()}

@@ -18,7 +18,7 @@ class Instructions9 extends Component {
         <CenterTextBox>Wipe your finger with the gauze and put on a  bandage.</CenterTextBox>
         <CenterTextBox />
 
-        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("NewLancetAddition")} >
+        <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions10")} >
           Next
         </GreenRoundButton>
 

@@ -20,7 +20,7 @@ class Resources extends Component {
   callHotline = () => {
     Alert.alert(
       'Dial Hotline',
-      'Clicking on this will initiatie a call with a 24 hour hotline. Do you want to call the hotline for immediate assistance now?',
+      'Clicking on this will initiate a call with a 24 hour hotline. Do you want to call the hotline for immediate assistance now?',
       [
         {text: 'OK', onPress: () => this.call()},
         {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
