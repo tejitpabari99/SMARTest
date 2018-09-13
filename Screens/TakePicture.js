@@ -63,9 +63,13 @@ class TakePicture extends Component {
   }
 
   showResult = () => {
+    // var newVar = {};
+    // newVar["imageData"] = this.state.previewImageData
+    // newVar["userResult"] = 7
+    // this.props.navigation.navigate("PreResults", {newVar})
 
     var that = this;
-    console.log(that.state.previewImageData)
+    // console.log(that.state.previewImageData)
     // console.log(imageDataToSend2)
     axios.post("https://us-central1-smartimageprocessing.cloudfunctions.net/testfunction",
       {
@@ -74,8 +78,9 @@ class TakePicture extends Component {
     )
     .then(function(response) {
       var newVar = {};
-      console.log(response)
+      // console.log(response)
       newVar["userResult"] = response.request._response
+      newVar["imageData"] = that.state.previewImageData
       that.props.navigation.navigate("PreResults", {newVar})
     })
     .catch(function(error) {

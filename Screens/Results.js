@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as firebase from 'firebase';
 import { View } from 'react-native';
-import { TitleText, SuccessText, Box, GreenBlockButton, BlueBlockButton, GreenRoundButton, TextBox, TextBoxTitle, LeftTextBox, Card, CardSection, CenterTextBox, CardText } from "./Styles";
+import { TitleText, SuccessText, Box, GreenBlockButton, BlueBlockButton, GreenRoundButton, TextBox, TextBoxTitle, LeftTextBox, Card, CardSection, CenterTextBox, CardText, ErrorText } from "./Styles";
 
 
 const temp_hiv = Math.floor(Math.random() * 2);
@@ -23,7 +23,7 @@ class Results extends Component {
 
   state = {
     status: '',
-    errorMessage: null,
+    errorMessage: '',
     test_hiv: null,
     test_syphilis: null,
     date: null,
@@ -53,7 +53,7 @@ class Results extends Component {
     var today = new Date();
     var date = today.getMonth() + 1 + "-" + today.getDate() + "-" + today.getFullYear() + " / " + today.getHours() + ":" + today.getMinutes();
     var time = today.getTime();
-
+    var error = ''
     if(userResult === 0) {
       hiv = 'Negative';
       syphilis = 'Negative'
@@ -72,7 +72,8 @@ class Results extends Component {
     }
     else {
       hiv = 'Invalid';
-      syphilis = 'Invalid'
+      syphilis = 'Invalid';
+      error = 'Invalid Results. Please do the test again.'
     }
 
     this.setState({
@@ -80,19 +81,37 @@ class Results extends Component {
       test_syphilis: syphilis,
       location: location,
       date: date,
-      id: time
+      id: time,
+      errorMessage: error
     });
   }
 
   saveToFirebase = () => {
     var userId = firebase.auth().currentUser.uid;
-    firebase.database().ref("users/" + userId + "/tests").push({
-        hiv: this.state.test_hiv,
-        syphilis: this.state.test_syphilis,
-        location: this.state.location,
-        date: this.state.date,
-        id: this.state.id
-      });
+    var that = this;
+    var key = firebase.database().ref("users/" + userId + "/tests").push().key;
+    firebase.database().ref("users/" + userId + "/tests/" + key).update({
+      hiv: this.state.test_hiv,
+      syphilis: this.state.test_syphilis,
+      location: this.state.location,
+      date: this.state.date,
+      id: this.state.id
+    });
+
+    var picture = this.props.navigation.state.params.newVar.imageData
+    var pictureString = `data:image/jpg;base64,${picture}`;
+    var storageRef = firebase.storage().ref();
+    var childString = `users/${userId}/tests/${key}/`;
+    var childRef = storageRef.child(`${childString}`)
+    fetch(pictureString)
+        .then(res => res.blob())
+        .then(blob => {
+          childRef.put(blob)
+            .then(function(snapshot) {
+              console.log('Uploaded an image!');
+            })
+        })
+        .catch(err => console.log(err))
     this.props.navigation.state.params.newVar = {}
   }
 
@@ -143,6 +162,7 @@ class Results extends Component {
           </CardSection>
         </Card>
         <TextBox />
+        <ErrorText> {this.state.errorMessage} </ErrorText>
         <SuccessText> {this.state.status} </SuccessText>
         <TextBox />
         <GreenBlockButton onPress={() => this.saveResult()} >
