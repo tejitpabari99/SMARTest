@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { TitleText, Box, GreenSmallButton, BlueSmallButton, TextBox, Card, CardSection, CardText, } from "./Styles";
+import { TitleText, Box, GreenSmallButton, BlueSmallButton, TextBox, Card, CardSection, CardText, ErrorText } from "./Styles";
 import {View, ScrollView} from 'react-native';
 import {Spinner} from "native-base";
 
@@ -53,7 +53,7 @@ class SavedResults extends Component {
   componentDidMount() {
     setTimeout( () => {
       this.setTimePassed();
-    },4000);
+    },3000);
   }
 
   setTimePassed() {
@@ -110,6 +110,16 @@ class SavedResults extends Component {
       )
     }
     else {
+      if(global.userSelection === 1){
+        return(
+          <Box>
+            <TitleText>Results</TitleText>
+            <ErrorText />
+            <ErrorText>No Results are shown in this mode.</ErrorText>
+            <ErrorText />
+          </Box>
+        )
+      }
       return(
         <Box>
           <ScrollView>

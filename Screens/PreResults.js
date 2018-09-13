@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { TitleText, Box, TextBoxTitle, GreenBlockButton, CenterTextBox, Picture } from "./Styles";
+import { TitleText, Box, TextBoxTitle, GreenBlockButton, CenterTextBox, Picture, TextBox, BlueBlockButton } from "./Styles";
+import { Alert } from 'react-native';
+import call from 'react-native-phone-call';
 
 class PreResults extends Component {
   static navigationOptions = {
@@ -24,6 +26,18 @@ class PreResults extends Component {
     }
   }
 
+  callHotline = () => {
+    Alert.alert(
+      'Dial Hotline',
+      'Clicking on this will initiate a call with a 24 hour hotline. Do you want to call the hotline for immediate assistance now?',
+      [
+        {text: 'OK', onPress: () => this.call()},
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+      ],
+      { cancelable: false }
+    )
+  }
+
   render() {
     return (
       <Box>
@@ -32,8 +46,14 @@ class PreResults extends Component {
         <CenterTextBox />
         <CenterTextBox> Your HIV and syphilis results will now be shown on the next page. </CenterTextBox>
         <CenterTextBox />
-        <CenterTextBox />
         {this.checkUserSelection()}
+        <CenterTextBox />
+        <CenterTextBox />
+        <BlueBlockButton onPress={() => this.callHotline()} >
+          Call Hotline!
+        </BlueBlockButton>
+        <TextBox> If you require immediate counseling or assistance, please dial the hotline for help</TextBox>
+
       </Box>
     );
   }

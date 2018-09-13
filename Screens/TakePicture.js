@@ -63,9 +63,13 @@ class TakePicture extends Component {
   }
 
   showResult = () => {
+    // var newVar = {};
+    // newVar["imageData"] = this.state.previewImageData
+    // newVar["userResult"] = 7
+    // this.props.navigation.navigate("PreResults", {newVar})
 
     var that = this;
-    console.log(that.state.previewImageData)
+    // console.log(that.state.previewImageData)
     // console.log(imageDataToSend2)
     axios.post("https://us-central1-smartimageprocessing.cloudfunctions.net/testfunction",
       {
@@ -74,8 +78,9 @@ class TakePicture extends Component {
     )
     .then(function(response) {
       var newVar = {};
-      console.log(response)
+      // console.log(response)
       newVar["userResult"] = response.request._response
+      newVar["imageData"] = that.state.previewImageData
       that.props.navigation.navigate("PreResults", {newVar})
     })
     .catch(function(error) {
@@ -141,6 +146,9 @@ class TakePicture extends Component {
             resizeMode="contain"
           />
           <View style={styles.topText}>
+            <Text style={{ alignSelf: 'center', color: '#f00', fontWeight: 'bold' }}>Place test kit on a dark, flat background</Text>
+            <Text style={{ alignSelf: 'center', color: '#f00', fontWeight: 'bold' }}>and take a photo within 5 minutes.</Text>
+            <Text />
             <Text style={{ alignSelf: 'center', color: '#f00', fontWeight: 'bold' }}>Please align the edges of the test to </Text>
             <Text style={{ alignSelf: 'center', color: '#f00', fontWeight: 'bold' }}>the center of the square below:</Text>
             {this.renderError()}

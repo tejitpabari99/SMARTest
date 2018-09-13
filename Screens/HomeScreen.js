@@ -15,7 +15,8 @@ class HomeScreen extends Component {
       headerLeft: null,
     }
   };
-  //
+  // <GreenRoundButton onPress={() => this.props.navigation.navigate("Results", {newVar})} >
+  // <GreenRoundButton onPress={() => this.props.navigation.navigate("PreResults", {newVar})} >
   // <GreenRoundButton onPress={() => this.props.navigation.navigate("TestSelection")} >
   render() {
     return (
@@ -31,7 +32,7 @@ class HomeScreen extends Component {
 
           <TextBox> SMARTtest will walk you through the testing process, interpret your result and provide resources for the next steps.</TextBox>
           <TextBox />
-          <GreenRoundButton onPress={() => this.props.navigation.navigate("Results", {newVar})} >
+          <GreenRoundButton onPress={() => this.props.navigation.navigate("TestSelection")} >
             Get Started
           </GreenRoundButton>
 
