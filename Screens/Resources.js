@@ -33,6 +33,9 @@ class Resources extends Component {
       <Box>
         <TitleText>Resources</TitleText>
         <TextBox />
+        <BlueBlockButton onPress={() => this.props.navigation.navigate("ResultInterpretation")} >
+          Result Interpretation Key
+        </BlueBlockButton>
         <GreenBlockButton onPress={() => this.props.navigation.navigate("TestAccuracy")} >
           Test Accuracy
         </GreenBlockButton>
@@ -40,11 +43,12 @@ class Resources extends Component {
           Window Period
         </BlueBlockButton>
         <GreenBlockButton onPress={() => this.props.navigation.navigate("DiseasesInfo")} >
-          Diseases Info
+          HIV and Syphilis Info
         </GreenBlockButton>
         <BlueBlockButton onPress={() => this.props.navigation.navigate("NearbyClinics")} >
           Nearby Clinics
         </BlueBlockButton>
+        <TextBox />
         <TextBox />
         <GreenBlockButton onPress={() => this.callHotline()} >
           Call Hotline!

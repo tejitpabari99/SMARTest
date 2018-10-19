@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Box, GreenRoundButton, BlueRoundButton, ErrorText, TextInput, Logo, SuccessText } from './Styles';
+import { View, KeyboardAvoidingView, StyleSheet, Keyboard } from "react-native";
 
 import axios from "axios";
 import * as firebase from "firebase";
@@ -25,6 +26,7 @@ class Share extends Component {
 
   sendText() {
     var that = this;
+    Keyboard.dismiss();
     axios
       .post(
         "https://us-central1-smartest-df9af.cloudfunctions.net/sendMessage",
@@ -89,7 +91,7 @@ class Share extends Component {
   render() {
     var that = this;
     return (
-      <Box>
+      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
         <TextInput
         value={this.state.phoneNumber}
         onChangeText={
@@ -126,9 +128,18 @@ class Share extends Component {
 
         <SuccessText>{this.state.successText} </SuccessText>
         <ErrorText>{this.state.errorText} </ErrorText>
-      </Box>
+        <View style={{ height: 60 }} />
+      </KeyboardAvoidingView>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 2,
+    backgroundColor: "#fff",
+    padding: 15
+  },
+});
 
 export { Share };

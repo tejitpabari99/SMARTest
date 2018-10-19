@@ -3,14 +3,14 @@ import * as firebase from 'firebase';
 import { View } from 'react-native';
 import { TitleText, SuccessText, Box, GreenBlockButton, BlueBlockButton, GreenRoundButton, TextBox, TextBoxTitle, LeftTextBox, Card, CardSection, CenterTextBox, CardText, ErrorText } from "./Styles";
 
-
 const temp_hiv = Math.floor(Math.random() * 2);
 const temp_syphilis = Math.floor(Math.random() * 2);
 const tempResult = {
   hiv: temp_hiv,
   syphilis: temp_syphilis
 }
-const GOOGLE_APPLICATION_CREDENTIALS='./GOOGLE_APPLICATION_CREDENTIALS.json';
+var guestResult;
+var key;
 
 class Results extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -34,10 +34,12 @@ class Results extends Component {
 
   checkUserSelection = () => {
     if (global.userSelection === 2) {
-      var newVar = this.props.navigation.state.params.newVar
+      var newVar = {
+        'guestResult': guestResult
+      }
       return (
         <GreenBlockButton onPress={() => this.props.navigation.navigate("GuestResults", {newVar})} >
-          Partner Results
+          Guest Results
         </GreenBlockButton>
       );
     }
@@ -89,13 +91,14 @@ class Results extends Component {
   saveToFirebase = () => {
     var userId = firebase.auth().currentUser.uid;
     var that = this;
-    var key = firebase.database().ref("users/" + userId + "/tests").push().key;
+    key = firebase.database().ref("users/" + userId + "/tests").push().key;
     firebase.database().ref("users/" + userId + "/tests/" + key).update({
       hiv: this.state.test_hiv,
       syphilis: this.state.test_syphilis,
       location: this.state.location,
       date: this.state.date,
-      id: this.state.id
+      id: this.state.id,
+      display: false
     });
 
     var picture = this.props.navigation.state.params.newVar.imageData
@@ -117,6 +120,7 @@ class Results extends Component {
 
   componentWillMount() {
     var userResult = parseInt(this.props.navigation.state.params.newVar.userResult)
+    guestResult = this.props.navigation.state.params.newVar.guestResult
     this.calculateResult(userResult);
     // this.calculateResult(tempResult);
   }
@@ -136,6 +140,16 @@ class Results extends Component {
       this.setState({ status: 'Your results have already been saved.\nPlease see the saved results page.' })
       return;
     }
+    var userId = firebase.auth().currentUser.uid;
+    var that = this;
+    firebase.database().ref("users/" + userId + "/tests/" + key).update({
+      hiv: this.state.test_hiv,
+      syphilis: this.state.test_syphilis,
+      location: this.state.location,
+      date: this.state.date,
+      id: this.state.id,
+      display: true
+    })
     this.setState({
       status: 'Your Results have been saved',
       countSave: 1
@@ -150,6 +164,7 @@ class Results extends Component {
     return (
 
       <Box>
+        {this.checkUserSelection()}
         <TitleText>Your Results are</TitleText>
         <Card>
           <CardSection>
@@ -169,7 +184,7 @@ class Results extends Component {
           Save
         </GreenBlockButton>
         <BlueBlockButton onPress={() => this.props.navigation.navigate("SavedResults")} >
-          Results
+          Results History
         </BlueBlockButton>
         <GreenBlockButton onPress={() => this.toShare()} >
           Share
@@ -178,7 +193,6 @@ class Results extends Component {
           Resources
         </BlueBlockButton>
         <LeftTextBox />
-        {this.checkUserSelection()}
         <LeftTextBox />
         <LeftTextBox />
         <TextBoxTitle>Note</TextBoxTitle>

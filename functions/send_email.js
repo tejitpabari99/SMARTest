@@ -7,8 +7,8 @@ module.exports = function(req, res) {
     to: req.body.email,
     from: 'smartest@smartest-df9af.firebaseapp.com',
     subject: 'SMARTest Results',
-    text: `HIV: ${req.body.hiv}\nSyphilis: ${req.body.syphilis}\nTest Date: ${req.body.date}\nID: ${req.body.id}\n(This ID can be used to verify the sender of the message)\n\nPLEASE DO NOT REPLY TO THIS MESSAGE. THIS IS A SEND ONLY NUMBER`,
-    html: `<p>HIV ${req.body.hiv}</p> <p>Syphilis ${req.body.syphilis}</p> <p>Test Date: ${req.body.date}</p> <p>ID: ${req.body.id} (This ID can be used to verify the sender of the message)</p><p>PLEASE DO NOT REPLY TO THIS MESSAGE. THIS IS A SEND ONLY NUMBER</p>`,
+    text: `HIV: ${req.body.hiv}\nSyphilis: ${req.body.syphilis}\nTest Date: ${req.body.date}\nTest ID: ${req.body.id}\n\nPLEASE DO NOT REPLY TO THIS MESSAGE. THIS IS A SEND ONLY NUMBER`,
+    html: `<p>HIV ${req.body.hiv}</p> <p>Syphilis ${req.body.syphilis}</p> <p>Test Date: ${req.body.date}</p> <p>Test ID: ${req.body.id}</p><p>PLEASE DO NOT REPLY TO THIS MESSAGE. THIS IS A SEND ONLY NUMBER</p>`,
   };
   sgMail.send(msg)
     .then(() => {

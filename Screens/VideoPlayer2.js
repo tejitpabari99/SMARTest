@@ -4,12 +4,12 @@ import {
   Text,
   View,
   ImageBackground,
-  Button,
-  Image
+  Image,
+  NativeModules
 } from "react-native";
-import {NativeModules} from 'react-native'
 
 import { TitleText, Box, TextBoxTitle, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
+import { Container, Header, Content, Footer, FooterTab,Button } from 'native-base';
 
 
 import { Video } from 'expo';
@@ -19,12 +19,12 @@ class VideoPlayer2 extends Component {
   static navigationOptions = {
     title: "Video"
   };
-
+// source={require("../assets/Videos/InstiV2.mp4")}
   render() {
     return (
       <View style={styles.backgroundVideo}>
         <Video
-          source={require("../Videos/InstiV2.mp4")}
+          source={{uri: 'https://s3.amazonaws.com/smarttest-app/InstiV2.mp4'}}
           ref={(ref) => {
              this.player = ref
            }}
@@ -37,6 +37,20 @@ class VideoPlayer2 extends Component {
         <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions")} >
           Next
         </GreenRoundButton>
+        <FooterTab>
+              <Button onPress={() => this.props.navigation.navigate("HomeScreen")}>
+                                    <Text>New Test</Text>
+                                    </Button>
+
+              <Button onPress={() => this.props.navigation.navigate("Resources")}>
+                                    <Text>Resources</Text>
+                                    </Button>
+
+              <Button onPress={() => this.props.navigation.navigate("SavedResults")}>
+                                    <Text>Results</Text>
+                                    </Button>
+
+        </FooterTab>
       </View>
     );
   }

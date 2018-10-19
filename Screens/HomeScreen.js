@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Text} from "react-native";
+import {Text, View} from "react-native";
 
 import { TitleText, Box, Picture, GreenRoundButton, TextBox } from "./Styles";
 import firebase from 'firebase';
@@ -18,6 +18,10 @@ class HomeScreen extends Component {
   // <GreenRoundButton onPress={() => this.props.navigation.navigate("Results", {newVar})} >
   // <GreenRoundButton onPress={() => this.props.navigation.navigate("PreResults", {newVar})} >
   // <GreenRoundButton onPress={() => this.props.navigation.navigate("TestSelection")} >
+
+  /*
+
+*/
   render() {
     return (
         <Box>
@@ -35,10 +39,7 @@ class HomeScreen extends Component {
           <GreenRoundButton onPress={() => this.props.navigation.navigate("TestSelection")} >
             Get Started
           </GreenRoundButton>
-
-
         </Box>
-
     );
   }
 }

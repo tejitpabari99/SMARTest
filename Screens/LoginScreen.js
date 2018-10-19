@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, KeyboardAvoidingView, Image, StyleSheet } from "react-native";
+import { View, KeyboardAvoidingView, Image, StyleSheet, Keyboard } from "react-native";
 import * as firebase from "firebase";
 
 import { GreenRoundButton, BlueRoundButton, ErrorText, TextInput, Logo, ForgotPassword } from './Styles';
@@ -21,6 +21,7 @@ class LoginScreen extends Component {
   }
 
   loginUser = () => {
+    Keyboard.dismiss();
     const { email, password } = this.state;
     this.setState({ error: '', isloading: true });
 

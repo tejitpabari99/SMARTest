@@ -17,7 +17,7 @@ const GreenRoundButton = ({ onPress, children }) => {
         success
         onPress={onPress}
       >
-        <Text> {children} </Text>
+        <Text style={{fontSize: 20, textAlign: 'center'}}> {children} </Text>
       </Button>
     </TouchableOpacity>
   );

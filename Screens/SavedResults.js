@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { TitleText, Box, GreenSmallButton, BlueSmallButton, TextBox, Card, CardSection, CardText, ErrorText } from "./Styles";
-import {View, ScrollView} from 'react-native';
+import {View, ScrollView, Alert} from 'react-native';
 import {Spinner} from "native-base";
 
 import * as firebase from 'firebase';
@@ -28,7 +28,8 @@ class SavedResults extends Component {
           syphilis: childData.syphilis,
           date: childData.date,
           id: childData.id,
-          key: childSnapshot.key
+          key: childSnapshot.key,
+          display: childData.display
         };
         that.setState(prevState => {
           return {
@@ -42,6 +43,18 @@ class SavedResults extends Component {
 
   componentWillMount() {
     this.readDataFirebase();
+  }
+
+  deleteAlert = (result) => {
+    Alert.alert(
+      'Delete',
+      'Are you sure you want to delete this result? They cannot be restored upon deletion.',
+      [
+        {text: 'OK', onPress: () => this.deleteFromDatabase(result)},
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+      ],
+      { cancelable: false }
+    )
   }
 
   deleteFromDatabase = (result) => {
@@ -63,28 +76,30 @@ class SavedResults extends Component {
   showReslts =() => {
     var tempResults = this.state.results.reverse();
     return Object.keys(tempResults).map((obj, i) => {
-      return (
-        <View>
-          <Card>
-            <CardSection>
-                <CardText>Date: {tempResults[obj].date}</CardText>
-                <CardText>ID: {tempResults[obj].id}</CardText>
-            </CardSection>
-            <CardSection>
-              <CardText>HIV: {tempResults[obj].hiv}</CardText>
-              <CardText>SYPHILIS: {tempResults[obj].syphilis}</CardText>
-            </CardSection>
-            <CardSection>
-              <GreenSmallButton onPress={() => this.toShare(this.state.results[obj])} >
-                Share
-              </GreenSmallButton>
-              <BlueSmallButton onPress={() => this.deleteFromDatabase(this.state.results[obj])} >
-                Delete
-              </BlueSmallButton>
-            </CardSection>
-          </Card>
-        </View>
-      )
+      if(tempResults[obj].display == true){
+        return (
+          <View>
+            <Card>
+              <CardSection>
+                  <CardText>Date: {tempResults[obj].date}</CardText>
+                  <CardText>ID: {tempResults[obj].id}</CardText>
+              </CardSection>
+              <CardSection>
+                <CardText>HIV: {tempResults[obj].hiv}</CardText>
+                <CardText>SYPHILIS: {tempResults[obj].syphilis}</CardText>
+              </CardSection>
+              <CardSection>
+                <GreenSmallButton onPress={() => this.toShare(this.state.results[obj])} >
+                  Share
+                </GreenSmallButton>
+                <BlueSmallButton onPress={() => this.deleteAlert(this.state.results[obj])} >
+                  Delete
+                </BlueSmallButton>
+              </CardSection>
+            </Card>
+          </View>
+        )
+      }
     });
   }
 

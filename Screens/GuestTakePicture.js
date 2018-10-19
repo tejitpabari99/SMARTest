@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity, Platform} from 'react-native';
 import { Spinner } from 'native-base';
 import axios from "axios";
-import { Camera, Permissions } from 'expo';
+import { Camera, Permissions, ImageManipulator } from 'expo';
 
 class GuestTakePicture extends Component {
   static navigationOptions = {
-    title: 'Take Picture'
+    title: 'Guest Picture'
   };
 
   constructor() {
@@ -71,8 +71,8 @@ class GuestTakePicture extends Component {
     )
     .then(function(response) {
       var newVar = {};
-      var prevResult = that.props.navigation.state.params.newVar.userResult
-      newVar["userResult"] = prevResult
+      newVar["userResult"] = that.props.navigation.state.params.newVar.userResult
+      newVar["imageData"] = that.props.navigation.state.params.newVar.imageData
       newVar["guestResult"] = response.request._response
       that.props.navigation.navigate("PreResults", {newVar})
     })
@@ -91,6 +91,7 @@ class GuestTakePicture extends Component {
       }
     )
     .then(function(response) {
+      console.log(response.request._response)
       var newVar = {};
       newVar["guestResult"] = response.request._response
       that.props.navigation.navigate("PreResults", {newVar})
@@ -138,6 +139,9 @@ class GuestTakePicture extends Component {
             resizeMode="contain"
           />
           <View style={styles.topText}>
+            <Text style={{ alignSelf: 'center', color: '#f00', fontWeight: 'bold' }}>Place test kit on a dark, flat background</Text>
+            <Text style={{ alignSelf: 'center', color: '#f00', fontWeight: 'bold' }}>and take a photo within 5 minutes.</Text>
+            <Text />
             <Text style={{ alignSelf: 'center', color: '#f00', fontWeight: 'bold' }}>Please align the edges of the test to </Text>
             <Text style={{ alignSelf: 'center', color: '#f00', fontWeight: 'bold' }}>the center of the square below:</Text>
             {this.renderError()}
@@ -190,8 +194,8 @@ class GuestTakePicture extends Component {
     if (this.camera) {
       const options = { quality: 0.5, base64: true };
       const data = await this.camera.takePictureAsync(options);
-      this.presentBase64ImageData(data.base64);
-      // this.alterImage(data.uri)
+      // this.presentBase64ImageData(data.base64);
+      this.alterImage(data.uri)
     }
   };
 
