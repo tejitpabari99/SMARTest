@@ -20,7 +20,7 @@ class Share extends Component {
       date: "",
       id: "",
       successText: "",
-      errorText: ""
+      errorText: "",
     };
   }
 
