@@ -15,7 +15,7 @@ const BlueSmallButton = ({ onPress, children }) => {
         info
         onPress={onPress}
       >
-        <Text style={{ padding: 10, fontSize: 15,}}> {children} </Text>
+        <Text style={{ fontSize: 20, textAlign: 'center',  marginRight: 10, marginLeft: 3}}> {children} </Text>
       </Button>
     </TouchableOpacity>
   );

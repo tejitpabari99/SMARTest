@@ -11,7 +11,7 @@ import { SplashScreen, LoginScreen, SignupScreen, ForgotPassword,
   HomeScreen, TestSelection, TestSetup,
   VideoInfo, VideoPlayer2, Instructions, Instructions2, Instructions3, Instructions4, Instructions5, Instructions6, Instructions7, Instructions8, Instructions9, NewLancetAddition, Instructions10, BlueLancet, Instructions11, Instructions12,
   TakePicture, GuestTakePicture, PreResults, Results, GuestResults, SavedResults,
-  Resources, TestAccuracy, WindowPeriod, Share, NearbyClinics, DiseasesInfo
+  Resources, ResultInterpretation, TestAccuracy, WindowPeriod, Share, NearbyClinics, DiseasesInfo
 } from './Screens';
 
 const firebaseConfig = {
@@ -37,7 +37,7 @@ const AppNavigator = StackNavigator({
   SplashScreen : {screen : SplashScreen},
   LoginScreen : {screen : LoginScreen},
   SignupScreen : {screen : SignupScreen},
-  ForgotPassword : {screen : ForgotPassword},
+  // ForgotPassword : {screen : ForgotPassword},
   HomeScreen : {screen: HomeScreen},
   TestSelection : {screen : TestSelection},
   TestSetup : {screen : TestSetup},
@@ -64,6 +64,7 @@ const AppNavigator = StackNavigator({
   GuestResults: {screen : GuestResults},
   SavedResults: {screen : SavedResults},
   Resources: {screen : Resources},
+  ResultInterpretation: {screen : ResultInterpretation},
   TestAccuracy: {screen : TestAccuracy},
   WindowPeriod: {screen : WindowPeriod},
   Share: {screen : Share},

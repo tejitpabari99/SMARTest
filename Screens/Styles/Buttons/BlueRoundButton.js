@@ -17,7 +17,7 @@ const BlueRoundButton = ({ onPress, children }) => {
         info
         onPress={onPress}
       >
-        <Text> {children} </Text>
+        <Text style={{fontSize: 20, textAlign: 'center'}}> {children} </Text>
       </Button>
     </TouchableOpacity>
   );

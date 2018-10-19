@@ -13,6 +13,7 @@ class TakePicture extends Component {
     super();
     this.state = {
       previewImageData: '',
+      exif: '',
       enablePreview: false,
       canContinue: false,
       loading: false,
@@ -34,7 +35,7 @@ class TakePicture extends Component {
             onPress={() => this.preShowGuestCamera()}
             style={styles.button}
         >
-            <Text style={{fontSize: 14}}> Partner Picture </Text>
+            <Text style={{fontSize: 14}}> Guest Picture </Text>
         </TouchableOpacity>
       );
     }
@@ -71,9 +72,11 @@ class TakePicture extends Component {
     var that = this;
     // console.log(that.state.previewImageData)
     // console.log(imageDataToSend2)
+    console.log(that.state.exif)
     axios.post("https://us-central1-smartimageprocessing.cloudfunctions.net/testfunction",
       {
-        image: that.state.previewImageData
+        image: that.state.previewImageData,
+        exif: that.state.exif
       }
     )
     .then(function(response) {
@@ -81,6 +84,7 @@ class TakePicture extends Component {
       // console.log(response)
       newVar["userResult"] = response.request._response
       newVar["imageData"] = that.state.previewImageData
+      newVar["exif"] = that.state.exif
       that.props.navigation.navigate("PreResults", {newVar})
     })
     .catch(function(error) {
@@ -102,6 +106,7 @@ class TakePicture extends Component {
     .then(function(response) {
       var newVar = {};
       newVar["userResult"] = response.request._response
+      newVar["imageData"] = that.state.previewImageData
       that.props.navigation.navigate("GuestTakePicture", {newVar})
     })
     .catch(function(error) {
@@ -199,25 +204,26 @@ class TakePicture extends Component {
 
   takePicture = async function() {
     if (this.camera) {
-      const options = { quality: 0.5, base64: true };
+      const options = { quality: 0.5, base64: true, exif: true };
       const data = await this.camera.takePictureAsync(options);
       // this.presentBase64ImageData(data.base64);
-      this.alterImage(data.uri)
+      this.alterImage(data.uri, data.exif)
 
     }
   };
 
-  alterImage = async (uri) => {
+  alterImage = async (uri, exif) => {
     const manipResult = await ImageManipulator.manipulate(
       uri,
       [{resize: {height: 800}}],
       {base64: true}
     )
-    this.presentBase64ImageData(manipResult.base64);
+    this.presentBase64ImageData(manipResult.base64, exif);
   }
 
-  presentBase64ImageData(imgData) {
+  presentBase64ImageData(imgData, exif) {
     this.state.previewImageData = imgData;
+    this.state.exif = exif;
     this.state.enablePreview = true;
     this.state.error = false;
     this.state.loading = false;

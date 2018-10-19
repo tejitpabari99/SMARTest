@@ -28,6 +28,7 @@ export * from './Results';
 export * from './SavedResults';
 export * from './GuestResults';
 export * from './Resources';
+export * from './ResultInterpretation';
 export * from './TestAccuracy';
 export * from './WindowPeriod';
 export * from './Share';

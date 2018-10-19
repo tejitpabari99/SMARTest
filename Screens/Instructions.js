@@ -47,21 +47,19 @@ class Instructions extends Component {
 
 
         <FooterTab>
-                                    <Button onPress={() => this.props.navigation.navigate("HomeScreen")}>
-                                    <Text>New Test</Text>
-                                    </Button>
+            <Button onPress={() => this.props.navigation.navigate("HomeScreen")}>
+            <Text>New Test</Text>
+            </Button>
 
-                                  <Button onPress={() => this.props.navigation.navigate("Resources")}>
-                                    <Text>Resources</Text>
-                                    </Button>
+          <Button onPress={() => this.props.navigation.navigate("Resources")}>
+            <Text>Resources</Text>
+            </Button>
 
-                                    <Button onPress={() => this.props.navigation.navigate("SavedResults")}>
-                                    <Text>Results</Text>
-                                    </Button>
+            <Button onPress={() => this.props.navigation.navigate("SavedResults")}>
+            <Text>Results</Text>
+            </Button>
 
-                                  </FooterTab>
-
-
+        </FooterTab>
 
       </Box>
 

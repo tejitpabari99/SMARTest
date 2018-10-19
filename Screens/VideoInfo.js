@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import {Text} from "react-native";
+import { Container, Header, Content, Footer, FooterTab,Button } from 'native-base';
 import { TitleText, Box, GreenRoundButton, CenterTextBox, Picture } from "./Styles";
 
 
@@ -21,6 +23,21 @@ class VideoInfo extends Component {
         <GreenRoundButton onPress={() =>  this.props.navigation.navigate("VideoPlayer2")} >
           Next
         </GreenRoundButton>
+
+        <FooterTab>
+              <Button onPress={() => this.props.navigation.navigate("HomeScreen")}>
+                                    <Text>New Test</Text>
+                                    </Button>
+
+              <Button onPress={() => this.props.navigation.navigate("Resources")}>
+                                    <Text>Resources</Text>
+                                    </Button>
+
+              <Button onPress={() => this.props.navigation.navigate("SavedResults")}>
+                                    <Text>Results</Text>
+                                    </Button>
+
+        </FooterTab>
 
       </Box>
     );

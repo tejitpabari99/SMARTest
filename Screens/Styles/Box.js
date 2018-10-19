@@ -2,10 +2,10 @@ import React from "react";
 import {
   Container
 } from "native-base";
-import {ScrollView} from 'react-native';
+import {ScrollView, View} from 'react-native';
 const Box = ({children}) => {
   return(
-      <Container
+      <ScrollView
         style={{
           flex: 2,
           backgroundColor: "#ffffff",
@@ -14,8 +14,8 @@ const Box = ({children}) => {
           // position: 'relative'
         }}
       >
-      <ScrollView> {children} </ScrollView>
-      </Container>
+      {children}
+      </ScrollView>
   );
 };
 

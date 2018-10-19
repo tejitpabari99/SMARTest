@@ -2,9 +2,13 @@
    "expo": {
     "name": "SMARTtest App",
     "icon": "./Images/icon.png",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "slug": "SMARTtest-App",
     "sdkVersion": "27.0.0",
+    "orientation": "portrait",
+    "assetBundlePatterns": [
+      "assets/Videos/*"
+    ],
     "ios": {
       "bundleIdentifier": "com.columbia.smarttestapp"
     },

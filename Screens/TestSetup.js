@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import {View, Text} from 'react-native';
 import { TitleText, Box, GreenSmallButton, BlueSmallButton, TextBox, TextBoxTitle, CenterTextBox } from "./Styles";
 
+var newVar = {}
+newVar['userResult'] = 'blah'
+
 class TestSetup extends Component {
+
   static navigationOptions = {
     title: "Test Setup"
   };
@@ -17,6 +21,7 @@ class TestSetup extends Component {
   duo = () => {
     global.userSelection = 2;
     this.props.navigation.navigate("VideoInfo");
+    // this.props.navigation.navigate("Results", {newVar});
   };
 
   render() {

@@ -18,7 +18,7 @@ class Instructions5 extends Component {
         <TextBox />
         <CenterTextBox> Massage your finger to stimulate blood flow.</CenterTextBox>
         <CenterTextBox />
-``
+
         <GreenRoundButton onPress={() =>  this.props.navigation.navigate("Instructions6")} >
           Next
         </GreenRoundButton>

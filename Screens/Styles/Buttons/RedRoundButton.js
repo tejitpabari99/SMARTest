@@ -11,13 +11,13 @@ const RedButton = ({ onPress, children }) => {
   return(
     <TouchableOpacity>
       <Button
-        style={{ marginTop: 10 }}
+        style={{ marginTop: 10, marginBottom: 10 }}
         full
         rounded
         danger
         onPress={onPress}
       >
-        <Text> {children} </Text>
+        <Text style={{fontSize: 20, textAlign: 'center'}}> {children} </Text>
       </Button>
     </TouchableOpacity>
   );

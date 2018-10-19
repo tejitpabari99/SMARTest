@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Button, Image } from "react-native";
-import { TitleText, Box, GreenBlockButton, BlueBlockButton, GreenRoundButton, TextBox, TextBoxTitle, Card, CenterTextBox, CardSection, ErrorText } from "./Styles";
+import { TitleText, Box, GreenBlockButton, BlueBlockButton, GreenRoundButton, TextBox, TextBoxTitle, Card, CenterTextBox, CardSection, ErrorText, CardText } from "./Styles";
 
 
 const temp_hiv = Math.floor(Math.random() * 2);
@@ -39,20 +39,21 @@ class GuestResults extends Component {
     var today = new Date();
     var date = today.getMonth() + 1 + "-" + today.getDate() + "-" + today.getFullYear() + " / " + today.getHours() + ":" + today.getMinutes();
     var time = today.getTime();
+    var error = '';
 
-    if(userResult === 0) {
+    if(guestResult === 0) {
       hiv = 'Negative';
       syphilis = 'Negative'
     }
-    else if(userResult === 1){
+    else if(guestResult === 1){
       hiv = 'Negative';
       syphilis = 'Positive'
     }
-    else if(userResult === 2){
+    else if(guestResult === 2){
       hiv = 'Positive';
       syphilis = 'Negative'
     }
-    else if(userResult === 3){
+    else if(guestResult === 3){
       hiv = 'Positive';
       syphilis = 'Positive'
     }
