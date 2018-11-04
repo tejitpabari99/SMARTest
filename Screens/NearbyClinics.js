@@ -117,6 +117,7 @@ class NearbyClinics extends Component {
           this.setState({ zip: itemValue})
         }
       >
+        <Picker.Item label="Select Zipcode" value="" />
         <Picker.Item label="10001" value="10001" />
         <Picker.Item label="10012" value="10012" />
         <Picker.Item label="10013" value="10013" />

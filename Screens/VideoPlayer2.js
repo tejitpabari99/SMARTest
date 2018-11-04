@@ -19,12 +19,12 @@ class VideoPlayer2 extends Component {
   static navigationOptions = {
     title: "Video"
   };
-// source={require("../assets/Videos/InstiV2.mp4")}
+
   render() {
     return (
       <View style={styles.backgroundVideo}>
         <Video
-          source={{uri: 'https://s3.amazonaws.com/smarttest-app/InstiV2.mp4'}}
+          source={{require: '../assets/Videos/InstiV2.mp4'}}
           ref={(ref) => {
              this.player = ref
            }}

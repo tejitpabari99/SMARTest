@@ -13,6 +13,7 @@ class GuestTakePicture extends Component {
     super();
     this.state = {
       previewImageData: '',
+      exif: '',
       enablePreview: false,
       canContinue: false,
       loading: false,
@@ -66,7 +67,8 @@ class GuestTakePicture extends Component {
     var that = this;
     axios.post("https://us-central1-smartimageprocessing.cloudfunctions.net/testfunction",
       {
-        image: that.state.previewImageData
+        image: that.state.previewImageData,
+        exif: that.state.exif
       }
     )
     .then(function(response) {
@@ -87,7 +89,8 @@ class GuestTakePicture extends Component {
     var that = this;
     axios.post("https://us-central1-smartimageprocessing.cloudfunctions.net/testfunction",
       {
-        image: that.state.previewImageData
+        image: that.state.previewImageData,
+        exif: that.state.exif
       }
     )
     .then(function(response) {
@@ -192,10 +195,10 @@ class GuestTakePicture extends Component {
 
   takePicture = async function() {
     if (this.camera) {
-      const options = { quality: 0.5, base64: true };
+      const options = { quality: 0.5, base64: true, exif: true };
       const data = await this.camera.takePictureAsync(options);
       // this.presentBase64ImageData(data.base64);
-      this.alterImage(data.uri)
+      this.alterImage(data.uri, data.exif)
     }
   };
 

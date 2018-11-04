@@ -72,7 +72,7 @@ class TakePicture extends Component {
     var that = this;
     // console.log(that.state.previewImageData)
     // console.log(imageDataToSend2)
-    console.log(that.state.exif)
+    // console.log(that.state.exif)
     axios.post("https://us-central1-smartimageprocessing.cloudfunctions.net/testfunction",
       {
         image: that.state.previewImageData,
@@ -100,7 +100,8 @@ class TakePicture extends Component {
     // console.log(imageDataToSend2)
     axios.post("https://us-central1-smartimageprocessing.cloudfunctions.net/testfunction",
       {
-        image: that.state.previewImageData
+        image: that.state.previewImageData,
+        exif: that.state.exif
       }
     )
     .then(function(response) {

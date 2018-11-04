@@ -48,7 +48,7 @@ class LoginScreen extends Component {
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
         <Logo />
         <ErrorText>{this.state.error}</ErrorText>
-        <TextInput onChangeText={email => this.setState({ email })}> Email </TextInput>
+        <TextInput onChangeText={email => this.setState({ email: email+"@smartest-app.com" })}> UserName </TextInput>
         <TextInput secureTextEntry={true} onChangeText={password => this.setState({ password })}> Password </TextInput>
 
         <GreenRoundButton onPress={() => this.loginUser()}>
