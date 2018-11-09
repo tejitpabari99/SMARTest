@@ -24,7 +24,7 @@ class LoginScreen extends Component {
     Keyboard.dismiss();
     const { email, password } = this.state;
     this.setState({ error: '', isloading: true });
-
+    
     firebase.auth().signInWithEmailAndPassword(email, password)
     .then(this.onLoginSuccess.bind(this))
     .catch((error) => {
@@ -55,7 +55,7 @@ class LoginScreen extends Component {
           Log in
         </GreenRoundButton>
         <BlueRoundButton onPress={() => this.props.navigation.navigate("SignupScreen")}>
-          Dont have an account?
+          Don't have an account?
         </BlueRoundButton>
 
         <View style={{ height: 60 }} />

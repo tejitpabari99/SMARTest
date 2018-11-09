@@ -21,6 +21,7 @@ export * from './Instructions10';
 export * from './BlueLancet';
 export * from './Instructions11';
 export * from './Instructions12';
+export * from './DualInstructions';
 export * from './TakePicture';
 export * from './GuestTakePicture';
 export * from './PreResults';

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, KeyboardAvoidingView, Image, StyleSheet } from "react-native";
+import { View, KeyboardAvoidingView, Image, StyleSheet, Text, Keyboard } from "react-native";
 import * as firebase from "firebase";
 
 import { GreenRoundButton, BlueRoundButton, ErrorText, TextInput, Logo } from './Styles';
@@ -22,13 +22,24 @@ class SignupScreen extends Component {
   }
 
   signupUser = () => {
-    if (this.state.password.length < 8) {
+    Keyboard.dismiss();
+    const { email, password } = this.state;
+    const pattern = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);
+
+    if (password.length < 8) {
       return this.setState({ error: "Your password should contain at least 8 characters." });
     }
-    const { email, password } = this.state;
+    if(email.indexOf('@') > -1){
+      return this.setState({ error: "Please choose a username, alphanumeric, no special characters" });
+    }
+    if(pattern.test(email)){
+      return this.setState({ error: "Please choose a username, alphanumeric, no special characters" });
+    }
+    var email2 = email+"@smartest-app.com";
+
     this.setState({ error: '', isloading: true });
 
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+    firebase.auth().createUserWithEmailAndPassword(email2, password)
     .then(this.onSignupSuccess.bind(this))
     .catch((error) => {
       return this.setState({ error: error.message, isLoading: false });
@@ -60,7 +71,29 @@ class SignupScreen extends Component {
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
         <Logo />
         <ErrorText>{this.state.error}</ErrorText>
-        <TextInput onChangeText={email => this.setState({ email: email+"@smartest-app.com" })}> UserName </TextInput>
+        <Text
+          style={{
+          	fontSize: 18,
+            includeFontPadding: true,
+            color: "#4400ff",
+            alignSelf: 'center',
+            textAlign: 'center'
+          }}
+        >
+          Please choose a username (alphanumeric, no special characters)
+        </Text>
+        <Text
+          style={{
+          	fontSize: 18,
+            includeFontPadding: true,
+            color: "#4400ff",
+            alignSelf: 'center',
+            textAlign: 'center'
+          }}
+        >
+          Please choose a password with at least 8 characters
+        </Text>
+        <TextInput onChangeText={email => this.setState({ email })}> UserName </TextInput>
         <TextInput secureTextEntry={true} onChangeText={password => this.setState({ password })}> Password </TextInput>
 
         <BlueRoundButton onPress={() => this.signupUser()}>

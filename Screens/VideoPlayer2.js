@@ -24,7 +24,7 @@ class VideoPlayer2 extends Component {
     return (
       <View style={styles.backgroundVideo}>
         <Video
-          source={{require: '../assets/Videos/InstiV2.mp4'}}
+          source={{uri: 'https://s3.amazonaws.com/smarttest-app/InstiV2.mp4'}}
           ref={(ref) => {
              this.player = ref
            }}

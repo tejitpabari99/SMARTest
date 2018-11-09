@@ -9,7 +9,7 @@ import './Global/global.js'
 
 import { SplashScreen, LoginScreen, SignupScreen, ForgotPassword,
   HomeScreen, TestSelection, TestSetup,
-  VideoInfo, VideoPlayer2, Instructions, Instructions2, Instructions3, Instructions4, Instructions5, Instructions6, Instructions7, Instructions8, Instructions9, NewLancetAddition, Instructions10, BlueLancet, Instructions11, Instructions12,
+  VideoInfo, VideoPlayer2, Instructions, Instructions2, Instructions3, Instructions4, Instructions5, Instructions6, Instructions7, Instructions8, Instructions9, NewLancetAddition, Instructions10, BlueLancet, Instructions11, Instructions12, DualInstructions,
   TakePicture, GuestTakePicture, PreResults, Results, GuestResults, SavedResults,
   Resources, ResultInterpretation, TestAccuracy, WindowPeriod, Share, NearbyClinics, DiseasesInfo
 } from './Screens';
@@ -57,6 +57,7 @@ const AppNavigator = StackNavigator({
   BlueLancet: {screen: BlueLancet},
   Instructions11: {screen : Instructions11},
   Instructions12: {screen : Instructions12},
+  DualInstructions: {screen: DualInstructions},
   TakePicture: {screen : TakePicture},
   GuestTakePicture: {screen : GuestTakePicture},
   PreResults: {screen: PreResults},

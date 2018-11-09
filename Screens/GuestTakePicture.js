@@ -202,17 +202,18 @@ class GuestTakePicture extends Component {
     }
   };
 
-  alterImage = async (uri) => {
+  alterImage = async (uri, exif) => {
     const manipResult = await ImageManipulator.manipulate(
       uri,
       [{resize: {height: 800}}],
       {base64: true}
     )
-    this.presentBase64ImageData(manipResult.base64);
+    this.presentBase64ImageData(manipResult.base64, exif);
   }
 
-  presentBase64ImageData(imgData) {
+  presentBase64ImageData(imgData, exif) {
     this.state.previewImageData = imgData;
+    this.state.exif = exif;
     this.state.enablePreview = true;
     this.state.error = false;
     this.state.loading = false;

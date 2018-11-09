@@ -9,8 +9,10 @@ class Instructions12 extends Component {
   };
 
   checkUserSelection = () => {
-    if (global.userSelection === 0 || global.userSelection === 2) {
+    if (global.userSelection === 0) {
       this.props.navigation.navigate("TakePicture");
+    } else if (global.userSelection === 2){
+      this.props.navigation.navigate("DualInstructions");
     } else if (global.userSelection === 1) {
       this.props.navigation.navigate("GuestTakePicture");
     }

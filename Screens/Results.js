@@ -38,9 +38,9 @@ class Results extends Component {
         'guestResult': guestResult
       }
       return (
-        <GreenBlockButton onPress={() => this.props.navigation.navigate("GuestResults", {newVar})} >
+        <BlueBlockButton onPress={() => this.props.navigation.navigate("GuestResults", {newVar})} >
           Guest Results
-        </GreenBlockButton>
+        </BlueBlockButton>
       );
     }
   };
@@ -164,7 +164,6 @@ class Results extends Component {
     return (
 
       <Box>
-        {this.checkUserSelection()}
         <TitleText>Your Results are</TitleText>
         <Card>
           <CardSection>
@@ -180,6 +179,7 @@ class Results extends Component {
         <ErrorText> {this.state.errorMessage} </ErrorText>
         <SuccessText> {this.state.status} </SuccessText>
         <TextBox />
+        {this.checkUserSelection()}
         <GreenBlockButton onPress={() => this.saveResult()} >
           Save
         </GreenBlockButton>
