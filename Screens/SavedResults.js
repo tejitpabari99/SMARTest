@@ -59,8 +59,10 @@ class SavedResults extends Component {
 
   deleteFromDatabase = (result) => {
     var userId = firebase.auth().currentUser.uid;
-    firebase.database().ref("users/" + userId+ "/tests").child(result.key).remove();
+    firebase.database().ref("users/" + userId+ "/tests/"+result.key).update({ display: false});
     this.setState({ results: _.without(this.state.results, result)})
+    // console.log("Results");
+    // console.log(this.state.results);
   }
 
   componentDidMount() {
@@ -75,6 +77,8 @@ class SavedResults extends Component {
 
   showReslts =() => {
     var tempResults = this.state.results.reverse();
+    console.log("Pre-Result");
+    console.log(this.state.results);
     return Object.keys(tempResults).map((obj, i) => {
       if(tempResults[obj].display == true){
         return (

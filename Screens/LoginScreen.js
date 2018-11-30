@@ -24,7 +24,7 @@ class LoginScreen extends Component {
     Keyboard.dismiss();
     const { email, password } = this.state;
     this.setState({ error: '', isloading: true });
-    
+
     firebase.auth().signInWithEmailAndPassword(email, password)
     .then(this.onLoginSuccess.bind(this))
     .catch((error) => {
@@ -43,10 +43,19 @@ class LoginScreen extends Component {
   }
   // <ForgotPassword onPress={() => this.props.navigation.navigate("ForgotPassword")}>Forgot Password</ForgotPassword>
 
+  reset() {
+    this.setState({
+      email: "",
+      password: "",
+      isLoading: false,
+      error: ""
+    });
+  }
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
         <Logo />
+        {this.reset}
         <ErrorText>{this.state.error}</ErrorText>
         <TextInput onChangeText={email => this.setState({ email: email+"@smartest-app.com" })}> UserName </TextInput>
         <TextInput secureTextEntry={true} onChangeText={password => this.setState({ password })}> Password </TextInput>
