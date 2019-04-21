@@ -66,7 +66,7 @@ class NearbyClinics extends Component {
           fetch(
             `https://maps.googleapis.com/maps/api/place/details/json?placeid=${
               placesDict[key][i]
-            }&key=AIzaSyDApS4dQS3R1uY2dGa9F4RjoouES2h2O18&fields=formatted_address,formatted_phone_number,geometry,name,opening_hours,website`
+            }&fields=formatted_address,formatted_phone_number,geometry,name,opening_hours,website`
           )
             .then(function(response) {
               return response.json();
