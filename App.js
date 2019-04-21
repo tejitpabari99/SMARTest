@@ -14,15 +14,6 @@ import { SplashScreen, LoginScreen, SignupScreen, ForgotPassword,
   Resources, ResultInterpretation, TestAccuracy, WindowPeriod, Share, NearbyClinics, DiseasesInfo
 } from './Screens';
 
-const firebaseConfig = {
-    apiKey: "AIzaSyAUKMFNY68L-7Y2LRbsO0e6olex-xnzWrk",
-    authDomain: "smartest-df9af.firebaseapp.com",
-    databaseURL: "https://smartest-df9af.firebaseio.com",
-    projectId: "smartest-df9af",
-    storageBucket: "smartest-df9af.appspot.com",
-    messagingSenderId: "782261463353"
-};
-
 firebase.initializeApp(firebaseConfig);
 
 export default class App extends React.Component {
